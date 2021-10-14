@@ -51,6 +51,9 @@
 		302A1FC627182B320032F4DE /* MacroPowerRanger */ = {
 			isa = PBXGroup;
 			children = (
+				302A1FD527182FD90032F4DE /* Model */,
+				302A1FD627182FE50032F4DE /* View */,
+				302A1FD727182FF40032F4DE /* ViewModel */,
 				302A1FC727182B320032F4DE /* MacroPowerRangerApp.swift */,
 				302A1FC927182B320032F4DE /* ContentView.swift */,
 				302A1FCB27182B340032F4DE /* Assets.xcassets */,
@@ -65,6 +68,27 @@
 				302A1FCE27182B340032F4DE /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		302A1FD527182FD90032F4DE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		302A1FD627182FE50032F4DE /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		302A1FD727182FF40032F4DE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
