@@ -11,6 +11,13 @@
 		302A1FCA27182B320032F4DE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302A1FC927182B320032F4DE /* ContentView.swift */; };
 		302A1FCC27182B340032F4DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 302A1FCB27182B340032F4DE /* Assets.xcassets */; };
 		302A1FCF27182B340032F4DE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 302A1FCE27182B340032F4DE /* Preview Assets.xcassets */; };
+		302A1FDA271C454F0032F4DE /* LearningPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302A1FD9271C454F0032F4DE /* LearningPage.swift */; };
+		302A1FE3271D792E0032F4DE /* Palette.png in Resources */ = {isa = PBXBuildFile; fileRef = 302A1FE1271D792E0032F4DE /* Palette.png */; };
+		302A1FE4271D792E0032F4DE /* helicopter.dae in Resources */ = {isa = PBXBuildFile; fileRef = 302A1FE2271D792E0032F4DE /* helicopter.dae */; };
+		302A1FE6271D79680032F4DE /* helicopter.scn in Resources */ = {isa = PBXBuildFile; fileRef = 302A1FE5271D79680032F4DE /* helicopter.scn */; };
+		302A1FED272171D30032F4DE /* CourseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302A1FEC272171D20032F4DE /* CourseModel.swift */; };
+		302A1FEF272171DC0032F4DE /* MaterialModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302A1FEE272171DC0032F4DE /* MaterialModel.swift */; };
+		302A1FF1272174AE0032F4DE /* CourseSampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302A1FF0272174AE0032F4DE /* CourseSampleData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +26,13 @@
 		302A1FC927182B320032F4DE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		302A1FCB27182B340032F4DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		302A1FCE27182B340032F4DE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		302A1FD9271C454F0032F4DE /* LearningPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningPage.swift; sourceTree = "<group>"; };
+		302A1FE1271D792E0032F4DE /* Palette.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Palette.png; sourceTree = "<group>"; };
+		302A1FE2271D792E0032F4DE /* helicopter.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = helicopter.dae; sourceTree = "<group>"; };
+		302A1FE5271D79680032F4DE /* helicopter.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = helicopter.scn; sourceTree = "<group>"; };
+		302A1FEC272171D20032F4DE /* CourseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseModel.swift; sourceTree = "<group>"; };
+		302A1FEE272171DC0032F4DE /* MaterialModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialModel.swift; sourceTree = "<group>"; };
+		302A1FF0272174AE0032F4DE /* CourseSampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseSampleData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +71,7 @@
 				302A1FC727182B320032F4DE /* MacroPowerRangerApp.swift */,
 				302A1FC927182B320032F4DE /* ContentView.swift */,
 				302A1FCB27182B340032F4DE /* Assets.xcassets */,
+				302A1FE7271D79FE0032F4DE /* 3dAsset */,
 				302A1FCD27182B340032F4DE /* Preview Content */,
 			);
 			path = MacroPowerRanger;
@@ -73,6 +88,9 @@
 		302A1FD527182FD90032F4DE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				302A1FEC272171D20032F4DE /* CourseModel.swift */,
+				302A1FEE272171DC0032F4DE /* MaterialModel.swift */,
+				302A1FF0272174AE0032F4DE /* CourseSampleData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -80,6 +98,7 @@
 		302A1FD627182FE50032F4DE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				302A1FD9271C454F0032F4DE /* LearningPage.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -89,6 +108,16 @@
 			children = (
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		302A1FE7271D79FE0032F4DE /* 3dAsset */ = {
+			isa = PBXGroup;
+			children = (
+				302A1FE2271D792E0032F4DE /* helicopter.dae */,
+				302A1FE1271D792E0032F4DE /* Palette.png */,
+				302A1FE5271D79680032F4DE /* helicopter.scn */,
+			);
+			path = 3dAsset;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,7 +178,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				302A1FE6271D79680032F4DE /* helicopter.scn in Resources */,
 				302A1FCF27182B340032F4DE /* Preview Assets.xcassets in Resources */,
+				302A1FE4271D792E0032F4DE /* helicopter.dae in Resources */,
+				302A1FE3271D792E0032F4DE /* Palette.png in Resources */,
 				302A1FCC27182B340032F4DE /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -162,7 +194,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				302A1FCA27182B320032F4DE /* ContentView.swift in Sources */,
+				302A1FEF272171DC0032F4DE /* MaterialModel.swift in Sources */,
 				302A1FC827182B320032F4DE /* MacroPowerRangerApp.swift in Sources */,
+				302A1FED272171D30032F4DE /* CourseModel.swift in Sources */,
+				302A1FF1272174AE0032F4DE /* CourseSampleData.swift in Sources */,
+				302A1FDA271C454F0032F4DE /* LearningPage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
