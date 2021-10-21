@@ -11,7 +11,7 @@ import SwiftUI
 struct MacroPowerRangerApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            LearnBannerView()
         }
     }
 }

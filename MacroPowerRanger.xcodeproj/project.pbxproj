@@ -11,6 +11,7 @@
 		302A1FCA27182B320032F4DE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302A1FC927182B320032F4DE /* ContentView.swift */; };
 		302A1FCC27182B340032F4DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 302A1FCB27182B340032F4DE /* Assets.xcassets */; };
 		302A1FCF27182B340032F4DE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 302A1FCE27182B340032F4DE /* Preview Assets.xcassets */; };
+		A0F37F8E271D4C16002A4087 /* LearnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F37F8D271D4C16002A4087 /* LearnView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		302A1FC927182B320032F4DE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		302A1FCB27182B340032F4DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		302A1FCE27182B340032F4DE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		A0F37F8D271D4C16002A4087 /* LearnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 		302A1FD627182FE50032F4DE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A0F37F8D271D4C16002A4087 /* LearnView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -162,6 +165,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				302A1FCA27182B320032F4DE /* ContentView.swift in Sources */,
+				A0F37F8E271D4C16002A4087 /* LearnView.swift in Sources */,
 				302A1FC827182B320032F4DE /* MacroPowerRangerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
