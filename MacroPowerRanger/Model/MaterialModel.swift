@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CourseMaterial {
+struct CourseMaterial: Identifiable {
     var id: UUID
     var title: String
     var stepByStepInstructions: [String]
