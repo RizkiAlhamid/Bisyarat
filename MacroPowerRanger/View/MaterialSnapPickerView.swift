@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MaterialSnapPicker<Content: View, T: Identifiable>: View {
+    @ObservedObject var vm: LearningPageViewModel
     var content: (T) -> Content
     var list: [T]
     
@@ -16,13 +17,14 @@ struct MaterialSnapPicker<Content: View, T: Identifiable>: View {
     var trailingSpace: CGFloat
     @Binding var index: Int
     
-    init(spacing: CGFloat = 0, trailingSpace: CGFloat = 0, index: Binding<Int>, items: [T], @ViewBuilder content: @escaping (T)->Content) {
+    init(vm: LearningPageViewModel, spacing: CGFloat = 0, trailingSpace: CGFloat = 0, index: Binding<Int>, items: [T], @ViewBuilder content: @escaping (T)->Content) {
         
         self.list = items
         self.spacing = spacing
         self.trailingSpace = trailingSpace
         self._index = index
         self.content = content
+        self.vm = vm
     }
     
     // Offset
@@ -72,6 +74,7 @@ struct MaterialSnapPicker<Content: View, T: Identifiable>: View {
                                         //updating index
                                         currentIndex = index
                                         print(currentIndex, " ", index)
+                                        print(vm.courseMaterials[vm.materialIndex])
                                     })
                                     .onChanged({ value in
                                         // updating only index
@@ -86,6 +89,9 @@ struct MaterialSnapPicker<Content: View, T: Identifiable>: View {
 
                                         // setting min
                                         index = max(min(currentIndex + Int(roundIndex), list.count - 3), -2)
+                                        
+                                        vm.materialIndex = index + 2
+                                        vm.stepByStepIndex = 0
                                     })
                             )
 //                            .onTapGesture {

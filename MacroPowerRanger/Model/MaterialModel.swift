@@ -12,6 +12,6 @@ struct CourseMaterial: Identifiable {
     var title: String
     var stepByStepInstructions: [String]
     var stepByStepAnimations: [String]
-    var isFinished: [Bool]
+    var isFinished: Bool
     
 }

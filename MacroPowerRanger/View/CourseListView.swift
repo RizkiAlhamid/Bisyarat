@@ -18,7 +18,7 @@ struct CourseListView: View {
                 VStack{
                     List {
                         ForEach(viewModel.courses, id: \.id){ course in
-                            NavigationLink(destination: LearningPageView(learningPageViewModel: LearningPageViewModel())) {
+                            NavigationLink(destination: LearningPageView(learningPageViewModel: LearningPageViewModel.init(course: course))) {
                                 CourseCellView(
                                     title: course.title,
                                     description: course.description,

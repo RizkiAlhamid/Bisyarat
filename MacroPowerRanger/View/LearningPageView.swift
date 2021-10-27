@@ -6,33 +6,41 @@
 //
 
 import SwiftUI
+import SceneKit
 
 struct LearningPageView: View {
     
-    @ObservedObject var learningPageViewModel: LearningPageViewModel
+    @ObservedObject var learningPageViewModel: LearningPageViewModel = LearningPageViewModel()
     
-    @State var currentIndex: Int = 0
+    @State var currentIndex: Int = -2
     
-    let material = CourseSampleData.courses[0].courseMaterials
+    var scene = makeScene()
     
     var body: some View {
         VStack {
-            CustomNavigationView()
-            ChatBoxView()
+            CustomNavigationView(courseTitle: learningPageViewModel.courseTitle)
+            ChatBoxView(vm: learningPageViewModel)
             ZStack {
-                Ellipse()
-                    .foregroundColor(Color(red: 161/255, green: 159/255, blue: 137/255))
-                    .padding()
+//                Ellipse()
+//                    .foregroundColor(Color(red: 161/255, green: 159/255, blue: 137/255))
+//                    .padding()
+                SceneView(scene: scene,
+                          pointOfView: setUpCamera(),
+                          options: []
+                )
                 HStack {
                     Spacer()
                     SettingButtonsView()
                 }
                 VStack {
                     Spacer()
-                    PrevNextButtonView()
+                    Button("Play/Stop") {
+                        scene?.isPaused.toggle()
+                    }
+                    PrevNextButtonView(vm: learningPageViewModel)
                 }
             }
-            MaterialSnapPicker(index: $currentIndex, items: material) { material in
+            MaterialSnapPicker(vm: learningPageViewModel, index: $currentIndex, items: learningPageViewModel.courseMaterials) { material in
                 
                 GeometryReader { proxy in
                     let scale = getScale(proxy: proxy)
@@ -54,16 +62,11 @@ struct LearningPageView: View {
             
             
         }
+        .navigationBarHidden(true)
+        .onAppear {
+            //learningPageViewModel.fetchCourseMaterials(course: CourseSampleData.courses[0])
+        }
     }
-//    Text(material.title)
-//        .padding()
-//        .background(
-//            Circle()
-//                .fill(Color(red: 176/255, green: 228/255, blue: 255/255, opacity: 0.5))
-//                .frame(width: 35)
-//                .clipped()
-//        )
-//        .scaleEffect(.init(width: scale, height: scale))
     
     private func getScale(proxy: GeometryProxy) -> CGFloat {
         var scale: CGFloat = 1
@@ -78,6 +81,17 @@ struct LearningPageView: View {
         
         return scale
     }
+    
+    static func makeScene() -> SCNScene? {
+        let scene = SCNScene(named: "helicopter.scn")
+        return scene
+    }
+    
+    func setUpCamera() -> SCNNode? {
+      let cameraNode = scene?.rootNode.childNode(withName: "camera", recursively: false)
+      return cameraNode
+    }
+    
 }
 
 
@@ -90,23 +104,30 @@ struct LearningPageView_Previews: PreviewProvider {
 
 struct CustomNavigationView: View {
     
+    @Environment(\.presentationMode) var presentation
+    var courseTitle: String
+    
     var body: some View {
         ZStack {
             HStack() {
-                Image(systemName: "arrow.left")
-                    .foregroundColor(.white)
-                    .font(.system(size: 20))
-                    .padding()
-                    .background (
-                        Circle()
-                            .foregroundColor(Color(red: 99/255, green: 202/255, blue: 255/255))
-                            .frame(width: 40, height: 40)
-                    )
-                    .padding(.horizontal, 15)
+                Button {
+                    self.presentation.wrappedValue.dismiss()
+                } label: {
+                    Image(systemName: "chevron.backward")
+                        .foregroundColor(.white)
+                        .font(.system(size: 20))
+                        .padding()
+                        .background (
+                            Circle()
+                                .foregroundColor(Color(red: 99/255, green: 202/255, blue: 255/255))
+                                .frame(width: 40, height: 40)
+                        )
+                        .padding(.horizontal, 15)
+                }
                 Spacer()
             }
             HStack {
-                Text("Dasar 1")
+                Text(courseTitle)
                     .font(.system(size: 30))
                     .padding(.horizontal, 60)
             }
@@ -115,6 +136,7 @@ struct CustomNavigationView: View {
 }
 
 struct ChatBoxView: View {
+    @ObservedObject var vm: LearningPageViewModel
     
     var body: some View {
         ZStack {
@@ -124,7 +146,7 @@ struct ChatBoxView: View {
                 .padding(.vertical)
                 .padding(.horizontal, 55)
             
-            Text("Bentuk jari tangan seperti bentuk segitiga")
+            Text(vm.courseMaterials[vm.materialIndex].stepByStepInstructions[vm.stepByStepIndex])
                 .multilineTextAlignment(.center)
                 .frame(width: 260, height: 80)
         }
@@ -167,86 +189,43 @@ struct SettingButtonsView: View {
 
 struct PrevNextButtonView: View {
     
+    @ObservedObject var vm: LearningPageViewModel
+    
     var body: some View {
         HStack {
-            Button {
-                print("prev")
-            } label: {
-                Text("Prev")
-                    .foregroundColor(.black)
-                    .padding()
-                    .background (
-                        RoundedRectangle(cornerRadius: 10)
-                            .fill(Color(red: 99/255, green: 202/255, blue: 255/255))
-                            .frame(width: 60, height: 30)
-                    )
-                    .padding(.horizontal)
-                
+            if vm.stepByStepIndex > 0 {
+                Button {
+                    vm.stepByStepIndex -= 1
+                } label: {
+                    Text("Prev")
+                        .foregroundColor(.black)
+                        .padding()
+                        .background (
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(Color(red: 99/255, green: 202/255, blue: 255/255))
+                                .frame(width: 60, height: 30)
+                        )
+                        .padding(.horizontal)
+                }
             }
             
             Spacer()
             
-            Button {
-                print("next")
-            } label: {
-                Text("Next")
-                    .foregroundColor(.black)
-                    .padding()
-                    .background (
-                        RoundedRectangle(cornerRadius: 10)
-                            .fill(Color(red: 99/255, green: 202/255, blue: 255/255))
-                            .frame(width: 60, height: 30)
-                    )
-                    .padding(.horizontal)
+            if vm.stepByStepIndex < vm.courseMaterials[vm.materialIndex].stepByStepInstructions.count - 1 {
+                Button {
+                    vm.stepByStepIndex += 1
+                } label: {
+                    Text("Next")
+                        .foregroundColor(.black)
+                        .padding()
+                        .background (
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(Color(red: 99/255, green: 202/255, blue: 255/255))
+                                .frame(width: 60, height: 30)
+                        )
+                        .padding(.horizontal)
+                }
             }
         }
     }
 }
-
-//struct MaterialPickerView: View {
-//
-//    @State var index = 0
-//
-//    var body: some View {
-//        ZStack {
-//            Rectangle()
-//                .fill(Color(red: 244/255, green: 244/255, blue: 244/255))
-//                .frame(maxWidth: .infinity)
-//                .cornerRadius(40, corners: [.topLeft, .topRight])
-//                .ignoresSafeArea()
-//
-//            ScrollView(.horizontal) {
-//                HStack(spacing: 80) {
-//                    ForEach(0..<10) { index in
-//
-//                        GeometryReader { proxy in
-//                            let scale = getScale(proxy: proxy)
-//
-//                            Circle()
-//                                .fill(Color(red: 176/255, green: 228/255, blue: 255/255, opacity: 0.5))
-//                                .frame(width: 35)
-//                                .clipped()
-//                                .scaleEffect(.init(width: scale, height: scale))
-//
-//                        }
-//                    }
-//                }.padding(32)
-//            }
-//        }
-//
-//    }
-//
-//    private func getScale(proxy: GeometryProxy) -> CGFloat {
-//        var scale: CGFloat = 1
-//
-//        let x = proxy.frame(in: .global).midX
-//
-//        let diff = abs(x - UIScreen.main.bounds.width / 2 + 17.5)
-//
-//        if diff < UIScreen.main.bounds.width - 175 {
-//            scale = 1 + (UIScreen.main.bounds.width - 175 - diff) / 160
-//        }
-//
-//        return scale
-//    }
-//}

@@ -9,10 +9,19 @@ import Foundation
 
 class LearningPageViewModel: ObservableObject{
     @Published var courseMaterials = [CourseMaterial]()
+    @Published var materialIndex: Int = 0
+    @Published var stepByStepIndex: Int = 0
     
-//    init(){
-//        fetchCourseMaterials()
-//    }
+    var courseTitle: String = ""
+    
+    init(){
+        fetchCourseMaterials(course: CourseSampleData.courses[0])
+    }
+    
+    init(course: Course) {
+        fetchCourseMaterials(course: course)
+        courseTitle = course.title
+    }
     
     func fetchCourseMaterials(course: Course){
         courseMaterials = course.courseMaterials
