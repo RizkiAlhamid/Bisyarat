@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MainView: View {
+    @AppStorage("shouldShowOnboarding") var shouldShowOnboarding: Bool = true
     var body: some View {
         TabView {
             CourseListView()
@@ -19,6 +20,10 @@ struct MainView: View {
                     Label("Latihan", systemImage: "hands.sparkles.fill")
                 }
         }
+        .navigationBarHidden(true)
+                .fullScreenCover(isPresented: $shouldShowOnboarding, content: { OnboardingView(shouldShowOnboarding: $shouldShowOnboarding)
+            
+        })
     }
 }
 

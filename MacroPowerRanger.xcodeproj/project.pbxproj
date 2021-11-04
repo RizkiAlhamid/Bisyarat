@@ -27,6 +27,8 @@
 		A01547622726A44600947521 /* CourseListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01547612726A44600947521 /* CourseListView.swift */; };
 		A03C5FFB2722C9720014FD2C /* CourseListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03C5FFA2722C9720014FD2C /* CourseListViewModel.swift */; };
 		A03C5FFD2722CB250014FD2C /* LearningPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03C5FFC2722CB250014FD2C /* LearningPageViewModel.swift */; };
+		A092AC422733DF0200B325F3 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A092AC412733DF0200B325F3 /* OnboardingView.swift */; };
+		A092AC442733DF2500B325F3 /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A092AC432733DF2500B325F3 /* OnboardingModel.swift */; };
 		A0F37F8E271D4C16002A4087 /* LearnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F37F8D271D4C16002A4087 /* LearnView.swift */; };
 		A0F412832727F171009B8569 /* ColorHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F412822727F171009B8569 /* ColorHex.swift */; };
 		A0F412882727F61A009B8569 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F412872727F61A009B8569 /* MainView.swift */; };
@@ -54,6 +56,8 @@
 		A01547612726A44600947521 /* CourseListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseListView.swift; sourceTree = "<group>"; };
 		A03C5FFA2722C9720014FD2C /* CourseListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseListViewModel.swift; sourceTree = "<group>"; };
 		A03C5FFC2722CB250014FD2C /* LearningPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningPageViewModel.swift; sourceTree = "<group>"; };
+		A092AC412733DF0200B325F3 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		A092AC432733DF2500B325F3 /* OnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
 		A0F37F8D271D4C16002A4087 /* LearnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnView.swift; sourceTree = "<group>"; };
 		A0F412822727F171009B8569 /* ColorHex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHex.swift; sourceTree = "<group>"; };
 		A0F412872727F61A009B8569 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -117,6 +121,7 @@
 				302A1FEC272171D20032F4DE /* CourseModel.swift */,
 				302A1FEE272171DC0032F4DE /* MaterialModel.swift */,
 				302A1FF0272174AE0032F4DE /* CourseSampleData.swift */,
+				A092AC432733DF2500B325F3 /* OnboardingModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -131,6 +136,7 @@
 				304FD0262728121400E45C39 /* LearningPageView.swift */,
 				30C33F72272F804800E2CBBB /* LPTutorialView.swift */,
 				304FD0282728123300E45C39 /* MaterialSnapPickerView.swift */,
+				A092AC412733DF0200B325F3 /* OnboardingView.swift */,
 				30E169B327328DB2005C3DA8 /* PracticeView.swift */,
 			);
 			path = View;
@@ -253,7 +259,9 @@
 				A03C5FFB2722C9720014FD2C /* CourseListViewModel.swift in Sources */,
 				30D4AB9C27293C8600956F30 /* Animations.swift in Sources */,
 				302A1FF1272174AE0032F4DE /* CourseSampleData.swift in Sources */,
+				A092AC422733DF0200B325F3 /* OnboardingView.swift in Sources */,
 				A01547622726A44600947521 /* CourseListView.swift in Sources */,
+				A092AC442733DF2500B325F3 /* OnboardingModel.swift in Sources */,
 				304FD0272728121400E45C39 /* LearningPageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -385,7 +393,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MacroPowerRanger/Preview Content\"";
-				DEVELOPMENT_TEAM = UG27AN3F2U;
+				DEVELOPMENT_TEAM = Z74KUA44R7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -415,7 +423,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MacroPowerRanger/Preview Content\"";
-				DEVELOPMENT_TEAM = UG27AN3F2U;
+				DEVELOPMENT_TEAM = Z74KUA44R7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

@@ -32,6 +32,7 @@ struct CourseListView: View {
                 .background(Color.black).ignoresSafeArea()
             }
         }
+        .navigationBarHidden(true)
         
         
         
