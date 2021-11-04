@@ -28,6 +28,9 @@ class Animations {
         sub.timeOffset = range.offset
         animation.animations = [CAAnimation(scnAnimation: sub)]
         animation.duration = range.duration
+        animation.timeOffset = range.offset
+        print("time offset: \(animation.timeOffset)")
+        print("animation duration: \(animation.duration)")
         return animation
     }
 }

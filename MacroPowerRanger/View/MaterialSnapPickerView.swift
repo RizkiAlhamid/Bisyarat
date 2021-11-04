@@ -92,6 +92,7 @@ struct MaterialSnapPicker<Content: View, T: Identifiable>: View {
                                         
                                         vm.materialIndex = index + 2
                                         vm.stepByStepIndex = 0
+                                        vm.playAnimations()
                                     })
                             )
 //                            .onTapGesture {

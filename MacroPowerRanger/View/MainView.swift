@@ -14,7 +14,7 @@ struct MainView: View {
                 .tabItem {
                     Label("Belajar", systemImage: "book.fill")
                 }
-            LearningPageView(learningPageViewModel: LearningPageViewModel())
+            PracticeView()
                 .tabItem {
                     Label("Latihan", systemImage: "hands.sparkles.fill")
                 }
