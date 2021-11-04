@@ -9,7 +9,7 @@ import SwiftUI
 import SceneKit
 
 struct LearningPageView: View {
-    
+    @AppStorage("showButtonTutorial") var showButtonTutorial: Bool = true
     @ObservedObject var learningPageViewModel: LearningPageViewModel = LearningPageViewModel()
     
     @State var currentIndex: Int = -2
@@ -71,6 +71,10 @@ struct LearningPageView: View {
             .onAppear {
                 //learningPageViewModel.fetchCourseMaterials(course: CourseSampleData.courses[0])
                 learningPageViewModel.playAnimations()
+                if showButtonTutorial == true {
+                    tutorialCounter = 1
+                    showButtonTutorial.toggle()
+                }
             }
             if tutorialCounter <= 6 && tutorialCounter > 0 {
                 LPTutorialView(tutorialCounter: $tutorialCounter)
