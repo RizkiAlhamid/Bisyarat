@@ -35,7 +35,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		302A1FC427182B320032F4DE /* MacroPowerRanger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacroPowerRanger.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		302A1FC427182B320032F4DE /* Bisyarat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bisyarat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		302A1FC727182B320032F4DE /* MacroPowerRangerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroPowerRangerApp.swift; sourceTree = "<group>"; };
 		302A1FC927182B320032F4DE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		302A1FCB27182B340032F4DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -85,7 +85,7 @@
 		302A1FC527182B320032F4DE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				302A1FC427182B320032F4DE /* MacroPowerRanger.app */,
+				302A1FC427182B320032F4DE /* Bisyarat.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -173,9 +173,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		302A1FC327182B320032F4DE /* MacroPowerRanger */ = {
+		302A1FC327182B320032F4DE /* Bisyarat */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 302A1FD227182B340032F4DE /* Build configuration list for PBXNativeTarget "MacroPowerRanger" */;
+			buildConfigurationList = 302A1FD227182B340032F4DE /* Build configuration list for PBXNativeTarget "Bisyarat" */;
 			buildPhases = (
 				302A1FC027182B320032F4DE /* Sources */,
 				302A1FC127182B320032F4DE /* Frameworks */,
@@ -185,9 +185,9 @@
 			);
 			dependencies = (
 			);
-			name = MacroPowerRanger;
+			name = Bisyarat;
 			productName = MacroPowerRanger;
-			productReference = 302A1FC427182B320032F4DE /* MacroPowerRanger.app */;
+			productReference = 302A1FC427182B320032F4DE /* Bisyarat.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -205,7 +205,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 302A1FBF27182B320032F4DE /* Build configuration list for PBXProject "MacroPowerRanger" */;
+			buildConfigurationList = 302A1FBF27182B320032F4DE /* Build configuration list for PBXProject "Bisyarat" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -218,7 +218,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				302A1FC327182B320032F4DE /* MacroPowerRanger */,
+				302A1FC327182B320032F4DE /* Bisyarat */,
 			);
 		};
 /* End PBXProject section */
@@ -408,7 +408,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = RizkiMiftha.MacroPowerRanger;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Bisyarat;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -438,7 +438,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = RizkiMiftha.MacroPowerRanger;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Bisyarat;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -448,7 +448,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		302A1FBF27182B320032F4DE /* Build configuration list for PBXProject "MacroPowerRanger" */ = {
+		302A1FBF27182B320032F4DE /* Build configuration list for PBXProject "Bisyarat" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				302A1FD027182B340032F4DE /* Debug */,
@@ -457,7 +457,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		302A1FD227182B340032F4DE /* Build configuration list for PBXNativeTarget "MacroPowerRanger" */ = {
+		302A1FD227182B340032F4DE /* Build configuration list for PBXNativeTarget "Bisyarat" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				302A1FD327182B340032F4DE /* Debug */,

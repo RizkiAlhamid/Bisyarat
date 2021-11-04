@@ -20,6 +20,8 @@ class LearningPageViewModel: ObservableObject{
     @Published var speed: animationSpeed = .normal
     @Published var autoPlayOn: Bool = false
     
+    @Environment(\.colorScheme) var colorScheme
+    
     enum animationSpeed: Double {
         case slow = 0.5
         case normal = 1
@@ -114,6 +116,7 @@ class LearningPageViewModel: ObservableObject{
 //        node.scale = SCNVector3(0.025, 0.025, 0.025)
         
         // return node
+        //idleScene.background.contents = (colorScheme == .dark ? UIColor.black : UIColor.clear)
         idleScene.rootNode.addChildNode(node)
         return idleScene
     }
