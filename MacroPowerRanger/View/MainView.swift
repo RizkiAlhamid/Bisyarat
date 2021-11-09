@@ -18,7 +18,7 @@ struct MainView: View {
             PracticeView()
                 .tabItem {
                     Label("Latihan", systemImage: "hands.sparkles.fill")
-                }
+                }.edgesIgnoringSafeArea(.top)
         }
         .navigationBarHidden(true)
                 .fullScreenCover(isPresented: $shouldShowOnboarding, content: { OnboardingView(shouldShowOnboarding: $shouldShowOnboarding)

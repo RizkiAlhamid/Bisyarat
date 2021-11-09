@@ -68,6 +68,7 @@ struct LearningPageView: View {
                     Text("Info")
                 }
             })
+            
             .onAppear {
                 //learningPageViewModel.fetchCourseMaterials(course: CourseSampleData.courses[0])
                 learningPageViewModel.playAnimations()
@@ -236,12 +237,12 @@ struct SettingButtonsView: View {
                 }
             }
         }
-        
+            
         
     }
     
 }
-
+    
 struct PrevNextButtonView: View {
     
     @ObservedObject var vm: LearningPageViewModel
