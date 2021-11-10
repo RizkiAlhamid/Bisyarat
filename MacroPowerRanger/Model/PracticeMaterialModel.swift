@@ -11,6 +11,6 @@ import SwiftUI
 struct PracticeMaterial: Identifiable {
     var id: UUID
     var title: String
-    var outlineImage: Image
+    var outlineImage: String
     var isFinished: Bool = false
 }

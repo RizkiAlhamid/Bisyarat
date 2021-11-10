@@ -24,6 +24,11 @@
 		30E169B427328DB2005C3DA8 /* PracticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E169B327328DB2005C3DA8 /* PracticeView.swift */; };
 		A01547602726A24C00947521 /* CourseCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A015475F2726A24C00947521 /* CourseCellView.swift */; };
 		A01547622726A44600947521 /* CourseListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01547612726A44600947521 /* CourseListView.swift */; };
+		A03A5781273BC65D00E45071 /* PracticeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03A5780273BC65D00E45071 /* PracticeListView.swift */; };
+		A03A5783273BC6F000E45071 /* PracticeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03A5782273BC6F000E45071 /* PracticeListViewModel.swift */; };
+		A03A5785273BC79800E45071 /* PracticeSampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03A5784273BC79800E45071 /* PracticeSampleData.swift */; };
+		A03A5787273BCD7700E45071 /* PracticeCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03A5786273BCD7700E45071 /* PracticeCellView.swift */; };
+		A03A578A273BD2A500E45071 /* Isyarat AA.scn in Resources */ = {isa = PBXBuildFile; fileRef = A03A5789273BD2A500E45071 /* Isyarat AA.scn */; };
 		A03C5FFB2722C9720014FD2C /* CourseListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03C5FFA2722C9720014FD2C /* CourseListViewModel.swift */; };
 		A03C5FFD2722CB250014FD2C /* LearningPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03C5FFC2722CB250014FD2C /* LearningPageViewModel.swift */; };
 		A05A9162273A599F00249484 /* CameraPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05A9161273A599F00249484 /* CameraPreview.swift */; };
@@ -31,7 +36,6 @@
 		A05A9166273A626F00249484 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05A9165273A626F00249484 /* AppError.swift */; };
 		A092AC422733DF0200B325F3 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A092AC412733DF0200B325F3 /* OnboardingView.swift */; };
 		A092AC442733DF2500B325F3 /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A092AC432733DF2500B325F3 /* OnboardingModel.swift */; };
-		A0F37F8E271D4C16002A4087 /* LearnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F37F8D271D4C16002A4087 /* LearnView.swift */; };
 		A0F412832727F171009B8569 /* ColorHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F412822727F171009B8569 /* ColorHex.swift */; };
 		A0F412882727F61A009B8569 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F412872727F61A009B8569 /* MainView.swift */; };
 /* End PBXBuildFile section */
@@ -55,6 +59,11 @@
 		30E169B327328DB2005C3DA8 /* PracticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeView.swift; sourceTree = "<group>"; };
 		A015475F2726A24C00947521 /* CourseCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCellView.swift; sourceTree = "<group>"; };
 		A01547612726A44600947521 /* CourseListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseListView.swift; sourceTree = "<group>"; };
+		A03A5780273BC65D00E45071 /* PracticeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeListView.swift; sourceTree = "<group>"; };
+		A03A5782273BC6F000E45071 /* PracticeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeListViewModel.swift; sourceTree = "<group>"; };
+		A03A5784273BC79800E45071 /* PracticeSampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeSampleData.swift; sourceTree = "<group>"; };
+		A03A5786273BCD7700E45071 /* PracticeCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeCellView.swift; sourceTree = "<group>"; };
+		A03A5789273BD2A500E45071 /* Isyarat AA.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = "Isyarat AA.scn"; sourceTree = "<group>"; };
 		A03C5FFA2722C9720014FD2C /* CourseListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseListViewModel.swift; sourceTree = "<group>"; };
 		A03C5FFC2722CB250014FD2C /* LearningPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningPageViewModel.swift; sourceTree = "<group>"; };
 		A05A9161273A599F00249484 /* CameraPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreview.swift; sourceTree = "<group>"; };
@@ -63,7 +72,6 @@
 		A05A9182273A69A800249484 /* Bisyarat-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Bisyarat-Info.plist"; sourceTree = "<group>"; };
 		A092AC412733DF0200B325F3 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		A092AC432733DF2500B325F3 /* OnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
-		A0F37F8D271D4C16002A4087 /* LearnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnView.swift; sourceTree = "<group>"; };
 		A0F412822727F171009B8569 /* ColorHex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHex.swift; sourceTree = "<group>"; };
 		A0F412872727F61A009B8569 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -126,10 +134,11 @@
 			children = (
 				302A1FEC272171D20032F4DE /* CourseModel.swift */,
 				302A1FEE272171DC0032F4DE /* MaterialModel.swift */,
-				302A1FF0272174AE0032F4DE /* CourseSampleData.swift */,
-				A092AC432733DF2500B325F3 /* OnboardingModel.swift */,
 				3012E6FF273BC2AF0006297C /* PracticeModel.swift */,
 				3012E701273BC2BC0006297C /* PracticeMaterialModel.swift */,
+				A03A5784273BC79800E45071 /* PracticeSampleData.swift */,
+				302A1FF0272174AE0032F4DE /* CourseSampleData.swift */,
+				A092AC432733DF2500B325F3 /* OnboardingModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -137,15 +146,10 @@
 		302A1FD627182FE50032F4DE /* View */ = {
 			isa = PBXGroup;
 			children = (
-				A05A9167273A629100249484 /* PracticeView */,
-				A0F37F8D271D4C16002A4087 /* LearnView.swift */,
-				A015475F2726A24C00947521 /* CourseCellView.swift */,
-				A01547612726A44600947521 /* CourseListView.swift */,
-				A0F412872727F61A009B8569 /* MainView.swift */,
-				304FD0262728121400E45C39 /* LearningPageView.swift */,
-				30C33F72272F804800E2CBBB /* LPTutorialView.swift */,
-				304FD0282728123300E45C39 /* MaterialSnapPickerView.swift */,
 				A092AC412733DF0200B325F3 /* OnboardingView.swift */,
+				A0F412872727F61A009B8569 /* MainView.swift */,
+				A03A5788273BCF1400E45071 /* Course */,
+				A05A9167273A629100249484 /* Practice */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -154,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				A03C5FFA2722C9720014FD2C /* CourseListViewModel.swift */,
+				A03A5782273BC6F000E45071 /* PracticeListViewModel.swift */,
 				A03C5FFC2722CB250014FD2C /* LearningPageViewModel.swift */,
 			);
 			path = ViewModel;
@@ -162,19 +167,34 @@
 		302A1FE7271D79FE0032F4DE /* 3dAsset */ = {
 			isa = PBXGroup;
 			children = (
+				A03A5789273BD2A500E45071 /* Isyarat AA.scn */,
 				302A1FE1271D792E0032F4DE /* Palette.png */,
 			);
 			path = 3dAsset;
 			sourceTree = "<group>";
 		};
-		A05A9167273A629100249484 /* PracticeView */ = {
+		A03A5788273BCF1400E45071 /* Course */ = {
 			isa = PBXGroup;
 			children = (
+				A015475F2726A24C00947521 /* CourseCellView.swift */,
+				A01547612726A44600947521 /* CourseListView.swift */,
+				304FD0262728121400E45C39 /* LearningPageView.swift */,
+				304FD0282728123300E45C39 /* MaterialSnapPickerView.swift */,
+				30C33F72272F804800E2CBBB /* LPTutorialView.swift */,
+			);
+			path = Course;
+			sourceTree = "<group>";
+		};
+		A05A9167273A629100249484 /* Practice */ = {
+			isa = PBXGroup;
+			children = (
+				A03A5780273BC65D00E45071 /* PracticeListView.swift */,
+				A03A5786273BCD7700E45071 /* PracticeCellView.swift */,
 				30E169B327328DB2005C3DA8 /* PracticeView.swift */,
 				A05A9161273A599F00249484 /* CameraPreview.swift */,
 				A05A9163273A5A4E00249484 /* CameraViewController.swift */,
 			);
-			path = PracticeView;
+			path = Practice;
 			sourceTree = "<group>";
 		};
 		A0F412842727F186009B8569 /* Extension */ = {
@@ -247,6 +267,7 @@
 				302A1FCF27182B340032F4DE /* Preview Assets.xcassets in Resources */,
 				302A1FE3271D792E0032F4DE /* Palette.png in Resources */,
 				302A1FCC27182B340032F4DE /* Assets.xcassets in Resources */,
+				A03A578A273BD2A500E45071 /* Isyarat AA.scn in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,8 +285,11 @@
 				A0F412832727F171009B8569 /* ColorHex.swift in Sources */,
 				A05A9164273A5A4E00249484 /* CameraViewController.swift in Sources */,
 				30E169B427328DB2005C3DA8 /* PracticeView.swift in Sources */,
+				A03A5787273BCD7700E45071 /* PracticeCellView.swift in Sources */,
+				A03A5783273BC6F000E45071 /* PracticeListViewModel.swift in Sources */,
 				A01547602726A24C00947521 /* CourseCellView.swift in Sources */,
-				A0F37F8E271D4C16002A4087 /* LearnView.swift in Sources */,
+				A03A5785273BC79800E45071 /* PracticeSampleData.swift in Sources */,
+				A03A5781273BC65D00E45071 /* PracticeListView.swift in Sources */,
 				304FD0292728123300E45C39 /* MaterialSnapPickerView.swift in Sources */,
 				302A1FEF272171DC0032F4DE /* MaterialModel.swift in Sources */,
 				302A1FC827182B320032F4DE /* MacroPowerRangerApp.swift in Sources */,
@@ -411,7 +435,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MacroPowerRanger/Preview Content\"";
-				DEVELOPMENT_TEAM = UG27AN3F2U;
+				DEVELOPMENT_TEAM = Z74KUA44R7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Bisyarat-Info.plist";
@@ -444,7 +468,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MacroPowerRanger/Preview Content\"";
-				DEVELOPMENT_TEAM = UG27AN3F2U;
+				DEVELOPMENT_TEAM = Z74KUA44R7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Bisyarat-Info.plist";

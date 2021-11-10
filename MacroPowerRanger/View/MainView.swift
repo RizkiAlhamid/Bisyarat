@@ -15,10 +15,10 @@ struct MainView: View {
                 .tabItem {
                     Label("Belajar", systemImage: "book.fill")
                 }
-            PracticeView()
+            PracticeListView()
                 .tabItem {
                     Label("Latihan", systemImage: "hands.sparkles.fill")
-                }.edgesIgnoringSafeArea(.top)
+                }
         }
         .navigationBarHidden(true)
                 .fullScreenCover(isPresented: $shouldShowOnboarding, content: { OnboardingView(shouldShowOnboarding: $shouldShowOnboarding)

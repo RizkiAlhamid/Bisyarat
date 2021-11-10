@@ -32,7 +32,7 @@ struct LPTutorialView: View {
                     Rectangle()
                         .fill(Color(red: 244/255, green: 244/255, blue: 244/255))
                         .frame(maxWidth: .infinity, maxHeight: 120)
-                        .cornerRadius(40, corners: [.topLeft, .topRight])
+                        .cornerRadius(40)
                         .ignoresSafeArea()
                         .opacity(0)
                 }
