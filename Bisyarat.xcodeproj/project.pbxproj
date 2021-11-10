@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3012E700273BC2AF0006297C /* PracticeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3012E6FF273BC2AF0006297C /* PracticeModel.swift */; };
+		3012E702273BC2BC0006297C /* PracticeMaterialModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3012E701273BC2BC0006297C /* PracticeMaterialModel.swift */; };
 		302A1FC827182B320032F4DE /* MacroPowerRangerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302A1FC727182B320032F4DE /* MacroPowerRangerApp.swift */; };
 		302A1FCA27182B320032F4DE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302A1FC927182B320032F4DE /* ContentView.swift */; };
 		302A1FCC27182B340032F4DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 302A1FCB27182B340032F4DE /* Assets.xcassets */; };
@@ -35,6 +37,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3012E6FF273BC2AF0006297C /* PracticeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeModel.swift; sourceTree = "<group>"; };
+		3012E701273BC2BC0006297C /* PracticeMaterialModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeMaterialModel.swift; sourceTree = "<group>"; };
 		302A1FC427182B320032F4DE /* Bisyarat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bisyarat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		302A1FC727182B320032F4DE /* MacroPowerRangerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroPowerRangerApp.swift; sourceTree = "<group>"; };
 		302A1FC927182B320032F4DE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -124,6 +128,8 @@
 				302A1FEE272171DC0032F4DE /* MaterialModel.swift */,
 				302A1FF0272174AE0032F4DE /* CourseSampleData.swift */,
 				A092AC432733DF2500B325F3 /* OnboardingModel.swift */,
+				3012E6FF273BC2AF0006297C /* PracticeModel.swift */,
+				3012E701273BC2BC0006297C /* PracticeMaterialModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -252,7 +258,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				302A1FCA27182B320032F4DE /* ContentView.swift in Sources */,
+				3012E702273BC2BC0006297C /* PracticeMaterialModel.swift in Sources */,
 				A0F412882727F61A009B8569 /* MainView.swift in Sources */,
+				3012E700273BC2AF0006297C /* PracticeModel.swift in Sources */,
 				A0F412832727F171009B8569 /* ColorHex.swift in Sources */,
 				A05A9164273A5A4E00249484 /* CameraViewController.swift in Sources */,
 				30E169B427328DB2005C3DA8 /* PracticeView.swift in Sources */,
@@ -403,7 +411,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MacroPowerRanger/Preview Content\"";
-				DEVELOPMENT_TEAM = Z74KUA44R7;
+				DEVELOPMENT_TEAM = UG27AN3F2U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Bisyarat-Info.plist";
@@ -411,6 +419,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -418,7 +427,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = RizkiMiftha.MacroPowerRanger;
 				PRODUCT_NAME = Bisyarat;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -435,7 +444,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MacroPowerRanger/Preview Content\"";
-				DEVELOPMENT_TEAM = Z74KUA44R7;
+				DEVELOPMENT_TEAM = UG27AN3F2U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Bisyarat-Info.plist";
@@ -443,6 +452,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -450,7 +460,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = RizkiMiftha.MacroPowerRanger;
 				PRODUCT_NAME = Bisyarat;
 				SWIFT_EMIT_LOC_STRINGS = YES;
