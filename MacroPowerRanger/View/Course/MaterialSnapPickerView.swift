@@ -37,7 +37,7 @@ struct MaterialSnapPicker<Content: View, T: Identifiable>: View {
             Rectangle()
                 .fill(Color(red: 244/255, green: 244/255, blue: 244/255))
                 .frame(maxWidth: .infinity)
-                .cornerRadius(40, corners: [.topLeft, .topRight])
+                .cornerRadius(40)
                 .ignoresSafeArea()
             
             GeometryReader { proxy in

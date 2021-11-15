@@ -11,7 +11,7 @@ import SwiftUI
 struct Practice: Identifiable {
     var id: UUID
     var title: String
-    var bgImage: Image
+    var bgImage: String
     var isFinished: Bool = false
     var mlModelName: String
     var practiceMaterials: [PracticeMaterial]
