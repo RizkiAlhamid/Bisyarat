@@ -12,7 +12,6 @@ struct CourseListView: View {
     
     var body: some View {
         
-        
         NavigationView{
             ZStack{
                 VStack{

@@ -19,6 +19,9 @@
 		302A1FF1272174AE0032F4DE /* CourseSampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302A1FF0272174AE0032F4DE /* CourseSampleData.swift */; };
 		304FD0272728121400E45C39 /* LearningPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304FD0262728121400E45C39 /* LearningPageView.swift */; };
 		304FD0292728123300E45C39 /* MaterialSnapPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304FD0282728123300E45C39 /* MaterialSnapPickerView.swift */; };
+		307DE0A7273C23410086B586 /* toy_drummer.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 307DE0A6273C23410086B586 /* toy_drummer.usdz */; };
+		307DE0AF273D05390086B586 /* A2.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 307DE0AE273D05390086B586 /* A2.usdz */; };
+		307DE0B727402A500086B586 /* B.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 307DE0B627402A500086B586 /* B.usdz */; };
 		30C33F73272F804800E2CBBB /* LPTutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C33F72272F804800E2CBBB /* LPTutorialView.swift */; };
 		30D4AB9C27293C8600956F30 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D4AB9B27293C8600956F30 /* Animations.swift */; };
 		30E169B427328DB2005C3DA8 /* PracticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E169B327328DB2005C3DA8 /* PracticeView.swift */; };
@@ -50,6 +53,9 @@
 		302A1FF0272174AE0032F4DE /* CourseSampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseSampleData.swift; sourceTree = "<group>"; };
 		304FD0262728121400E45C39 /* LearningPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningPageView.swift; sourceTree = "<group>"; };
 		304FD0282728123300E45C39 /* MaterialSnapPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialSnapPickerView.swift; sourceTree = "<group>"; };
+		307DE0A6273C23410086B586 /* toy_drummer.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = toy_drummer.usdz; sourceTree = "<group>"; };
+		307DE0AE273D05390086B586 /* A2.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = A2.usdz; sourceTree = "<group>"; };
+		307DE0B627402A500086B586 /* B.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = B.usdz; sourceTree = "<group>"; };
 		30C33F72272F804800E2CBBB /* LPTutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LPTutorialView.swift; sourceTree = "<group>"; };
 		30D4AB9B27293C8600956F30 /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
 		30E169B327328DB2005C3DA8 /* PracticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeView.swift; sourceTree = "<group>"; };
@@ -162,7 +168,10 @@
 		302A1FE7271D79FE0032F4DE /* 3dAsset */ = {
 			isa = PBXGroup;
 			children = (
+				307DE0A6273C23410086B586 /* toy_drummer.usdz */,
 				302A1FE1271D792E0032F4DE /* Palette.png */,
+				307DE0AE273D05390086B586 /* A2.usdz */,
+				307DE0B627402A500086B586 /* B.usdz */,
 			);
 			path = 3dAsset;
 			sourceTree = "<group>";
@@ -244,9 +253,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				307DE0B727402A500086B586 /* B.usdz in Resources */,
 				302A1FCF27182B340032F4DE /* Preview Assets.xcassets in Resources */,
 				302A1FE3271D792E0032F4DE /* Palette.png in Resources */,
+				307DE0A7273C23410086B586 /* toy_drummer.usdz in Resources */,
 				302A1FCC27182B340032F4DE /* Assets.xcassets in Resources */,
+				307DE0AF273D05390086B586 /* A2.usdz in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

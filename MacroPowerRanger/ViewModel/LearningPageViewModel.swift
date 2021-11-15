@@ -14,13 +14,15 @@ class LearningPageViewModel: ObservableObject{
     @Published var materialIndex: Int = 0
     @Published var stepByStepIndex: Int = 0
     
-    @Published var idleScene = SCNScene(named: "Isyarat AA.scn")!
+    @Published var idleScene = SCNScene(named: "B.usdz")!
     @Published var nodesWithAnimation = [SCNNode()]
     
     @Published var speed: animationSpeed = .normal
     @Published var autoPlayOn: Bool = false
     
     @Environment(\.colorScheme) var colorScheme
+    
+
     
     enum animationSpeed: Double {
         case slow = 0.5
@@ -57,11 +59,13 @@ class LearningPageViewModel: ObservableObject{
     
     func playAnimations() {
         for node in nodesWithAnimation {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            DispatchQueue.main.asyncAfter(deadline: .now()) {
                 if let animPlayer: SCNAnimationPlayer = node.animationPlayer(forKey: self.getAnimationKey()) {
                     animPlayer.animation.repeatCount = .greatestFiniteMagnitude
+                    animPlayer.animation.isAppliedOnCompletion = true
+                    animPlayer.animation.isRemovedOnCompletion = false
                     animPlayer.speed = self.speed.rawValue
-                    let event = SCNAnimationEvent(keyTime: 1) { animation, object, backward in
+                    let event = SCNAnimationEvent(keyTime: 0.95) { animation, object, backward in
                         print("animation ended")
                         //animPlayer.stop()
                         animPlayer.paused = true
@@ -73,52 +77,87 @@ class LearningPageViewModel: ObservableObject{
         }
     }
     
+    func stopAnimations() {
+        for node in nodesWithAnimation {
+            if let animPlayer: SCNAnimationPlayer = node.animationPlayer(forKey: self.getAnimationKey()) {
+                animPlayer.stop()
+            }
+        }
+    }
+    
     func loadAnimations() -> SCNScene? {
         // Load the character in the idle animation
-        //let idleScene = SCNScene(named: "helicopter.scn")!
+//        if materialIndex == 1 {
+//            idleScene = SCNScene(named: "B.usdz")!
+//        } else {
+//            idleScene = SCNScene(named: "A2.usdz")!
+//        }
         
         // This node will be parent of all the animation models
         let node = SCNNode()
         
         // Add all the child nodes to the parent node
         for child in idleScene.rootNode.childNodes {
-            
             if (child.childNodes.count > 0) {
                 for item in child.childNodes {
-                    if item.animationKeys.count > 0 {
-                        let animations = item.animationKeys
-                        
-                        if let oldPlayer = item.animationPlayer(forKey: animations.first!) {
-                            // initially stop it
-                            oldPlayer.stop()
-                            
-                            // make an animation for each animation group
-                            let anims = Animations()
-                            
-                            for material in courseMaterials {
-                                for frame in material.animationsFrame {
-                                    let idleAnim = anims.animation(from: oldPlayer.animation, startingAtFrame: frame.startFrame, endingAtFrame: frame.endFrame)
-                                    item.addAnimationPlayer(SCNAnimationPlayer(animation: SCNAnimation(caAnimation: idleAnim)), forKey: frame.animationKey)
-                                    nodesWithAnimation.append(item)
+                    for item2 in item.childNodes {
+                        if item2.animationKeys.count > 0 {
+                            saveAnimationPlayer(node: item2)
+                        }
+                        for item3 in item2.childNodes {
+                            if item3.animationKeys.count > 0 {
+                                saveAnimationPlayer(node: item3)
+                            }
+                            for item4 in item3.childNodes {
+                                if item4.animationKeys.count > 0 {
+                                    saveAnimationPlayer(node: item4)
+                                }
+                                for item5 in item4.childNodes {
+                                    if item5.animationKeys.count > 0 {
+                                        saveAnimationPlayer(node: item5)
+                                    }
+                                    for item6 in item5.childNodes {
+                                        if item6.animationKeys.count > 0 {
+                                            saveAnimationPlayer(node: item6)
+                                        }
+                                    }
                                 }
                             }
                         }
                     }
+                    
                 }
             }
             node.addChildNode(child)
             
         }
         
-//        // Set up some properties
-//        node.position = SCNVector3(0, -1, -2)
-//        node.eulerAngles.y = 0
-//        node.scale = SCNVector3(0.025, 0.025, 0.025)
-        
-        // return node
-        //idleScene.background.contents = (colorScheme == .dark ? UIColor.black : UIColor.clear)
+        //idleScene.background.contents = (colorScheme == .dark ? UIColor.black : UIColor.white)
+
         idleScene.rootNode.addChildNode(node)
+
         return idleScene
+    }
+    
+    
+    func saveAnimationPlayer(node: SCNNode) {
+        let animations = node.animationKeys
+        
+        if let oldPlayer = node.animationPlayer(forKey: animations.first!) {
+            // initially stop it
+            oldPlayer.stop()
+            
+            // make an animation for each animation group
+            let anims = Animations()
+            
+            for material in courseMaterials {
+                for frame in material.animationsFrame {
+                    let idleAnim = anims.animation(from: oldPlayer.animation, startingAtFrame: frame.startFrame, endingAtFrame: frame.endFrame)
+                    node.addAnimationPlayer(SCNAnimationPlayer(animation: SCNAnimation(caAnimation: idleAnim)), forKey: frame.animationKey)
+                    nodesWithAnimation.append(node)
+                }
+            }
+        }
     }
     
 //    func loadAnimations() -> SCNScene? {
@@ -182,3 +221,18 @@ class LearningPageViewModel: ObservableObject{
     
     
 }
+
+
+//let cameraNode = SCNNode()
+//cameraNode.camera = SCNCamera()
+//cameraNode.position = SCNVector3(0, 0.5, 1.35)
+//cameraNode.eulerAngles = SCNVector3(x: -7.222, y: 0.618, z: 0)
+//
+//idleScene.rootNode.addChildNode(cameraNode)
+
+
+//
+//        let geom = idleScene.rootNode.childNode(withName: "Geom", recursively: true)
+//        print(geom)
+//        let skeleton = geom?.childNode(withName: "Skeleton", recursively: true)!
+//        print(skeleton, skeleton?.animationKeys.count)

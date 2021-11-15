@@ -24,7 +24,7 @@ struct LearningPageView: View {
                 ZStack {
                     SceneView(scene: learningPageViewModel.loadAnimations(),
                               pointOfView: setUpCamera(),
-                              options: [.allowsCameraControl]
+                              options: [.allowsCameraControl, .autoenablesDefaultLighting]
                     )
                     HStack {
                         Spacer()
@@ -251,6 +251,7 @@ struct PrevNextButtonView: View {
         HStack {
             if vm.stepByStepIndex > 0 {
                 Button {
+                    vm.stopAnimations()
                     vm.stepByStepIndex -= 1
                     vm.playAnimations()
                 } label: {
@@ -270,6 +271,7 @@ struct PrevNextButtonView: View {
             
             if vm.stepByStepIndex < vm.courseMaterials[vm.materialIndex].stepByStepInstructions.count - 1 {
                 Button {
+                    vm.stopAnimations()
                     vm.stepByStepIndex += 1
                     vm.playAnimations()
                 } label: {

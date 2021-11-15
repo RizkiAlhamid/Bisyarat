@@ -90,6 +90,8 @@ struct MaterialSnapPicker<Content: View, T: Identifiable>: View {
                                         // setting min
                                         index = max(min(currentIndex + Int(roundIndex), list.count - 3), -2)
                                         
+                                        vm.stopAnimations()
+                                        
                                         vm.materialIndex = index + 2
                                         vm.stepByStepIndex = 0
                                         vm.playAnimations()
