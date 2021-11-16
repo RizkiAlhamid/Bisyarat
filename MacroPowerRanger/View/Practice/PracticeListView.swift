@@ -11,7 +11,6 @@ struct PracticeListView: View {
     @ObservedObject var viewModel = PracticeListViewModel()
     
     var body: some View {
-        NavigationView{
             ZStack{
                 VStack{
                     List{
@@ -25,8 +24,8 @@ struct PracticeListView: View {
                         }
                     }
                 }
+                .navigationTitle("Latihan")
             }
-        }
     }
 }
 

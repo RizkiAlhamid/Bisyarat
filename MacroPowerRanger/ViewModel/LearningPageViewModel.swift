@@ -14,7 +14,7 @@ class LearningPageViewModel: ObservableObject{
     @Published var materialIndex: Int = 0
     @Published var stepByStepIndex: Int = 0
     
-    @Published var idleScene = SCNScene(named: "B.usdz")!
+    @Published var idleScene = SCNScene(named: "A dan B.usdz")!
     @Published var nodesWithAnimation = [SCNNode()]
     
     @Published var speed: animationSpeed = .normal
@@ -34,11 +34,19 @@ class LearningPageViewModel: ObservableObject{
     
     init(){
         fetchCourseMaterials(course: CourseSampleData.courses[0])
+
     }
     
     init(course: Course) {
         fetchCourseMaterials(course: course)
         courseTitle = course.title
+    }
+    
+    func refreshState() {
+        materialIndex = 0
+        stepByStepIndex = 0
+        autoPlayOn = false
+        speed = .normal
     }
     
     func fetchCourseMaterials(course: Course){
@@ -78,6 +86,7 @@ class LearningPageViewModel: ObservableObject{
     }
     
     func stopAnimations() {
+        autoPlayOn = false
         for node in nodesWithAnimation {
             if let animPlayer: SCNAnimationPlayer = node.animationPlayer(forKey: self.getAnimationKey()) {
                 animPlayer.stop()
@@ -86,13 +95,6 @@ class LearningPageViewModel: ObservableObject{
     }
     
     func loadAnimations() -> SCNScene? {
-        // Load the character in the idle animation
-//        if materialIndex == 1 {
-//            idleScene = SCNScene(named: "B.usdz")!
-//        } else {
-//            idleScene = SCNScene(named: "A2.usdz")!
-//        }
-        
         // This node will be parent of all the animation models
         let node = SCNNode()
         

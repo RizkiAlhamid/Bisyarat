@@ -18,13 +18,12 @@ struct LearningPageView: View {
     var body: some View {
         ZStack {
             VStack {
-                //CustomNavigationView(courseTitle: learningPageViewModel.courseTitle, tutorialCounter: $tutorialCounter)
                 Spacer(minLength: 15)
                 ChatBoxView(vm: learningPageViewModel)
                 ZStack {
                     SceneView(scene: learningPageViewModel.loadAnimations(),
                               pointOfView: setUpCamera(),
-                              options: [.allowsCameraControl, .autoenablesDefaultLighting]
+                              options: [.autoenablesDefaultLighting]
                     )
                     HStack {
                         Spacer()
@@ -71,6 +70,7 @@ struct LearningPageView: View {
             
             .onAppear {
                 //learningPageViewModel.fetchCourseMaterials(course: CourseSampleData.courses[0])
+                learningPageViewModel.refreshState()
                 learningPageViewModel.playAnimations()
                 if showButtonTutorial == true {
                     tutorialCounter = 1
@@ -125,13 +125,13 @@ struct ChatBoxView: View {
         ZStack {
             RoundedRectangle(cornerRadius: 30)
                 .foregroundColor(Color(red: 210/255, green: 236/255, blue: 249/255))
-                .frame(height: 80)
-                .padding(.vertical)
+                .frame(height: 110)
+                //.padding(.vertical)
                 .padding(.horizontal, 55)
             
             Text(vm.courseMaterials[vm.materialIndex].stepByStepInstructions[vm.stepByStepIndex])
                 .multilineTextAlignment(.center)
-                .frame(width: 260, height: 80)
+                .frame(width: 260, height: 100)
         }
         
     }
@@ -145,12 +145,13 @@ struct SettingButtonsView: View {
             Button {
                 
             } label: {
-                Image(systemName: "person.fill")
-                    .foregroundColor(.black)
+                Image("Mirror Icon")
+                    .foregroundColor(.primary)
                     .frame(width: 41, height: 41)
                     .background(
                         Circle()
-                            .fill(Color(red: 99/255, green: 202/255, blue: 255/255))
+                            //.fill(Color(red: 99/255, green: 202/255, blue: 255/255))
+                            .fill(Color("MainColor"))
                     )
             }
             
@@ -167,11 +168,12 @@ struct SettingButtonsView: View {
             } label: {
                 Text(vm.speed == .slow ? "0.5x" : "\(Int(vm.speed.rawValue))x")
                     .font(.system(size: 18))
-                    .foregroundColor(.black)
+                    .foregroundColor(.primary)
                     .frame(width: 41, height: 41)
                     .background(
                         Circle()
-                            .fill(Color(red: 99/255, green: 202/255, blue: 255/255))
+                            //.fill(Color(red: 99/255, green: 202/255, blue: 255/255))
+                            .fill(Color("MainColor"))
                     )
             }
             
@@ -179,12 +181,13 @@ struct SettingButtonsView: View {
                 vm.autoPlayOn.toggle()
                 autoPlayAnimation()
             } label: {
-                Image(systemName: "play.circle")
-                    .foregroundColor(.black)
+                Image("Auto Play Icon")
+                    .foregroundColor(.primary)
                     .frame(width: 41, height: 41)
                     .background(
                         Circle()
-                            .fill(vm.autoPlayOn == true ? .white : Color(red: 99/255, green: 202/255, blue: 255/255))
+                            //.fill(vm.autoPlayOn == true ? .white : Color(red: 99/255, green: 202/255, blue: 255/255))
+                            .fill(vm.autoPlayOn == true ? .white : Color("MainColor"))
                     )
             }
             
@@ -192,11 +195,12 @@ struct SettingButtonsView: View {
                 vm.playAnimations()
             } label: {
                 Image(systemName: "repeat")
-                    .foregroundColor(.black)
+                    .foregroundColor(.primary)
                     .frame(width: 41, height: 41)
                     .background(
                         Circle()
-                            .fill(Color(red: 99/255, green: 202/255, blue: 255/255))
+                            //.fill(Color(red: 99/255, green: 202/255, blue: 255/255))
+                            .fill(Color("MainColor"))
                     )
             }
         }
@@ -208,8 +212,10 @@ struct SettingButtonsView: View {
             DispatchQueue.main.asyncAfter(deadline: .now()) {
                 if let animPlayer: SCNAnimationPlayer = node.animationPlayer(forKey: vm.getAnimationKey()) {
                     animPlayer.animation.repeatCount = .greatestFiniteMagnitude
+                    animPlayer.animation.isAppliedOnCompletion = true
+                    animPlayer.animation.isRemovedOnCompletion = false
                     animPlayer.speed = vm.speed.rawValue
-                    let event = SCNAnimationEvent(keyTime: 1) { animation, object, backward in
+                    let event = SCNAnimationEvent(keyTime: 0.95) { animation, object, backward in
                         print("animation ended")
                         print("index ", vm.stepByStepIndex)
                         //animPlayer.stop()
@@ -256,11 +262,12 @@ struct PrevNextButtonView: View {
                     vm.playAnimations()
                 } label: {
                     Text("Kembali")
-                        .foregroundColor(.black)
+                        .foregroundColor(Color.primary)
                         .padding()
                         .background (
                             RoundedRectangle(cornerRadius: 10)
-                                .fill(Color(red: 99/255, green: 202/255, blue: 255/255))
+                                //.fill(Color(red: 99/255, green: 202/255, blue: 255/255))
+                                .fill(Color("MainColor"))
                                 .frame(width: 80, height: 30)
                         )
                         .padding(.horizontal)
@@ -276,11 +283,12 @@ struct PrevNextButtonView: View {
                     vm.playAnimations()
                 } label: {
                     Text("Lanjut")
-                        .foregroundColor(.black)
+                        .foregroundColor(Color.primary)
                         .padding()
                         .background (
                             RoundedRectangle(cornerRadius: 10)
-                                .fill(Color(red: 99/255, green: 202/255, blue: 255/255))
+                                //.fill(Color(red: 99/255, green: 202/255, blue: 255/255))
+                                .fill(Color("MainColor"))
                                 .frame(width: 80, height: 30)
                         )
                         .padding(.horizontal)

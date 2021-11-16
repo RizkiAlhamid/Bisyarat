@@ -19,9 +19,11 @@
 		302A1FF1272174AE0032F4DE /* CourseSampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302A1FF0272174AE0032F4DE /* CourseSampleData.swift */; };
 		304FD0272728121400E45C39 /* LearningPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304FD0262728121400E45C39 /* LearningPageView.swift */; };
 		304FD0292728123300E45C39 /* MaterialSnapPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304FD0282728123300E45C39 /* MaterialSnapPickerView.swift */; };
-		307DE0A7273C23410086B586 /* toy_drummer.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 307DE0A6273C23410086B586 /* toy_drummer.usdz */; };
-		307DE0AF273D05390086B586 /* A2.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 307DE0AE273D05390086B586 /* A2.usdz */; };
-		307DE0B727402A500086B586 /* B.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 307DE0B627402A500086B586 /* B.usdz */; };
+		307DE0BB27425DEF0086B586 /* VideoCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307DE0BA27425DEF0086B586 /* VideoCapture.swift */; };
+		307DE0BD274260F00086B586 /* BisyaratHandActionModel1 1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 307DE0BC274260F00086B586 /* BisyaratHandActionModel1 1.mlmodel */; };
+		307DE0BF2742614F0086B586 /* Predictor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307DE0BE2742614F0086B586 /* Predictor.swift */; };
+		307DE0C1274392440086B586 /* A dan B.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 307DE0C0274392440086B586 /* A dan B.usdz */; };
+		307DE0C72743AF270086B586 /* PracticeComingSoon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307DE0C62743AF270086B586 /* PracticeComingSoon.swift */; };
 		30C33F73272F804800E2CBBB /* LPTutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C33F72272F804800E2CBBB /* LPTutorialView.swift */; };
 		30D4AB9C27293C8600956F30 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D4AB9B27293C8600956F30 /* Animations.swift */; };
 		30E169B427328DB2005C3DA8 /* PracticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E169B327328DB2005C3DA8 /* PracticeView.swift */; };
@@ -31,7 +33,6 @@
 		A03A5783273BC6F000E45071 /* PracticeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03A5782273BC6F000E45071 /* PracticeListViewModel.swift */; };
 		A03A5785273BC79800E45071 /* PracticeSampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03A5784273BC79800E45071 /* PracticeSampleData.swift */; };
 		A03A5787273BCD7700E45071 /* PracticeCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03A5786273BCD7700E45071 /* PracticeCellView.swift */; };
-		A03A578A273BD2A500E45071 /* Isyarat AA.scn in Resources */ = {isa = PBXBuildFile; fileRef = A03A5789273BD2A500E45071 /* Isyarat AA.scn */; };
 		A03C5FFB2722C9720014FD2C /* CourseListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03C5FFA2722C9720014FD2C /* CourseListViewModel.swift */; };
 		A03C5FFD2722CB250014FD2C /* LearningPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03C5FFC2722CB250014FD2C /* LearningPageViewModel.swift */; };
 		A05A9162273A599F00249484 /* CameraPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05A9161273A599F00249484 /* CameraPreview.swift */; };
@@ -57,9 +58,11 @@
 		302A1FF0272174AE0032F4DE /* CourseSampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseSampleData.swift; sourceTree = "<group>"; };
 		304FD0262728121400E45C39 /* LearningPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningPageView.swift; sourceTree = "<group>"; };
 		304FD0282728123300E45C39 /* MaterialSnapPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialSnapPickerView.swift; sourceTree = "<group>"; };
-		307DE0A6273C23410086B586 /* toy_drummer.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = toy_drummer.usdz; sourceTree = "<group>"; };
-		307DE0AE273D05390086B586 /* A2.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = A2.usdz; sourceTree = "<group>"; };
-		307DE0B627402A500086B586 /* B.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = B.usdz; sourceTree = "<group>"; };
+		307DE0BA27425DEF0086B586 /* VideoCapture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCapture.swift; sourceTree = "<group>"; };
+		307DE0BC274260F00086B586 /* BisyaratHandActionModel1 1.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "BisyaratHandActionModel1 1.mlmodel"; sourceTree = "<group>"; };
+		307DE0BE2742614F0086B586 /* Predictor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Predictor.swift; sourceTree = "<group>"; };
+		307DE0C0274392440086B586 /* A dan B.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = "A dan B.usdz"; sourceTree = "<group>"; };
+		307DE0C62743AF270086B586 /* PracticeComingSoon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeComingSoon.swift; sourceTree = "<group>"; };
 		30C33F72272F804800E2CBBB /* LPTutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LPTutorialView.swift; sourceTree = "<group>"; };
 		30D4AB9B27293C8600956F30 /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
 		30E169B327328DB2005C3DA8 /* PracticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeView.swift; sourceTree = "<group>"; };
@@ -69,7 +72,6 @@
 		A03A5782273BC6F000E45071 /* PracticeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeListViewModel.swift; sourceTree = "<group>"; };
 		A03A5784273BC79800E45071 /* PracticeSampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeSampleData.swift; sourceTree = "<group>"; };
 		A03A5786273BCD7700E45071 /* PracticeCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeCellView.swift; sourceTree = "<group>"; };
-		A03A5789273BD2A500E45071 /* Isyarat AA.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = "Isyarat AA.scn"; sourceTree = "<group>"; };
 		A03C5FFA2722C9720014FD2C /* CourseListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseListViewModel.swift; sourceTree = "<group>"; };
 		A03C5FFC2722CB250014FD2C /* LearningPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningPageViewModel.swift; sourceTree = "<group>"; };
 		A05A9161273A599F00249484 /* CameraPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreview.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				302A1FC927182B320032F4DE /* ContentView.swift */,
 				30D4AB9B27293C8600956F30 /* Animations.swift */,
 				302A1FCB27182B340032F4DE /* Assets.xcassets */,
+				307DE0BC274260F00086B586 /* BisyaratHandActionModel1 1.mlmodel */,
 				302A1FE7271D79FE0032F4DE /* 3dAsset */,
 				302A1FCD27182B340032F4DE /* Preview Content */,
 			);
@@ -173,11 +176,8 @@
 		302A1FE7271D79FE0032F4DE /* 3dAsset */ = {
 			isa = PBXGroup;
 			children = (
-				307DE0A6273C23410086B586 /* toy_drummer.usdz */,
-				A03A5789273BD2A500E45071 /* Isyarat AA.scn */,
 				302A1FE1271D792E0032F4DE /* Palette.png */,
-				307DE0AE273D05390086B586 /* A2.usdz */,
-				307DE0B627402A500086B586 /* B.usdz */,
+				307DE0C0274392440086B586 /* A dan B.usdz */,
 			);
 			path = 3dAsset;
 			sourceTree = "<group>";
@@ -202,6 +202,9 @@
 				30E169B327328DB2005C3DA8 /* PracticeView.swift */,
 				A05A9161273A599F00249484 /* CameraPreview.swift */,
 				A05A9163273A5A4E00249484 /* CameraViewController.swift */,
+				307DE0BA27425DEF0086B586 /* VideoCapture.swift */,
+				307DE0BE2742614F0086B586 /* Predictor.swift */,
+				307DE0C62743AF270086B586 /* PracticeComingSoon.swift */,
 			);
 			path = Practice;
 			sourceTree = "<group>";
@@ -273,13 +276,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				307DE0B727402A500086B586 /* B.usdz in Resources */,
 				302A1FCF27182B340032F4DE /* Preview Assets.xcassets in Resources */,
 				302A1FE3271D792E0032F4DE /* Palette.png in Resources */,
-				307DE0A7273C23410086B586 /* toy_drummer.usdz in Resources */,
+				307DE0C1274392440086B586 /* A dan B.usdz in Resources */,
 				302A1FCC27182B340032F4DE /* Assets.xcassets in Resources */,
-				307DE0AF273D05390086B586 /* A2.usdz in Resources */,
-				A03A578A273BD2A500E45071 /* Isyarat AA.scn in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,18 +294,22 @@
 				3012E702273BC2BC0006297C /* PracticeMaterialModel.swift in Sources */,
 				A0F412882727F61A009B8569 /* MainView.swift in Sources */,
 				3012E700273BC2AF0006297C /* PracticeModel.swift in Sources */,
+				307DE0BF2742614F0086B586 /* Predictor.swift in Sources */,
 				A0F412832727F171009B8569 /* ColorHex.swift in Sources */,
 				A05A9164273A5A4E00249484 /* CameraViewController.swift in Sources */,
 				30E169B427328DB2005C3DA8 /* PracticeView.swift in Sources */,
 				A03A5787273BCD7700E45071 /* PracticeCellView.swift in Sources */,
+				307DE0BB27425DEF0086B586 /* VideoCapture.swift in Sources */,
 				A03A5783273BC6F000E45071 /* PracticeListViewModel.swift in Sources */,
 				A01547602726A24C00947521 /* CourseCellView.swift in Sources */,
+				307DE0BD274260F00086B586 /* BisyaratHandActionModel1 1.mlmodel in Sources */,
 				A03A5785273BC79800E45071 /* PracticeSampleData.swift in Sources */,
 				A03A5781273BC65D00E45071 /* PracticeListView.swift in Sources */,
 				304FD0292728123300E45C39 /* MaterialSnapPickerView.swift in Sources */,
 				302A1FEF272171DC0032F4DE /* MaterialModel.swift in Sources */,
 				302A1FC827182B320032F4DE /* MacroPowerRangerApp.swift in Sources */,
 				302A1FED272171D30032F4DE /* CourseModel.swift in Sources */,
+				307DE0C72743AF270086B586 /* PracticeComingSoon.swift in Sources */,
 				A03C5FFD2722CB250014FD2C /* LearningPageViewModel.swift in Sources */,
 				30C33F73272F804800E2CBBB /* LPTutorialView.swift in Sources */,
 				A05A9166273A626F00249484 /* AppError.swift in Sources */,
@@ -445,9 +449,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"MacroPowerRanger/Preview Content\"";
-				DEVELOPMENT_TEAM = Z74KUA44R7;
+				DEVELOPMENT_TEAM = UG27AN3F2U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Bisyarat-Info.plist";
@@ -478,9 +482,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"MacroPowerRanger/Preview Content\"";
-				DEVELOPMENT_TEAM = Z74KUA44R7;
+				DEVELOPMENT_TEAM = UG27AN3F2U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Bisyarat-Info.plist";

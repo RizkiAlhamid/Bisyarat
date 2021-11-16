@@ -11,8 +11,6 @@ struct CourseListView: View {
     @ObservedObject var viewModel = CourseListViewModel()
     
     var body: some View {
-        
-        NavigationView{
             ZStack{
                 VStack{
                     List {
@@ -28,10 +26,9 @@ struct CourseListView: View {
                     }
                 }
                 .navigationTitle("Belajar")
-                .background(Color.black).ignoresSafeArea()
+                //.background(Color.black).ignoresSafeArea()
             }
-        }
-        .navigationBarHidden(true)
+        //.navigationBarHidden(true)
         
         
         

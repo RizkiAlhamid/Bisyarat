@@ -116,22 +116,42 @@ struct LPTutorialView: View {
                 } else if tutorialCounter == 6 {
                     
                 } else {
-                    Image(systemName: buttonSymbol)
-                        .foregroundColor(.black)
-                        .frame(width: 41, height: 41)
-                        .background(
-                            Circle()
-                                .fill(.white)
-                                .background(
-                                    Circle()
-                                        .stroke(lineWidth: 12)
-                                        .foregroundColor(.white)
-                                        .opacity(0.5)
-                                        
-                                )
-                        )
-                        .padding(.trailing, 10)
-                        .offset(y: -25)
+                    if tutorialCounter == 1 || tutorialCounter == 3 {
+                        Image(buttonSymbol)
+                            .foregroundColor(.black)
+                            .frame(width: 41, height: 41)
+                            .background(
+                                Circle()
+                                    .fill(.white)
+                                    .background(
+                                        Circle()
+                                            .stroke(lineWidth: 12)
+                                            .foregroundColor(.white)
+                                            .opacity(0.5)
+                                            
+                                    )
+                            )
+                            .padding(.trailing, 10)
+                            .offset(y: -25)
+                    } else {
+                        Image(systemName: buttonSymbol)
+                            .foregroundColor(.black)
+                            .frame(width: 41, height: 41)
+                            .background(
+                                Circle()
+                                    .fill(.white)
+                                    .background(
+                                        Circle()
+                                            .stroke(lineWidth: 12)
+                                            .foregroundColor(.white)
+                                            .opacity(0.5)
+                                            
+                                    )
+                            )
+                            .padding(.trailing, 10)
+                            .offset(y: -25)
+                    }
+                    
                 }
                 
                 
@@ -145,7 +165,7 @@ struct LPTutorialView: View {
             featureName = "Fitur Cermin"
             featureDescription = "Mode pantulan agar lebih mudah kamu ikuti gerakannya"
             offsetValue = -57
-            buttonSymbol = "person.fill"
+            buttonSymbol = "Mirror Icon"
         } else if tutorialCounter == 2 {
             featureName = "Fitur Kecepatan"
             featureDescription = "Sesuaikan kecepatan gerakan 0.5x, 1x, 2x"
@@ -155,7 +175,7 @@ struct LPTutorialView: View {
             featureName = "Fitur Otomatis"
             featureDescription = "Lanjut ke materi berikutnya tanpa menekan layar"
             offsetValue = 55
-            buttonSymbol = "play.circle"
+            buttonSymbol = "Auto Play Icon"
         } else if tutorialCounter == 4 {
             featureName = "Fitur Ulangi"
             featureDescription = "Ulangi kembali gerakan yang kamu inginkan"

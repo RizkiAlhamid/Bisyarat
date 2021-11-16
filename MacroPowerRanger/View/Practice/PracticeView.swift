@@ -12,7 +12,7 @@ struct PracticeView: UIViewControllerRepresentable {
     
     func makeUIViewController(context: Context) -> CameraViewController {
         let cvc = CameraViewController()
-        cvc.pointsProcessorHandler = pointsProcessorHandler
+        //cvc.pointsProcessorHandler = pointsProcessorHandler
         return cvc
     }
     
