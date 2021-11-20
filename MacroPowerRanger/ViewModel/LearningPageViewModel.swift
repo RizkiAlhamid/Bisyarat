@@ -12,7 +12,7 @@ import SwiftUI
 class LearningPageViewModel: ObservableObject{
     @Published var courseMaterials = [CourseMaterial]()
     @Published var materialIndex: Int = 0
-    @Published var stepByStepIndex: Int = 0
+    //@Published var stepByStepIndex: Int = 0
     
     @Published var idleScene = SCNScene(named: "A dan B.usdz")!
     @Published var nodesWithAnimation = [SCNNode()]
@@ -27,7 +27,6 @@ class LearningPageViewModel: ObservableObject{
     enum animationSpeed: Double {
         case slow = 0.5
         case normal = 1
-        case fast = 2
     }
     
     var courseTitle: String = "Dasar 1"
@@ -44,7 +43,6 @@ class LearningPageViewModel: ObservableObject{
     
     func refreshState() {
         materialIndex = 0
-        stepByStepIndex = 0
         autoPlayOn = false
         speed = .normal
     }
@@ -54,15 +52,15 @@ class LearningPageViewModel: ObservableObject{
     }
     
     func getStartFrame() -> Int {
-        return courseMaterials[materialIndex].animationsFrame[stepByStepIndex].startFrame
+        return courseMaterials[materialIndex].animFrame.startFrame
     }
     
     func getEndFrame() -> Int {
-        return courseMaterials[materialIndex].animationsFrame[stepByStepIndex].endFrame
+        return courseMaterials[materialIndex].animFrame.endFrame
     }
     
     func getAnimationKey() -> String {
-        return courseMaterials[materialIndex].animationsFrame[stepByStepIndex].animationKey
+        return courseMaterials[materialIndex].animFrame.animationKey
     }
     
     func playAnimations() {
@@ -90,6 +88,14 @@ class LearningPageViewModel: ObservableObject{
         for node in nodesWithAnimation {
             if let animPlayer: SCNAnimationPlayer = node.animationPlayer(forKey: self.getAnimationKey()) {
                 animPlayer.stop()
+            }
+        }
+    }
+    
+    func playPauseAnimations() {
+        for node in nodesWithAnimation {
+            if let animPlayer: SCNAnimationPlayer = node.animationPlayer(forKey: self.getAnimationKey()) {
+                animPlayer.paused.toggle()
             }
         }
     }
@@ -153,11 +159,9 @@ class LearningPageViewModel: ObservableObject{
             let anims = Animations()
             
             for material in courseMaterials {
-                for frame in material.animationsFrame {
-                    let idleAnim = anims.animation(from: oldPlayer.animation, startingAtFrame: frame.startFrame, endingAtFrame: frame.endFrame)
-                    node.addAnimationPlayer(SCNAnimationPlayer(animation: SCNAnimation(caAnimation: idleAnim)), forKey: frame.animationKey)
+                    let idleAnim = anims.animation(from: oldPlayer.animation, startingAtFrame: material.animFrame.startFrame, endingAtFrame: material.animFrame.endFrame)
+                    node.addAnimationPlayer(SCNAnimationPlayer(animation: SCNAnimation(caAnimation: idleAnim)), forKey: material.animFrame.animationKey)
                     nodesWithAnimation.append(node)
-                }
             }
         }
     }

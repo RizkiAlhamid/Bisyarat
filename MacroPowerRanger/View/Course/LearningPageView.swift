@@ -29,11 +29,11 @@ struct LearningPageView: View {
                         Spacer()
                         SettingButtonsView(vm: learningPageViewModel)
                     }
-                    VStack {
-                        Spacer()
-                        PrevNextButtonView(vm: learningPageViewModel)
-                            .opacity(learningPageViewModel.autoPlayOn ? 0 : 1)
-                    }
+//                    VStack {
+//                        Spacer()
+////                        PrevNextButtonView(vm: learningPageViewModel)
+////                            .opacity(learningPageViewModel.autoPlayOn ? 0 : 1)
+//                    }
                 }
                 
                 MaterialSnapPicker(vm: learningPageViewModel, index: $currentIndex, items: learningPageViewModel.courseMaterials) { material in
@@ -129,7 +129,7 @@ struct ChatBoxView: View {
                 //.padding(.vertical)
                 .padding(.horizontal, 55)
             
-            Text(vm.courseMaterials[vm.materialIndex].stepByStepInstructions[vm.stepByStepIndex])
+            Text(vm.courseMaterials[vm.materialIndex].detailedInstruction)
                 .multilineTextAlignment(.center)
                 .frame(width: 260, height: 100)
         }
@@ -160,8 +160,6 @@ struct SettingButtonsView: View {
                 case .slow:
                     vm.speed = .normal
                 case .normal:
-                    vm.speed = .fast
-                case.fast:
                     vm.speed = .slow
                 }
                 vm.playAnimations()
@@ -178,8 +176,21 @@ struct SettingButtonsView: View {
             }
             
             Button {
+                vm.playAnimations()
+            } label: {
+                Image(systemName: "repeat")
+                    .foregroundColor(.primary)
+                    .frame(width: 41, height: 41)
+                    .background(
+                        Circle()
+                            //.fill(Color(red: 99/255, green: 202/255, blue: 255/255))
+                            .fill(Color("MainColor"))
+                    )
+            }
+            
+            Button {
                 vm.autoPlayOn.toggle()
-                autoPlayAnimation()
+                //autoPlayAnimation()
             } label: {
                 Image("Auto Play Icon")
                     .foregroundColor(.primary)
@@ -192,9 +203,9 @@ struct SettingButtonsView: View {
             }
             
             Button {
-                vm.playAnimations()
+                vm.playPauseAnimations()
             } label: {
-                Image(systemName: "repeat")
+                Image(systemName: "playpause")
                     .foregroundColor(.primary)
                     .frame(width: 41, height: 41)
                     .background(
@@ -203,101 +214,51 @@ struct SettingButtonsView: View {
                             .fill(Color("MainColor"))
                     )
             }
+            
         }
         .padding()
     }
     
-    func autoPlayAnimation() {
-        for node in vm.nodesWithAnimation {
-            DispatchQueue.main.asyncAfter(deadline: .now()) {
-                if let animPlayer: SCNAnimationPlayer = node.animationPlayer(forKey: vm.getAnimationKey()) {
-                    animPlayer.animation.repeatCount = .greatestFiniteMagnitude
-                    animPlayer.animation.isAppliedOnCompletion = true
-                    animPlayer.animation.isRemovedOnCompletion = false
-                    animPlayer.speed = vm.speed.rawValue
-                    let event = SCNAnimationEvent(keyTime: 0.95) { animation, object, backward in
-                        print("animation ended")
-                        print("index ", vm.stepByStepIndex)
-                        //animPlayer.stop()
-                        animPlayer.paused = true
-                        if vm.autoPlayOn == true {
-                            if vm.stepByStepIndex < vm.courseMaterials[vm.materialIndex].stepByStepInstructions.endIndex - 1 {
-                                DispatchQueue.main.async {
-                                    vm.stepByStepIndex += 1
-                                }
-                                
-                            }
-                            if vm.stepByStepIndex == vm.courseMaterials[vm.materialIndex].stepByStepInstructions.endIndex - 1 {
-                                DispatchQueue.main.async {
-                                    vm.autoPlayOn = false
-                                }
-                            }
-                            autoPlayAnimation()
-                        }
-                    }
-                    animPlayer.animation.animationEvents = [event]
-                    if vm.autoPlayOn == true {
-                        animPlayer.play()
-                    }
-                    
-                }
-            }
-        }
-            
-        
-    }
+//    func autoPlayAnimation() {
+//        for node in vm.nodesWithAnimation {
+//            DispatchQueue.main.asyncAfter(deadline: .now()) {
+//                if let animPlayer: SCNAnimationPlayer = node.animationPlayer(forKey: vm.getAnimationKey()) {
+//                    animPlayer.animation.repeatCount = .greatestFiniteMagnitude
+//                    animPlayer.animation.isAppliedOnCompletion = true
+//                    animPlayer.animation.isRemovedOnCompletion = false
+//                    animPlayer.speed = vm.speed.rawValue
+//                    let event = SCNAnimationEvent(keyTime: 0.95) { animation, object, backward in
+//                        print("animation ended")
+//                        //animPlayer.stop()
+//                        animPlayer.paused = true
+//                        if vm.autoPlayOn == true {
+//                            if vm.stepByStepIndex < vm.courseMaterials[vm.materialIndex].stepByStepInstructions.endIndex - 1 {
+//                                DispatchQueue.main.async {
+//                                    vm.stepByStepIndex += 1
+//                                }
+//
+//                            }
+//                            if vm.stepByStepIndex == vm.courseMaterials[vm.materialIndex].stepByStepInstructions.endIndex - 1 {
+//                                DispatchQueue.main.async {
+//                                    vm.autoPlayOn = false
+//                                }
+//                            }
+//                            autoPlayAnimation()
+//                        }
+//                    }
+//                    animPlayer.animation.animationEvents = [event]
+//                    if vm.autoPlayOn == true {
+//                        animPlayer.play()
+//                    }
+//
+//                }
+//            }
+//        }
+//
+//
+//    }
     
 }
-    
-struct PrevNextButtonView: View {
-    
-    @ObservedObject var vm: LearningPageViewModel
-    
-    var body: some View {
-        HStack {
-            if vm.stepByStepIndex > 0 {
-                Button {
-                    vm.stopAnimations()
-                    vm.stepByStepIndex -= 1
-                    vm.playAnimations()
-                } label: {
-                    Text("Kembali")
-                        .foregroundColor(Color.primary)
-                        .padding()
-                        .background (
-                            RoundedRectangle(cornerRadius: 10)
-                                //.fill(Color(red: 99/255, green: 202/255, blue: 255/255))
-                                .fill(Color("MainColor"))
-                                .frame(width: 80, height: 30)
-                        )
-                        .padding(.horizontal)
-                }
-            }
-            
-            Spacer()
-            
-            if vm.stepByStepIndex < vm.courseMaterials[vm.materialIndex].stepByStepInstructions.count - 1 {
-                Button {
-                    vm.stopAnimations()
-                    vm.stepByStepIndex += 1
-                    vm.playAnimations()
-                } label: {
-                    Text("Lanjut")
-                        .foregroundColor(Color.primary)
-                        .padding()
-                        .background (
-                            RoundedRectangle(cornerRadius: 10)
-                                //.fill(Color(red: 99/255, green: 202/255, blue: 255/255))
-                                .fill(Color("MainColor"))
-                                .frame(width: 80, height: 30)
-                        )
-                        .padding(.horizontal)
-                }
-            }
-        }
-    }
-}
-
 
 struct CustomNavigationView: View {
     
@@ -346,3 +307,55 @@ struct CustomNavigationView: View {
         }
     }
 }
+
+
+
+
+//struct PrevNextButtonView: View {
+//
+//    @ObservedObject var vm: LearningPageViewModel
+//
+//    var body: some View {
+//        HStack {
+//            if vm.stepByStepIndex > 0 {
+//                Button {
+//                    vm.stopAnimations()
+//                    vm.stepByStepIndex -= 1
+//                    vm.playAnimations()
+//                } label: {
+//                    Text("Kembali")
+//                        .foregroundColor(Color.primary)
+//                        .padding()
+//                        .background (
+//                            RoundedRectangle(cornerRadius: 10)
+//                                //.fill(Color(red: 99/255, green: 202/255, blue: 255/255))
+//                                .fill(Color("MainColor"))
+//                                .frame(width: 80, height: 30)
+//                        )
+//                        .padding(.horizontal)
+//                }
+//            }
+//
+//            Spacer()
+//
+//            if vm.stepByStepIndex < vm.courseMaterials[vm.materialIndex].stepByStepInstructions.count - 1 {
+//                Button {
+//                    vm.stopAnimations()
+//                    vm.stepByStepIndex += 1
+//                    vm.playAnimations()
+//                } label: {
+//                    Text("Lanjut")
+//                        .foregroundColor(Color.primary)
+//                        .padding()
+//                        .background (
+//                            RoundedRectangle(cornerRadius: 10)
+//                                //.fill(Color(red: 99/255, green: 202/255, blue: 255/255))
+//                                .fill(Color("MainColor"))
+//                                .frame(width: 80, height: 30)
+//                        )
+//                        .padding(.horizontal)
+//                }
+//            }
+//        }
+//    }
+//}

@@ -468,7 +468,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = RizkiMiftha.MacroPowerRanger;
+				PRODUCT_BUNDLE_IDENTIFIER = com.PowerRanger.Bisyarat;
 				PRODUCT_NAME = Bisyarat;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -501,7 +501,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = RizkiMiftha.MacroPowerRanger;
+				PRODUCT_BUNDLE_IDENTIFIER = com.PowerRanger.Bisyarat;
 				PRODUCT_NAME = Bisyarat;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

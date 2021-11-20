@@ -16,6 +16,10 @@ final class CameraViewController: UIViewController {
     
     var pointsLayer = CAShapeLayer()
     
+    var textLayer = CATextLayer()
+    
+    var isActionDetected = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,11 +42,68 @@ final class CameraViewController: UIViewController {
         view.layer.addSublayer(pointsLayer)
         pointsLayer.frame = view.frame
         pointsLayer.strokeColor = UIColor.green.cgColor
+        
+        view.layer.addSublayer(textLayer)
+        textLayer.frame = CGRect(x: 20, y: 20, width: 200, height: 18)
+        textLayer.fontSize = 12
+        textLayer.alignmentMode = .center
+        textLayer.string = "mantap"
+        textLayer.isWrapped = true
+        textLayer.truncationMode = .end
+        textLayer.backgroundColor = UIColor.white.cgColor
+        textLayer.foregroundColor = UIColor.black.cgColor
     }
     
 }
 
 extension CameraViewController: PredictorDelegate {
+    func predictor(_ predictor: Predictor, didLabelAction action: String, with confidence: Double) {
+        if action == "A" && confidence > 0.95 && isActionDetected == false {
+            print(action)
+            isActionDetected = true
+            showLabel(actionLabel: action)
+        } else if action == "I" && confidence > 0.95 && isActionDetected == false {
+            print(action)
+            isActionDetected = true
+            showLabel(actionLabel: action)
+        } else if action == "K" && confidence > 0.95 && isActionDetected == false {
+            print(action)
+            isActionDetected = true
+            showLabel(actionLabel: action)
+        } else if action == "N" && confidence > 0.95 && isActionDetected == false{
+            print(action)
+            isActionDetected = true
+            showLabel(actionLabel: action)
+        } else if action == "R" && confidence > 0.95 && isActionDetected == false {
+            print(action)
+            isActionDetected = true
+            showLabel(actionLabel: action)
+        } else if action == "Other" {
+            //isActionDetected = true
+            //showLabel(actionLabel: action)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                print("other")
+                self.isActionDetected = false
+            }
+        }
+        
+
+    }
+    
+    func showLabel(actionLabel: String) {
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.isActionDetected = false
+        }
+        
+        self.textLayer.string = actionLabel
+        DispatchQueue.main.async {
+            self.textLayer.didChangeValue(for: \.string)
+            //self.textLayer.string = actionLabel
+        }
+    }
+    
+    
     func predictor(_ predictor: Predictor, didFindNewRecognizedPoints points: [CGPoint]) {
         guard let previewLayer = previewLayer else { return }
         

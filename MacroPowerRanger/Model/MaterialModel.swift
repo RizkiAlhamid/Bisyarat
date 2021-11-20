@@ -10,8 +10,9 @@ import Foundation
 struct CourseMaterial: Identifiable {
     var id: UUID
     var title: String
-    var stepByStepInstructions: [String]
-    var animationsFrame: [animationFrame] = [animationFrame(animationKey: "Step1", startFrame: 290, endFrame: 300), animationFrame(animationKey: "Step2", startFrame: 290, endFrame: 300), animationFrame(animationKey: "Step3", startFrame: 290, endFrame: 300)]
+    //var stepByStepInstructions: [String]
+    var detailedInstruction: String = "petunjuk tambahan"
+    var animFrame = animationFrame(animationKey: "Default", startFrame: 290, endFrame: 300)
     var isFinished: Bool = false
 
 }

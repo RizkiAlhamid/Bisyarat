@@ -18,7 +18,7 @@ struct MainView: View {
                     .tabItem {
                         Label("Belajar", systemImage: "book.fill")
                     }
-                PracticeComingSoon()
+                PracticeListView()
                     .tabItem {
                         Label("Latihan", systemImage: "hands.sparkles.fill")
                     }

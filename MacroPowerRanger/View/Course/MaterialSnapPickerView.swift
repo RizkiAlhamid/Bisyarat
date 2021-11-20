@@ -75,6 +75,10 @@ struct MaterialSnapPicker<Content: View, T: Identifiable>: View {
                                         currentIndex = index
                                         print(currentIndex, " ", index)
                                         print(vm.courseMaterials[vm.materialIndex])
+                                        
+                                        vm.materialIndex = index + 2
+                                        
+                                        vm.playAnimations()
                                     })
                                     .onChanged({ value in
                                         // updating only index
@@ -91,12 +95,9 @@ struct MaterialSnapPicker<Content: View, T: Identifiable>: View {
                                         index = max(min(currentIndex + Int(roundIndex), list.count - 3), -2)
                                         
                                         vm.stopAnimations()
-                                        
-                                        vm.materialIndex = index + 2
-                                        vm.stepByStepIndex = 0
-                                        vm.playAnimations()
                                     })
                             )
+                            
 //                            .onTapGesture {
 //                              currentIndex += 1
 //                            }
