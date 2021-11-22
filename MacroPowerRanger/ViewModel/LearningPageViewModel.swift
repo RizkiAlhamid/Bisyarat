@@ -22,8 +22,6 @@ class LearningPageViewModel: ObservableObject{
     
     @Environment(\.colorScheme) var colorScheme
     
-
-    
     enum animationSpeed: Double {
         case slow = 0.5
         case normal = 1

@@ -11,14 +11,24 @@ import Vision
 
 final class CameraViewController: UIViewController {
     
+    var vm: ChallengePageViewModel
+    
     let videoCapture = VideoCapture()
     var previewLayer: AVCaptureVideoPreviewLayer?
     
     var pointsLayer = CAShapeLayer()
+
+    var isRightHandActionDetected = false
+    var isLeftHandActionDetected = false
     
-    var textLayer = CATextLayer()
+    init(vm: ChallengePageViewModel) {
+        self.vm = vm
+        super.init(nibName: nil, bundle: nil)
+    }
     
-    var isActionDetected = false
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,69 +52,107 @@ final class CameraViewController: UIViewController {
         view.layer.addSublayer(pointsLayer)
         pointsLayer.frame = view.frame
         pointsLayer.strokeColor = UIColor.green.cgColor
-        
-        view.layer.addSublayer(textLayer)
-        textLayer.frame = CGRect(x: 20, y: 20, width: 200, height: 18)
-        textLayer.fontSize = 12
-        textLayer.alignmentMode = .center
-        textLayer.string = "mantap"
-        textLayer.isWrapped = true
-        textLayer.truncationMode = .end
-        textLayer.backgroundColor = UIColor.white.cgColor
-        textLayer.foregroundColor = UIColor.black.cgColor
     }
     
 }
 
 extension CameraViewController: PredictorDelegate {
-    func predictor(_ predictor: Predictor, didLabelAction action: String, with confidence: Double) {
-        if action == "A" && confidence > 0.95 && isActionDetected == false {
-            print(action)
-            isActionDetected = true
-            showLabel(actionLabel: action)
-        } else if action == "I" && confidence > 0.95 && isActionDetected == false {
-            print(action)
-            isActionDetected = true
-            showLabel(actionLabel: action)
-        } else if action == "K" && confidence > 0.95 && isActionDetected == false {
-            print(action)
-            isActionDetected = true
-            showLabel(actionLabel: action)
-        } else if action == "N" && confidence > 0.95 && isActionDetected == false{
-            print(action)
-            isActionDetected = true
-            showLabel(actionLabel: action)
-        } else if action == "R" && confidence > 0.95 && isActionDetected == false {
-            print(action)
-            isActionDetected = true
-            showLabel(actionLabel: action)
-        } else if action == "Other" {
+    
+    func rightHandPredictor(_ predictor: Predictor, didLabelAction action: String, with confidence: Double) {
+        if action == "A" && confidence > 0.95 && isRightHandActionDetected == false {
+            print("Kanan: ", action)
+            isRightHandActionDetected = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.isRightHandActionDetected = false
+            }
+        } else if action == "I" && confidence > 0.95 && isRightHandActionDetected == false {
+            print("Kanan: ", action)
+            isRightHandActionDetected = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.isRightHandActionDetected = false
+            }
+        } else if action == "J" && confidence > 0.95 && isRightHandActionDetected == false{
+            print("Kanan: ", action)
+            isRightHandActionDetected = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.isRightHandActionDetected = false
+            }
+        } else if action == "R" && confidence > 0.95 && isRightHandActionDetected == false {
+            print("Kanan: ", action)
+            isRightHandActionDetected = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                if self.vm.materialBeingAsked == "R" {
+                    self.vm.isGuessedTrue = true
+                }
+                self.isRightHandActionDetected = false
+            }
+        } else if action == "F Kanan" && confidence > 0.95 && isRightHandActionDetected == false {
+            print("Kanan: ", action)
+            isRightHandActionDetected = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.isRightHandActionDetected = false
+            }
+        } else if action == "E : B Kanan" && confidence > 0.95 && isRightHandActionDetected == false {
+            print("Kanan: ", action)
+            isRightHandActionDetected = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.isRightHandActionDetected = false
+            }
+        } else if action == "C : D kanan" && confidence > 0.95 && isRightHandActionDetected == false {
+            print("Kanan: ", action)
+            isRightHandActionDetected = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.isRightHandActionDetected = false
+            }
+        } else if action == "Other" && isRightHandActionDetected == false && confidence > 0.75 {
             //isActionDetected = true
             //showLabel(actionLabel: action)
             DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                 print("other")
-                self.isActionDetected = false
+                self.isRightHandActionDetected = false
             }
         }
         
 
     }
     
-    func showLabel(actionLabel: String) {
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.isActionDetected = false
+    func leftHandPredictor(_ predictor: Predictor, didLabelAction action: String, with confidence: Double) {
+        if action == "A" && confidence > 0.95 && isLeftHandActionDetected == false {
+            print("Kiri: ", action)
+            isLeftHandActionDetected = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.isLeftHandActionDetected = false
+            }
+        } else if action == "Telunjuk" && confidence > 0.95 && isLeftHandActionDetected == false {
+            print("Kiri: ", action)
+            isLeftHandActionDetected = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.isLeftHandActionDetected = false
+            }
+        } else if action == "C : D kanan" && confidence > 0.95 && isLeftHandActionDetected == false {
+            print("Kiri: ", action)
+            isLeftHandActionDetected = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.isLeftHandActionDetected = false
+            }
+        } else if action == "Other" && isLeftHandActionDetected == false && confidence > 0.75 {
+            //isActionDetected = true
+            //showLabel(actionLabel: action)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                print("other")
+                self.isLeftHandActionDetected = false
+            }
         }
         
-        self.textLayer.string = actionLabel
-        DispatchQueue.main.async {
-            self.textLayer.didChangeValue(for: \.string)
-            //self.textLayer.string = actionLabel
-        }
+//        if isLeftHandActionDetected == true {
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+//                self.isLeftHandActionDetected = false
+//            }
+//        }
+        
     }
-    
-    
-    func predictor(_ predictor: Predictor, didFindNewRecognizedPoints points: [CGPoint]) {
+  
+    func predictor(_ predictor: Predictor, didFindNewRecognizedPoints points: [CGPoint], hand: String) {
         guard let previewLayer = previewLayer else { return }
         
         let convertedPoints = points.map {
@@ -120,7 +168,15 @@ extension CameraViewController: PredictorDelegate {
         pointsLayer.path = combinedPath
         
         DispatchQueue.main.async {
+            if points.count == 10 {
+                self.vm.isHandInFrame = true 
+            }
             self.pointsLayer.didChangeValue(for: \.path)
+            if hand == "left" {
+                self.pointsLayer.strokeColor = UIColor.yellow.cgColor
+            } else {
+                self.pointsLayer.strokeColor = UIColor.green.cgColor
+            }
         }
     }
 }

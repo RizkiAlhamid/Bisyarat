@@ -7,18 +7,18 @@
 
 import SwiftUI
 
-struct PracticeListView: View {
-    @ObservedObject var viewModel = PracticeListViewModel()
+struct ChallengeListView: View {
+    @ObservedObject var viewModel = ChallengeListViewModel()
     
     var body: some View {
             ZStack{
                 VStack{
                     List{
-                        ForEach(viewModel.practices, id: \.id){practice in
-                            NavigationLink(destination: PracticeView()){
-                                PracticeCellView(
-                                    title: practice.title,
-                                    bgImage: practice.bgImage
+                        ForEach(viewModel.challenges, id: \.id){ challenge in
+                            NavigationLink(destination: ChallengeView()){
+                                ChallengeListCellView(
+                                    title: challenge.title,
+                                    bgImage: challenge.bgImage
                                 )
                             }
                         }
@@ -31,6 +31,6 @@ struct PracticeListView: View {
 
 struct PracticeListView_Previews: PreviewProvider {
     static var previews: some View {
-        PracticeListView()
+        ChallengeListView()
     }
 }

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PracticeCellView: View {
+struct ChallengeListCellView: View {
     let title: String
     let bgImage: String
     

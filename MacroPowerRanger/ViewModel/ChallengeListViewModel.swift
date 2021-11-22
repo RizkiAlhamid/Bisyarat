@@ -8,15 +8,15 @@
 import Foundation
 import SwiftUI
 
-class PracticeListViewModel: ObservableObject
+class ChallengeListViewModel: ObservableObject
 {
-    @Published var practices = [Practice]()
+    @Published var challenges = [Challenge]()
     
     init(){
         fetchPractices()
     }
     
     func fetchPractices(){
-        practices = PracticeSampleData.practices
+        challenges = ChallengeSampleData.challenges
     }
 }
