@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 import AVFoundation
 import Vision
 
@@ -20,6 +21,8 @@ final class CameraViewController: UIViewController {
 
     var isRightHandActionDetected = false
     var isLeftHandActionDetected = false
+    
+    var leftHandActionName = ""
     
     init(vm: ChallengePageViewModel) {
         self.vm = vm
@@ -38,6 +41,11 @@ final class CameraViewController: UIViewController {
         videoCapture.predictor.delegate = self
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        videoCapture.stopCaptureSession()
+    }
+    
     private func setupVideoPreview() {
         videoCapture.startCaptureSession()
         previewLayer = AVCaptureVideoPreviewLayer(session: videoCapture.captureSession)
@@ -46,10 +54,14 @@ final class CameraViewController: UIViewController {
             return
         }
         
+
+        //previewLayer.frame = view.frame
+        previewLayer.frame = UIScreen.main.bounds
+        previewLayer.videoGravity = .resizeAspectFill
         view.layer.addSublayer(previewLayer)
-        previewLayer.frame = view.frame
         
-        view.layer.addSublayer(pointsLayer)
+        
+        //view.layer.addSublayer(pointsLayer)
         pointsLayer.frame = view.frame
         pointsLayer.strokeColor = UIColor.green.cgColor
     }
@@ -59,90 +71,154 @@ final class CameraViewController: UIViewController {
 extension CameraViewController: PredictorDelegate {
     
     func rightHandPredictor(_ predictor: Predictor, didLabelAction action: String, with confidence: Double) {
-        if action == "A" && confidence > 0.95 && isRightHandActionDetected == false {
-            print("Kanan: ", action)
-            isRightHandActionDetected = true
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.isRightHandActionDetected = false
-            }
-        } else if action == "I" && confidence > 0.95 && isRightHandActionDetected == false {
-            print("Kanan: ", action)
-            isRightHandActionDetected = true
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.isRightHandActionDetected = false
-            }
-        } else if action == "J" && confidence > 0.95 && isRightHandActionDetected == false{
-            print("Kanan: ", action)
-            isRightHandActionDetected = true
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.isRightHandActionDetected = false
-            }
-        } else if action == "R" && confidence > 0.95 && isRightHandActionDetected == false {
-            print("Kanan: ", action)
-            isRightHandActionDetected = true
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                if self.vm.materialBeingAsked == "R" {
-                    self.vm.isGuessedTrue = true
+        if vm.shouldStartClassifying == false {
+            return
+        } else {
+            if action == "A" && confidence > 0.95 && isRightHandActionDetected == false {
+                print("Kanan: ", action)
+                isRightHandActionDetected = true
+                DispatchQueue.main.asyncAfter(deadline: .now()) {
+                    if self.vm.materialBeingAsked == "A" {
+                        if self.leftHandActionName == "A" {
+                            self.vm.isGuessedTrue = true
+                        }
+                    }
                 }
-                self.isRightHandActionDetected = false
-            }
-        } else if action == "F Kanan" && confidence > 0.95 && isRightHandActionDetected == false {
-            print("Kanan: ", action)
-            isRightHandActionDetected = true
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.isRightHandActionDetected = false
-            }
-        } else if action == "E : B Kanan" && confidence > 0.95 && isRightHandActionDetected == false {
-            print("Kanan: ", action)
-            isRightHandActionDetected = true
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.isRightHandActionDetected = false
-            }
-        } else if action == "C : D kanan" && confidence > 0.95 && isRightHandActionDetected == false {
-            print("Kanan: ", action)
-            isRightHandActionDetected = true
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.isRightHandActionDetected = false
-            }
-        } else if action == "Other" && isRightHandActionDetected == false && confidence > 0.75 {
-            //isActionDetected = true
-            //showLabel(actionLabel: action)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                print("other")
-                self.isRightHandActionDetected = false
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    self.isRightHandActionDetected = false
+                }
+            } else if action == "I" && confidence > 0.95 && isRightHandActionDetected == false {
+                print("Kanan: ", action)
+                isRightHandActionDetected = true
+                DispatchQueue.main.asyncAfter(deadline: .now()) {
+                    if self.vm.materialBeingAsked == "I" {
+                        self.vm.isGuessedTrue = true
+                    }
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    self.isRightHandActionDetected = false
+                }
+            } else if action == "J" && confidence > 0.95 && isRightHandActionDetected == false{
+                print("Kanan: ", action)
+                isRightHandActionDetected = true
+                DispatchQueue.main.asyncAfter(deadline: .now()) {
+                    if self.vm.materialBeingAsked == "J" {
+                        self.vm.isGuessedTrue = true
+                    }
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    self.isRightHandActionDetected = false
+                }
+            } else if action == "R" && confidence > 0.95 && isRightHandActionDetected == false {
+                print("Kanan: ", action)
+                isRightHandActionDetected = true
+                DispatchQueue.main.asyncAfter(deadline: .now()) {
+                    if self.vm.materialBeingAsked == "R" {
+                        self.vm.isGuessedTrue = true
+                    }
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    self.isRightHandActionDetected = false
+                }
+            } else if action == "F Kanan" && confidence > 0.95 && isRightHandActionDetected == false {
+                print("Kanan: ", action)
+                isRightHandActionDetected = true
+                DispatchQueue.main.asyncAfter(deadline: .now()) {
+                    if self.vm.materialBeingAsked == "F" {
+                        if self.leftHandActionName == "Telunjuk" {
+                            self.vm.isGuessedTrue = true
+                        }
+                    }
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    self.isRightHandActionDetected = false
+                }
+            } else if action == "E : B Kanan" && confidence > 0.95 && isRightHandActionDetected == false {
+                print("Kanan: ", action)
+                isRightHandActionDetected = true
+                DispatchQueue.main.asyncAfter(deadline: .now()) {
+                    if self.vm.materialBeingAsked == "E" {
+                        self.vm.isGuessedTrue = true
+                    } else if self.vm.materialBeingAsked == "B" {
+                        if self.leftHandActionName == "Telunjuk" {
+                            self.vm.isGuessedTrue = true
+                        }
+                    }
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    self.isRightHandActionDetected = false
+                }
+            } else if action == "C : D kanan" && confidence > 0.95 && isRightHandActionDetected == false {
+                print("Kanan: ", action)
+                isRightHandActionDetected = true
+                DispatchQueue.main.asyncAfter(deadline: .now()) {
+                    if self.vm.materialBeingAsked == "C" {
+                        self.vm.isGuessedTrue = true
+                    } else if self.vm.materialBeingAsked == "D" {
+                        if self.leftHandActionName == "Telunjuk" {
+                            self.vm.isGuessedTrue = true
+                        }
+                    } else if self.vm.materialBeingAsked == "S" {
+                        if self.leftHandActionName == "C : D kanan" {
+                            self.vm.isGuessedTrue = true
+                        }
+                    }
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    self.isRightHandActionDetected = false
+                }
+            } else if action == "Other" && isRightHandActionDetected == false && confidence > 0.75 {
+                //isActionDetected = true
+                //showLabel(actionLabel: action)
+                DispatchQueue.main.asyncAfter(deadline: .now()) {
+                    print("other")
+                    self.isRightHandActionDetected = false
+                }
             }
         }
+        
         
 
     }
     
     func leftHandPredictor(_ predictor: Predictor, didLabelAction action: String, with confidence: Double) {
-        if action == "A" && confidence > 0.95 && isLeftHandActionDetected == false {
-            print("Kiri: ", action)
-            isLeftHandActionDetected = true
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.isLeftHandActionDetected = false
-            }
-        } else if action == "Telunjuk" && confidence > 0.95 && isLeftHandActionDetected == false {
-            print("Kiri: ", action)
-            isLeftHandActionDetected = true
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.isLeftHandActionDetected = false
-            }
-        } else if action == "C : D kanan" && confidence > 0.95 && isLeftHandActionDetected == false {
-            print("Kiri: ", action)
-            isLeftHandActionDetected = true
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.isLeftHandActionDetected = false
-            }
-        } else if action == "Other" && isLeftHandActionDetected == false && confidence > 0.75 {
-            //isActionDetected = true
-            //showLabel(actionLabel: action)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                print("other")
-                self.isLeftHandActionDetected = false
+        if vm.shouldStartClassifying == false {
+            return
+        } else {
+            if action == "A" && confidence > 0.95 && isLeftHandActionDetected == false {
+                print("Kiri: ", action)
+                isLeftHandActionDetected = true
+                leftHandActionName = action
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    self.isLeftHandActionDetected = false
+                }
+            } else if action == "Telunjuk" && confidence > 0.95 && isLeftHandActionDetected == false {
+                print("Kiri: ", action)
+                isLeftHandActionDetected = true
+                leftHandActionName = action
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    self.isLeftHandActionDetected = false
+                }
+            } else if action == "C : D kanan" && confidence > 0.95 && isLeftHandActionDetected == false {
+                print("Kiri: ", action)
+                isLeftHandActionDetected = true
+                leftHandActionName = action
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    self.isLeftHandActionDetected = false
+                }
+            } else if action == "Other" && isLeftHandActionDetected == false && confidence > 0.75 {
+                //isActionDetected = true
+                //showLabel(actionLabel: action)
+                leftHandActionName = action
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    print("other")
+                    self.isLeftHandActionDetected = false
+                }
+            } else {
+                //leftHandActionName = ""
             }
         }
+        
         
 //        if isLeftHandActionDetected == true {
 //            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
@@ -168,8 +244,10 @@ extension CameraViewController: PredictorDelegate {
         pointsLayer.path = combinedPath
         
         DispatchQueue.main.async {
-            if points.count == 10 {
+            if points.count >= 5 {
                 self.vm.isHandInFrame = true 
+            } else {
+                self.vm.isHandInFrame = false
             }
             self.pointsLayer.didChangeValue(for: \.path)
             if hand == "left" {

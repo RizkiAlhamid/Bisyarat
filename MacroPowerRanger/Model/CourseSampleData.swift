@@ -9,29 +9,37 @@ import Foundation
 
 struct CourseSampleData {
     static var courses: [Course] = [
-        Course(id: UUID(), title: "Dasar 1", description: "13 alfabet 3 hari", bgImage: "bgImageDasar1", isFinished: false,
+        Course(id: UUID(), title: "Alfabet 1", description: "10 alfabet", bgImage: "bgImageDasar1", isFinished: false,
                                            courseMaterials:
-                                            [CourseMaterial(id: UUID(), title: "A",
-                                                            animFrame: animationFrame(animationKey: "A", startFrame: 0, endFrame: 200)),
+                [CourseMaterial(id: UUID(), title: "A", detailedInstruction: "Kedua telapak tangan menghadap depan, tutup jari selain ibu dan telunjuk ya",
+                                                            animFrame: animationFrame(animationKey: "A", startFrame: 0, endFrame: 100)),
                                              
-                                             CourseMaterial(id: UUID(), title: "B",
-                                                            animFrame: animationFrame(animationKey: "B", startFrame: 301, endFrame: 500)),
+                 CourseMaterial(id: UUID(), title: "B", detailedInstruction: "Tangan kanan menghadap dalam dan tangan kiri menghadap luar ya",
+                                                            animFrame: animationFrame(animationKey: "B", startFrame: 200, endFrame: 280)),
                                                              
-                                             CourseMaterial(id: UUID(), title: "C"),
+                 CourseMaterial(id: UUID(), title: "C", detailedInstruction: "Bentuk huruf C dengan Ibu jari dan telunjuk saja ya",
+                                animFrame: animationFrame(animationKey: "C", startFrame: 380, endFrame: 460)),
                                                              
-                                             CourseMaterial(id: UUID(), title: "D"),
+                 CourseMaterial(id: UUID(), title: "D", detailedInstruction: "Tempelkan bentuk C ke bentuk angka 1 ya",
+                                animFrame: animationFrame(animationKey: "D", startFrame: 560, endFrame: 640)),
                                                              
-                                             CourseMaterial(id: UUID(), title: "E"),
+                 CourseMaterial(id: UUID(), title: "E", detailedInstruction: "Miringkan hingga  ketiga ujung jari menghadap samping ya",
+                                animFrame: animationFrame(animationKey: "E", startFrame: 700, endFrame: 810)),
                                                              
-//                                             CourseMaterial(id: UUID(), title: "F", stepByStepInstructions: ["step 1", "step 2", "step 3"], isFinished: false),
-//                                                             
-//                                             CourseMaterial(id: UUID(), title: "G", stepByStepInstructions: ["step 1", "step 2", "step 3"], isFinished: false),
-//                                                             
-//                                             CourseMaterial(id: UUID(), title: "H", stepByStepInstructions: ["step 1", "step 2", "step 3"], isFinished: false),
-//                                                             
-//                                             CourseMaterial(id: UUID(), title: "I", stepByStepInstructions: ["step 1", "step 2", "step 3"], isFinished: false),
-//                                                             
-//                                             CourseMaterial(id: UUID(), title: "J", stepByStepInstructions: ["step 1", "step 2", "step 3"], isFinished: false)
+                 CourseMaterial(id: UUID(), title: "F", detailedInstruction: "Jari telunjuk dan ibu jari cukup dibuka sedikit saja ya",
+                                animFrame: animationFrame(animationKey: "F", startFrame: 850, endFrame: 950)),
+                                             
+                 CourseMaterial(id: UUID(), title: "I", detailedInstruction: "Ujung jari kelingking menghadap atas ya",
+                                animFrame: animationFrame(animationKey: "I", startFrame: 970, endFrame: 1080)),
+                     
+                 CourseMaterial(id: UUID(), title: "R", detailedInstruction: "Petik ibu jari dan jari tengah ya",
+                                animFrame: animationFrame(animationKey: "R", startFrame: 1100, endFrame: 1240)),
+                 
+                 CourseMaterial(id: UUID(), title: "J", detailedInstruction: "Ayunkan tangan kebawah membentuk kail ya",
+                                animFrame: animationFrame(animationKey: "J", startFrame: 1230, endFrame: 1420)),
+
+                 CourseMaterial(id: UUID(), title: "S", detailedInstruction: "Kedua tangan membentuk huruf C dengan tangan kanan diatas ya",
+                                animFrame: animationFrame(animationKey: "S", startFrame: 1430, endFrame: 1570)),
                                             ])]
     
     

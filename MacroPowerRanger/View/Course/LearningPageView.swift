@@ -132,7 +132,7 @@ struct ChatBoxView: View {
             Text(vm.courseMaterials[vm.materialIndex].detailedInstruction)
                 .multilineTextAlignment(.center)
                 .frame(width: 260, height: 100)
-        }
+        } .opacity(vm.shouldShowChatBox ? 1 : 0)
         
     }
 }
@@ -145,13 +145,17 @@ struct SettingButtonsView: View {
             Button {
                 
             } label: {
-                Image("Mirror Icon")
-                    .foregroundColor(.primary)
+                Image(systemName: "hand.wave.fill")
+                    .foregroundColor(Color("MainColor"))
                     .frame(width: 41, height: 41)
                     .background(
                         Circle()
-                            //.fill(Color(red: 99/255, green: 202/255, blue: 255/255))
-                            .fill(Color("MainColor"))
+                            .strokeBorder(lineWidth: 3)
+                            .foregroundColor(Color("MainColor"))
+                            .background(
+                                Circle()
+                                    .fill(Color(red: 169/255, green: 169/255, blue: 169/255, opacity: 0.1))
+                            )
                     )
             }
             
@@ -166,25 +170,17 @@ struct SettingButtonsView: View {
             } label: {
                 Text(vm.speed == .slow ? "0.5x" : "\(Int(vm.speed.rawValue))x")
                     .font(.system(size: 18))
-                    .foregroundColor(.primary)
+                    .fontWeight(.bold)
+                    .foregroundColor(Color("MainColor"))
                     .frame(width: 41, height: 41)
                     .background(
                         Circle()
-                            //.fill(Color(red: 99/255, green: 202/255, blue: 255/255))
-                            .fill(Color("MainColor"))
-                    )
-            }
-            
-            Button {
-                vm.playAnimations()
-            } label: {
-                Image(systemName: "repeat")
-                    .foregroundColor(.primary)
-                    .frame(width: 41, height: 41)
-                    .background(
-                        Circle()
-                            //.fill(Color(red: 99/255, green: 202/255, blue: 255/255))
-                            .fill(Color("MainColor"))
+                            .strokeBorder(lineWidth: 3)
+                            .foregroundColor(Color("MainColor"))
+                            .background(
+                                Circle()
+                                    .fill(Color(red: 169/255, green: 169/255, blue: 169/255, opacity: 0.1))
+                            )
                     )
             }
             
@@ -193,25 +189,49 @@ struct SettingButtonsView: View {
                 //autoPlayAnimation()
             } label: {
                 Image("Auto Play Icon")
-                    .foregroundColor(.primary)
                     .frame(width: 41, height: 41)
                     .background(
                         Circle()
-                            //.fill(vm.autoPlayOn == true ? .white : Color(red: 99/255, green: 202/255, blue: 255/255))
-                            .fill(vm.autoPlayOn == true ? .white : Color("MainColor"))
+                            .strokeBorder(lineWidth: 3)
+                            .foregroundColor(Color("MainColor"))
+                            .background(
+                                Circle()
+                                    .fill(Color(red: 169/255, green: 169/255, blue: 169/255, opacity: 0.1))
+                            )
+                    )
+            }
+            
+            Button {
+                vm.playAnimations()
+            } label: {
+                Image(systemName: "arrow.clockwise")
+                    .foregroundColor(Color("MainColor"))
+                    .frame(width: 41, height: 41)
+                    .background(
+                        Circle()
+                            .strokeBorder(lineWidth: 3)
+                            .foregroundColor(Color("MainColor"))
+                            .background(
+                                Circle()
+                                    .fill(Color(red: 169/255, green: 169/255, blue: 169/255, opacity: 0.1))
+                            )
                     )
             }
             
             Button {
                 vm.playPauseAnimations()
             } label: {
-                Image(systemName: "playpause")
-                    .foregroundColor(.primary)
+                Image(systemName: "pause")
+                    .foregroundColor(Color("MainColor"))
                     .frame(width: 41, height: 41)
                     .background(
                         Circle()
-                            //.fill(Color(red: 99/255, green: 202/255, blue: 255/255))
-                            .fill(Color("MainColor"))
+                            .strokeBorder(lineWidth: 3)
+                            .foregroundColor(Color("MainColor"))
+                            .background(
+                                Circle()
+                                    .fill(Color(red: 169/255, green: 169/255, blue: 169/255, opacity: 0.1))
+                            )
                     )
             }
             

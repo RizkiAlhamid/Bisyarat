@@ -17,10 +17,7 @@ struct CameraView: UIViewControllerRepresentable {
         return cvc
     }
     
-    func updateUIViewController(
-        _ uiViewController: CameraViewController,
-        context: Context
-    ) {
+    func updateUIViewController(_ uiViewController: CameraViewController, context: Context) {
         
     }
 }

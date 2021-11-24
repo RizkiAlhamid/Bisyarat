@@ -27,11 +27,19 @@ class VideoCapture: NSObject {
         
         captureSession.addOutput(videoOutput)
         videoOutput.alwaysDiscardsLateVideoFrames = true
+        let connection = videoOutput.connection(with: AVMediaType.video)
+        connection?.videoOrientation = .portrait
     }
     
     func startCaptureSession() {
         captureSession.startRunning()
         videoOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "videoDispatchQueue"))
+    }
+    
+    func stopCaptureSession() {
+        if captureSession.isRunning {
+            captureSession.stopRunning()
+        }
     }
 }
 
