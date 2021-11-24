@@ -11,7 +11,7 @@ struct CourseMaterial: Identifiable {
     var id: UUID
     var title: String
     //var stepByStepInstructions: [String]
-    var detailedInstruction: String = "petunjuk tambahan"
+    var detailedInstruction: String
     var animFrame = animationFrame(animationKey: "Default", startFrame: 290, endFrame: 300)
     var isFinished: Bool = false
 

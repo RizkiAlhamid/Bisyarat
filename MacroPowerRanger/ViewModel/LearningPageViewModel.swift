@@ -14,11 +14,12 @@ class LearningPageViewModel: ObservableObject{
     @Published var materialIndex: Int = 0
     //@Published var stepByStepIndex: Int = 0
     
-    @Published var idleScene = SCNScene(named: "A dan B.usdz")!
+    @Published var idleScene = SCNScene(named: "Animasi 10 Bisindo.usdz")!
     @Published var nodesWithAnimation = [SCNNode()]
     
     @Published var speed: animationSpeed = .normal
     @Published var autoPlayOn: Bool = false
+    @Published var shouldShowChatBox = true
     
     @Environment(\.colorScheme) var colorScheme
     
@@ -43,6 +44,7 @@ class LearningPageViewModel: ObservableObject{
         materialIndex = 0
         autoPlayOn = false
         speed = .normal
+        shouldShowChatBox = true
     }
     
     func fetchCourseMaterials(course: Course){
@@ -62,6 +64,7 @@ class LearningPageViewModel: ObservableObject{
     }
     
     func playAnimations() {
+        //shouldShowChatBox = false
         for node in nodesWithAnimation {
             DispatchQueue.main.asyncAfter(deadline: .now()) {
                 if let animPlayer: SCNAnimationPlayer = node.animationPlayer(forKey: self.getAnimationKey()) {
@@ -73,12 +76,17 @@ class LearningPageViewModel: ObservableObject{
                         print("animation ended")
                         //animPlayer.stop()
                         animPlayer.paused = true
+//                        DispatchQueue.main.sync {
+//                            self.shouldShowChatBox = true
+//                        }
+                        //
                     }
                     animPlayer.animation.animationEvents = [event]
                     animPlayer.play()
                 }
             }
         }
+        
     }
     
     func stopAnimations() {
@@ -91,9 +99,14 @@ class LearningPageViewModel: ObservableObject{
     }
     
     func playPauseAnimations() {
+        var counter = 0
         for node in nodesWithAnimation {
             if let animPlayer: SCNAnimationPlayer = node.animationPlayer(forKey: self.getAnimationKey()) {
                 animPlayer.paused.toggle()
+                counter += 1
+                if counter % 2 == 0 {
+                    animPlayer.paused.toggle()
+                }
             }
         }
     }
