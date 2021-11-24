@@ -20,7 +20,7 @@ struct MainView: View {
                     }
                 ChallengeListView()
                     .tabItem {
-                        Label("Latihan", systemImage: "hands.sparkles.fill")
+                        Label("Tantangan", systemImage: "flag.2.crossed.fill")
                     }
             }
             //.navigationBarHidden(true)

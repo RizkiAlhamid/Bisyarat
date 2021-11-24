@@ -40,6 +40,7 @@
 		A03C5FFD2722CB250014FD2C /* LearningPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03C5FFC2722CB250014FD2C /* LearningPageViewModel.swift */; };
 		A05A9164273A5A4E00249484 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05A9163273A5A4E00249484 /* CameraViewController.swift */; };
 		A05A9166273A626F00249484 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05A9165273A626F00249484 /* AppError.swift */; };
+		A05D60E3274CD2F4000A476D /* A dan B.usdz in Resources */ = {isa = PBXBuildFile; fileRef = A05D60E2274CD2F4000A476D /* A dan B.usdz */; };
 		A092AC422733DF0200B325F3 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A092AC412733DF0200B325F3 /* OnboardingView.swift */; };
 		A092AC442733DF2500B325F3 /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A092AC432733DF2500B325F3 /* OnboardingModel.swift */; };
 		A0F412832727F171009B8569 /* ColorHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F412822727F171009B8569 /* ColorHex.swift */; };
@@ -82,6 +83,7 @@
 		A05A9163273A5A4E00249484 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		A05A9165273A626F00249484 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		A05A9182273A69A800249484 /* Bisyarat-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Bisyarat-Info.plist"; sourceTree = "<group>"; };
+		A05D60E2274CD2F4000A476D /* A dan B.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = "A dan B.usdz"; sourceTree = "<group>"; };
 		A092AC412733DF0200B325F3 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		A092AC432733DF2500B325F3 /* OnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
 		A0F412822727F171009B8569 /* ColorHex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHex.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 		302A1FE7271D79FE0032F4DE /* 3dAsset */ = {
 			isa = PBXGroup;
 			children = (
+				A05D60E2274CD2F4000A476D /* A dan B.usdz */,
 				302A1FE1271D792E0032F4DE /* Palette.png */,
 				307DE0C0274392440086B586 /* A dan B.usdz */,
 			);
@@ -285,6 +288,7 @@
 				302A1FCF27182B340032F4DE /* Preview Assets.xcassets in Resources */,
 				302A1FE3271D792E0032F4DE /* Palette.png in Resources */,
 				307DE0C1274392440086B586 /* A dan B.usdz in Resources */,
+				A05D60E3274CD2F4000A476D /* A dan B.usdz in Resources */,
 				302A1FCC27182B340032F4DE /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -459,7 +463,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"MacroPowerRanger/Preview Content\"";
-				DEVELOPMENT_TEAM = UG27AN3F2U;
+				DEVELOPMENT_TEAM = Z74KUA44R7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Bisyarat-Info.plist";
@@ -492,7 +496,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"MacroPowerRanger/Preview Content\"";
-				DEVELOPMENT_TEAM = UG27AN3F2U;
+				DEVELOPMENT_TEAM = Z74KUA44R7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Bisyarat-Info.plist";

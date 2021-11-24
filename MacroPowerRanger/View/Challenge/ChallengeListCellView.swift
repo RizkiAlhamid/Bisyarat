@@ -12,16 +12,33 @@ struct ChallengeListCellView: View {
     let bgImage: String
     
     var body: some View {
-        HStack{
-            Image(bgImage)
-                .resizable()
-                .frame(width: 60, height: 90)
-                .scaledToFit()
-            VStack(alignment: .leading){
-                Text(title)
-                    .font(.headline)
+        VStack{
+            Text(title)
+                
+                .font(.headline)
+                .foregroundColor(.black)
+                .frame(width: 127, height: 20, alignment: .leading)
+            
+            ZStack{
+                Image(bgImage)
+                    .resizable()
+                    .frame(width: 60, height: 90)
+                    .scaledToFit()
             }
+            .frame(width: 127, height: 110)
+            .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color.black, lineWidth: 1)
+            )
         }
+        .frame(width: 157, height: 181)
+        .background(
+            RoundedRectangle(cornerRadius: 20)
+                .fill(.white)
+                .shadow(color: .gray, radius: 3, x: 0, y: 0)
+
+        )
+
     }
 }
 

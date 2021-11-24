@@ -10,22 +10,25 @@ import SwiftUI
 struct ChallengeListView: View {
     @ObservedObject var viewModel = ChallengeListViewModel()
     
+    private let gridItems = [GridItem(.flexible(), spacing: 10),GridItem(.flexible(), spacing: 110)]
+    
     var body: some View {
-            ZStack{
-                VStack{
-                    List{
-                        ForEach(viewModel.challenges, id: \.id){ challenge in
-                            NavigationLink(destination: ChallengeView()){
-                                ChallengeListCellView(
-                                    title: challenge.title,
-                                    bgImage: challenge.bgImage
-                                )
-                            }
+        
+            ScrollView{
+                LazyVGrid(columns: gridItems, content: {
+                    ForEach(viewModel.challenges, id: \.id){practice in
+                        NavigationLink(destination: ChallengeView()){
+                            ChallengeListCellView(
+                                title: practice.title,
+                                bgImage: practice.bgImage
+                            )
                         }
                     }
-                }
-                .navigationTitle("Latihan")
+                })
             }
+        
+        .navigationTitle("Tantangan")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

@@ -45,6 +45,7 @@ struct OnboardingView: View {
                                             .foregroundColor(.blue)
                                     }
                                     else {
+                                        
                                         Circle().stroke(Color.blue, lineWidth: 2)
                                             .frame(width: 10, height: 10)
                                             .foregroundColor(.white)
@@ -54,57 +55,59 @@ struct OnboardingView: View {
                                 }
                             }
                             
-                            HStack{
+                            if onboardingScreens[it].showsButton {
                                 Button(action: {
-                                    if  self.indexPage > 0 {
-                                        self.indexPage -= 1
-                                    }
                                     
-                                }) {
-                                    Image(systemName: "chevron.backward.circle")
-                                        .font(.system(size: 35,weight: .bold))
-                                        .opacity(indexPage == 0 ? 0.3:1)
+                                    shouldShowOnboarding.toggle()
                                     
-                                }
-                                .disabled(indexPage == 0 ? true:false)
-                                
-                                Spacer()
-                                    .frame(minWidth: 10, idealWidth: 200, maxWidth: 600)
-                                    .fixedSize()
-                                Button(action: {
-                                    if self.indexPage < onboardingScreens.count - 1 {
-                                        self.indexPage += 1
-                                        
-                                        if self.indexPage == onboardingScreens.count-1 {
-                                            isHidden.toggle()
-                                        }
-                                    }
+                                }, label: {
+                                    Text("Mulai")
+                                        .bold()
+                                        .foregroundColor(Color.white)
+                                        .frame(width: 90, height: 40)
+                                        .background(Color.blue)
                                     
-                                }) {
-                                    if self.indexPage < onboardingScreens.count - 1 {
-                                        Image(systemName: "chevron.right.circle")
-                                            .font(.system(size: 35, weight: .bold))
-                                    }
-                                    
-                                    
-                                }
-                                .disabled(indexPage == onboardingScreens.count ? true:false)
-                                //.opacity(isHidden ? 0 : 1)
-                                
-                                if onboardingScreens[it].showsButton {
-                                    Button(action: {
-                                        shouldShowOnboarding.toggle()
-                                        
-                                    }, label: {
-                                        Text("Mulai")
-                                            .bold()
-                                            .foregroundColor(Color.white)
-                                            .frame(width: 90, height: 40)
-                                            .background(Color.blue)
-                                        
-                                    }).cornerRadius(20)
-                                }
+                                }).cornerRadius(20)
+                                    .frame(width: 300, height: 100, alignment: .trailing)
                             }
+                            
+//                            HStack{
+//                                Button(action: {
+//                                    if  self.indexPage > 0 {
+//                                        self.indexPage -= 1
+//                                    }
+//
+//                                }) {
+//                                    Image(systemName: "chevron.backward.circle")
+//                                        .font(.system(size: 35,weight: .bold))
+//                                        .opacity(indexPage == 0 ? 0.3:1)
+//
+//                                }
+//                                .disabled(indexPage == 0 ? true:false)
+//
+//                                Spacer()
+//                                    .frame(minWidth: 10, idealWidth: 200, maxWidth: 600)
+//                                    .fixedSize()
+//                                Button(action: {
+//                                    if self.indexPage < onboardingScreens.count - 1 {
+//                                        self.indexPage += 1
+//
+//
+//                                    }
+//
+//                                }) {
+//                                    if self.indexPage < onboardingScreens.count - 1 {
+//                                        Image(systemName: "chevron.right.circle")
+//                                            .font(.system(size: 35, weight: .bold))
+//                                    }
+//
+//
+//                                }
+//                                .disabled(indexPage == onboardingScreens.count ? true:false)
+//                                //.opacity(isHidden ? 0 : 1)
+//
+//
+//                            }
                         }
                     }
                     .tag(it)
@@ -115,13 +118,12 @@ struct OnboardingView: View {
             .toolbar {
                 Button(action: {
                     shouldShowOnboarding.toggle()
-                    
                 }, label: {
                     Text("Skip")
                         .foregroundColor(Color.orange)
-                })
+                }).disabled(indexPage == onboardingScreens.count-1)
+                    .opacity(indexPage == onboardingScreens.count-1 ? 0 : 1)
             }
-            
         }
     }
 }
