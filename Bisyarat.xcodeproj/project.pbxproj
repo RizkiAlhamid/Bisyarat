@@ -44,6 +44,8 @@
 		A03C5FFD2722CB250014FD2C /* LearningPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03C5FFC2722CB250014FD2C /* LearningPageViewModel.swift */; };
 		A05A9164273A5A4E00249484 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05A9163273A5A4E00249484 /* CameraViewController.swift */; };
 		A05A9166273A626F00249484 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05A9165273A626F00249484 /* AppError.swift */; };
+		A072B7C2274F7B3F00DA8CBB /* Animasi 10 Bisindo.usdz in Resources */ = {isa = PBXBuildFile; fileRef = A072B7C1274F7B3F00DA8CBB /* Animasi 10 Bisindo.usdz */; };
+		A072B7C4274F7B5B00DA8CBB /* A dan B.usdz in Resources */ = {isa = PBXBuildFile; fileRef = A072B7C3274F7B5B00DA8CBB /* A dan B.usdz */; };
 		A092AC422733DF0200B325F3 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A092AC412733DF0200B325F3 /* OnboardingView.swift */; };
 		A092AC442733DF2500B325F3 /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A092AC432733DF2500B325F3 /* OnboardingModel.swift */; };
 		A0F412832727F171009B8569 /* ColorHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F412822727F171009B8569 /* ColorHex.swift */; };
@@ -90,6 +92,8 @@
 		A05A9163273A5A4E00249484 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		A05A9165273A626F00249484 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		A05A9182273A69A800249484 /* Bisyarat-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Bisyarat-Info.plist"; sourceTree = "<group>"; };
+		A072B7C1274F7B3F00DA8CBB /* Animasi 10 Bisindo.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = "Animasi 10 Bisindo.usdz"; sourceTree = "<group>"; };
+		A072B7C3274F7B5B00DA8CBB /* A dan B.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = "A dan B.usdz"; sourceTree = "<group>"; };
 		A092AC412733DF0200B325F3 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		A092AC432733DF2500B325F3 /* OnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
 		A0F412822727F171009B8569 /* ColorHex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHex.swift; sourceTree = "<group>"; };
@@ -233,6 +237,13 @@
 				307DE0BE2742614F0086B586 /* Predictor.swift */,
 			);
 			path = Challenge;
+			sourceTree = "<group>";
+		};
+		A072B7BC274F70A100DA8CBB /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		A0F412842727F186009B8569 /* Extension */ = {
