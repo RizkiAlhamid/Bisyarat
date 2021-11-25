@@ -17,8 +17,9 @@ struct OnboardingModel: Identifiable{
 
 
 var onboardingScreens: [OnboardingModel] = [
-    OnboardingModel(id: UUID(),bgImage: "bgOnboarding", title: "Selamat datang di Bisyarat", description: "Halo teman baik, terimakasih sudah mendukung Komunitas Tuli di Indonesia dengan mulai belajar BISINDO",showsButton: false),
-    OnboardingModel(id: UUID(), bgImage: "bgOnboarding", title: "Bisa ngapain aja di Bisyarat?", description: "Disini kamu bisa belajar bisindo dengan panduan dan melatihnya dengan teknologi Augmented Reality yang canggih 🤩",showsButton: true)
+    OnboardingModel(id: UUID(),bgImage: "Onboarding 3", title: "BISINDO dalam genggamanmu", description: "Belajar BISINDO dengan mudah kapanpun dan dimanapun",showsButton: false),
+    OnboardingModel(id: UUID(), bgImage: "Onboarding 2", title: "Mudah belajar bersama Bisma", description: "Gerakan isyarat diperagakan oleh Bisma, karakter 3 Dimensi.",showsButton: false),
+    OnboardingModel(id: UUID(), bgImage: "Onboarding 3", title: "Tantang dirimu", description: "Tingkatkan kemampuanmu dengan bantuan teknologi pengenalan gerakan",showsButton: true)
 ]
 
 
