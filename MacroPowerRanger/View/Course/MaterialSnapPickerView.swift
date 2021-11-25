@@ -7,17 +7,17 @@
 
 import SwiftUI
 
-struct MaterialSnapPicker<Content: View, T: Identifiable>: View {
+struct MaterialSnapPicker<Content: View>: View {
     @ObservedObject var vm: LearningPageViewModel
-    var content: (T) -> Content
-    var list: [T]
+    var content: (CourseMaterial) -> Content
+    var list: [CourseMaterial]
     
     //properties
     var spacing: CGFloat
     var trailingSpace: CGFloat
     @Binding var index: Int
     
-    init(vm: LearningPageViewModel, spacing: CGFloat = 0, trailingSpace: CGFloat = 0, index: Binding<Int>, items: [T], @ViewBuilder content: @escaping (T)->Content) {
+    init(vm: LearningPageViewModel, spacing: CGFloat = 0, trailingSpace: CGFloat = 0, index: Binding<Int>, items: [CourseMaterial], @ViewBuilder content: @escaping (CourseMaterial)->Content) {
         
         self.list = items
         self.spacing = spacing
@@ -29,7 +29,7 @@ struct MaterialSnapPicker<Content: View, T: Identifiable>: View {
     
     // Offset
     @GestureState var offset: CGFloat = 0
-    @State var currentIndex: Int = -2
+    //@State var currentIndex: Int = -2
     
     var body: some View {
         
@@ -49,7 +49,19 @@ struct MaterialSnapPicker<Content: View, T: Identifiable>: View {
                     ForEach(list) { item in
                         content(item)
                             .frame(width: proxy.size.width / 5)
-                            .offset(x: (CGFloat(currentIndex) * -width) + adjustmentWidth + offset)
+                            .offset(x: (CGFloat(vm.sliderIndex) * -width) + adjustmentWidth + offset)
+                            .onTapGesture(perform: {
+                                if vm.autoPlayOn == false {
+                                    vm.stopAnimations()
+                                    for (index, material) in list.enumerated() {
+                                        if material.title == item.title {
+                                            vm.sliderIndex = index - 2
+                                            vm.materialIndex = index
+                                        }
+                                    }
+                                    vm.playAnimations()
+                                }
+                            })
                             .gesture(
                                 DragGesture()
                                     .updating($offset, body: { value, out, _ in
@@ -69,11 +81,11 @@ struct MaterialSnapPicker<Content: View, T: Identifiable>: View {
                                         let roundIndex = progress.rounded()
                                         
                                         // setting min
-                                        currentIndex = max(min(currentIndex + Int(roundIndex), list.count - 3), -2)
+                                        vm.sliderIndex = max(min(vm.sliderIndex + Int(roundIndex), list.count - 3), -2)
                                         
                                         //updating index
-                                        currentIndex = index
-                                        print(currentIndex, " ", index)
+                                        vm.sliderIndex = index
+                                        print(vm.sliderIndex, " ", index)
                                         print(vm.courseMaterials[vm.materialIndex])
                                         
                                         vm.materialIndex = index + 2
@@ -92,9 +104,10 @@ struct MaterialSnapPicker<Content: View, T: Identifiable>: View {
                                         let roundIndex = progress.rounded()
 
                                         // setting min
-                                        index = max(min(currentIndex + Int(roundIndex), list.count - 3), -2)
+                                        index = max(min(vm.sliderIndex + Int(roundIndex), list.count - 3), -2)
                                         
                                         vm.stopAnimations()
+                                        vm.autoPlayOn = false
                                     })
                             )
                             

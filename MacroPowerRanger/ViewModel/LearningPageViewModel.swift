@@ -12,7 +12,7 @@ import SwiftUI
 class LearningPageViewModel: ObservableObject{
     @Published var courseMaterials = [CourseMaterial]()
     @Published var materialIndex: Int = 0
-    //@Published var stepByStepIndex: Int = 0
+    @Published var sliderIndex: Int = -2
     
     @Published var idleScene = SCNScene(named: "Animasi 10 Bisindo.usdz")!
     @Published var nodesWithAnimation = [SCNNode()]
@@ -41,6 +41,7 @@ class LearningPageViewModel: ObservableObject{
     }
     
     func refreshState() {
+        sliderIndex = -2
         materialIndex = 0
         autoPlayOn = false
         speed = .normal
@@ -175,6 +176,49 @@ class LearningPageViewModel: ObservableObject{
                     nodesWithAnimation.append(node)
             }
         }
+    }
+    
+    func autoPlayAnimation() {
+        for node in nodesWithAnimation {
+            DispatchQueue.main.asyncAfter(deadline: .now()) {
+                if let animPlayer: SCNAnimationPlayer = node.animationPlayer(forKey: self.getAnimationKey()) {
+                    animPlayer.animation.repeatCount = .greatestFiniteMagnitude
+                    animPlayer.animation.isAppliedOnCompletion = true
+                    animPlayer.animation.isRemovedOnCompletion = false
+                    animPlayer.speed = self.speed.rawValue
+                    let event = SCNAnimationEvent(keyTime: 0.95) { animation, object, backward in
+                        print("animation ended")
+                        //animPlayer.stop()
+                        animPlayer.paused = true
+                        if self.autoPlayOn == true {
+                            if self.materialIndex < self.courseMaterials.endIndex - 1 {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                                    self.materialIndex += 1
+                                    self.sliderIndex += 1
+                                }
+                                
+                            }
+                            if self.materialIndex == self.courseMaterials.endIndex - 1 {
+                                DispatchQueue.main.async {
+                                    self.autoPlayOn = false
+                                }
+                            }
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                                self.autoPlayAnimation()
+                            }
+                            
+                        }
+                    }
+                    animPlayer.animation.animationEvents = [event]
+                    if self.autoPlayOn == true {
+                        animPlayer.play()
+                    }
+                    
+                }
+            }
+        }
+        
+        
     }
     
 //    func loadAnimations() -> SCNScene? {

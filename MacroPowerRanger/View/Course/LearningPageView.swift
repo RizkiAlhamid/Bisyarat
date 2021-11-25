@@ -142,9 +142,7 @@ struct SettingButtonsView: View {
     
     var body: some View {
         VStack(spacing: 15) {
-            Button {
-                
-            } label: {
+            NavigationLink(destination: PracticeView(practicePageViewModel: PracticePageViewModel.init(courseMaterial: vm.courseMaterials[vm.materialIndex]))) {
                 Image(systemName: "hand.wave.fill")
                     .foregroundColor(Color("MainColor"))
                     .frame(width: 41, height: 41)
@@ -186,7 +184,7 @@ struct SettingButtonsView: View {
             
             Button {
                 vm.autoPlayOn.toggle()
-                //autoPlayAnimation()
+                vm.autoPlayAnimation()
             } label: {
                 Image("Auto Play Icon")
                     .frame(width: 41, height: 41)

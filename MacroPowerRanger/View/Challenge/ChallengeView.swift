@@ -248,7 +248,7 @@ struct ChallengeView: View {
     }
 }
 
-struct PracticeView_Previews: PreviewProvider {
+struct ChallengeView_Previews: PreviewProvider {
     static var previews: some View {
         ChallengeView()
     }
