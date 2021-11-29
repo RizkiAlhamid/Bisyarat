@@ -15,11 +15,15 @@ struct LearningPageView: View {
     @State var currentIndex: Int = -2
     @State var tutorialCounter: Int = 0
     
+    @State var isPaused = false
+    @State var shouldShowChatBox = false
+    @State var isAnimationEnded = false
+    
     var body: some View {
         ZStack {
             VStack {
                 Spacer(minLength: 15)
-                ChatBoxView(vm: learningPageViewModel)
+                ChatBoxView(vm: learningPageViewModel, shouldShowChatBox: $shouldShowChatBox)
                 ZStack {
                     SceneView(scene: learningPageViewModel.loadAnimations(),
                               pointOfView: setUpCamera(),
@@ -27,13 +31,8 @@ struct LearningPageView: View {
                     )
                     HStack {
                         Spacer()
-                        SettingButtonsView(vm: learningPageViewModel)
+                        SettingButtonsView(vm: learningPageViewModel, isPaused: $isPaused, shouldShowChatBox: $shouldShowChatBox, isAnimationEnded: $isAnimationEnded)
                     }
-//                    VStack {
-//                        Spacer()
-////                        PrevNextButtonView(vm: learningPageViewModel)
-////                            .opacity(learningPageViewModel.autoPlayOn ? 0 : 1)
-//                    }
                 }
                 
                 MaterialSnapPicker(vm: learningPageViewModel, index: $currentIndex, items: learningPageViewModel.courseMaterials) { material in
@@ -43,11 +42,15 @@ struct LearningPageView: View {
                         
                         ZStack {
                             Circle()
-                                .fill(Color(red: 176/255, green: 228/255, blue: 255/255, opacity: 0.5))
+                                .fill(Color("SecondarySliderColor"))
                                 .frame(width: 35)
                                 .clipped()
                             Text(material.title)
-                                .padding()
+                                .font(.system(size: 12))
+                                .scaledToFill()
+                                .minimumScaleFactor(0.5)
+                                .lineLimit(1)
+                                
                         }
                         .scaleEffect(.init(width: scale, height: scale))
                     }
@@ -67,11 +70,16 @@ struct LearningPageView: View {
                     Text("Info")
                 }
             })
-            
+            .onChange(of: learningPageViewModel.materialIndex, perform: { newValue in
+                isPaused = false
+                isAnimationEnded = false
+                if learningPageViewModel.autoPlayOn == false {
+                    learningPageViewModel.playAnimations(shouldShowChatBox: $shouldShowChatBox, isAnimationEnded: $isAnimationEnded)
+                }
+            })
             .onAppear {
-                //learningPageViewModel.fetchCourseMaterials(course: CourseSampleData.courses[0])
                 learningPageViewModel.refreshState()
-                learningPageViewModel.playAnimations()
+                learningPageViewModel.playAnimations(shouldShowChatBox: $shouldShowChatBox, isAnimationEnded: $isAnimationEnded)
                 if showButtonTutorial == true {
                     tutorialCounter = 1
                     showButtonTutorial.toggle()
@@ -120,31 +128,33 @@ struct LearningPageView_Previews: PreviewProvider {
 
 struct ChatBoxView: View {
     @ObservedObject var vm: LearningPageViewModel
+    @Binding var shouldShowChatBox: Bool
     
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 30)
-                .foregroundColor(Color(red: 210/255, green: 236/255, blue: 249/255))
+                .foregroundColor(Color("SecondaryColor"))
                 .frame(height: 110)
-                //.padding(.vertical)
-                .padding(.horizontal, 55)
+                .padding(.horizontal, 25)
             
             Text(vm.courseMaterials[vm.materialIndex].detailedInstruction)
                 .multilineTextAlignment(.center)
                 .frame(width: 260, height: 100)
-        } .opacity(vm.shouldShowChatBox ? 1 : 0)
+        } .opacity(shouldShowChatBox ? 1 : 0)
         
     }
 }
 
 struct SettingButtonsView: View {
     @ObservedObject var vm: LearningPageViewModel
+    @Binding var isPaused: Bool
+    @Binding var shouldShowChatBox: Bool
+    @Binding var isAnimationEnded: Bool
     
     var body: some View {
         VStack(spacing: 15) {
             NavigationLink(destination: PracticeView(practicePageViewModel: PracticePageViewModel.init(courseMaterial: vm.courseMaterials[vm.materialIndex]))) {
-                Image(systemName: "hand.wave.fill")
-                    .foregroundColor(Color("MainColor"))
+                Image("PracticeIcon")
                     .frame(width: 41, height: 41)
                     .background(
                         Circle()
@@ -155,7 +165,7 @@ struct SettingButtonsView: View {
                                     .fill(Color(red: 169/255, green: 169/255, blue: 169/255, opacity: 0.1))
                             )
                     )
-            }
+            }.disabled(vm.courseTitle == "Perkenalan Diri")
             
             Button {
                 switch vm.speed {
@@ -164,12 +174,12 @@ struct SettingButtonsView: View {
                 case .normal:
                     vm.speed = .slow
                 }
-                vm.playAnimations()
+                isPaused = false
+                if vm.autoPlayOn == false {
+                    vm.playAnimations(isAnimationEnded: $isAnimationEnded)
+                }
             } label: {
-                Text(vm.speed == .slow ? "0.5x" : "\(Int(vm.speed.rawValue))x")
-                    .font(.system(size: 18))
-                    .fontWeight(.bold)
-                    .foregroundColor(Color("MainColor"))
+                Image(vm.speed == .slow ? "0.5xSpeedIcon" : "1xSpeedIcon")
                     .frame(width: 41, height: 41)
                     .background(
                         Circle()
@@ -183,10 +193,41 @@ struct SettingButtonsView: View {
             }
             
             Button {
+                isPaused = false
                 vm.autoPlayOn.toggle()
-                vm.autoPlayAnimation()
+                vm.autoPlayAnimation(shouldShowChatBox: $shouldShowChatBox)
             } label: {
-                Image("Auto Play Icon")
+                if vm.autoPlayOn {
+                    Image("AutoPlayOnIcon")
+                        .frame(width: 41, height: 41)
+                        .background(
+                            Circle()
+                                .foregroundColor(Color("MainColor"))
+                        )
+                } else {
+                    Image("AutoPlayOffIcon")
+                        .frame(width: 41, height: 41)
+                        .background(
+                            Circle()
+                                .strokeBorder(lineWidth: 3)
+                                .foregroundColor(Color("MainColor"))
+                                .background(
+                                    Circle()
+                                        .fill(Color(red: 169/255, green: 169/255, blue: 169/255, opacity: 0.1))
+                                )
+                        )
+                }
+            }
+            
+            Button {
+                isPaused = false
+                if shouldShowChatBox {
+                    vm.playAnimations(isAnimationEnded: $isAnimationEnded)
+                } else {
+                    vm.playAnimations(shouldShowChatBox: $shouldShowChatBox, isAnimationEnded: $isAnimationEnded)
+                }
+            } label: {
+                Image("ReplayIcon")
                     .frame(width: 41, height: 41)
                     .background(
                         Circle()
@@ -200,81 +241,36 @@ struct SettingButtonsView: View {
             }
             
             Button {
-                vm.playAnimations()
+                if isAnimationEnded == false {
+                    vm.playPauseAnimations(isPaused: $isPaused)
+                }
             } label: {
-                Image(systemName: "arrow.clockwise")
-                    .foregroundColor(Color("MainColor"))
-                    .frame(width: 41, height: 41)
-                    .background(
-                        Circle()
-                            .strokeBorder(lineWidth: 3)
-                            .foregroundColor(Color("MainColor"))
-                            .background(
-                                Circle()
-                                    .fill(Color(red: 169/255, green: 169/255, blue: 169/255, opacity: 0.1))
-                            )
-                    )
-            }
-            
-            Button {
-                vm.playPauseAnimations()
-            } label: {
-                Image(systemName: "pause")
-                    .foregroundColor(Color("MainColor"))
-                    .frame(width: 41, height: 41)
-                    .background(
-                        Circle()
-                            .strokeBorder(lineWidth: 3)
-                            .foregroundColor(Color("MainColor"))
-                            .background(
-                                Circle()
-                                    .fill(Color(red: 169/255, green: 169/255, blue: 169/255, opacity: 0.1))
-                            )
-                    )
+                if isPaused {
+                    Image("PlayIcon")
+                        .frame(width: 41, height: 41)
+                        .background(
+                            Circle()
+                                .foregroundColor(Color("MainColor"))
+                        )
+                } else {
+                    Image("PauseIcon")
+                        .frame(width: 41, height: 41)
+                        .background(
+                            Circle()
+                                .strokeBorder(lineWidth: 3)
+                                .foregroundColor(Color("MainColor"))
+                                .background(
+                                    Circle()
+                                        .fill(Color(red: 169/255, green: 169/255, blue: 169/255, opacity: 0.1))
+                                )
+                        )
+                }
             }
             
         }
         .padding()
     }
-    
-//    func autoPlayAnimation() {
-//        for node in vm.nodesWithAnimation {
-//            DispatchQueue.main.asyncAfter(deadline: .now()) {
-//                if let animPlayer: SCNAnimationPlayer = node.animationPlayer(forKey: vm.getAnimationKey()) {
-//                    animPlayer.animation.repeatCount = .greatestFiniteMagnitude
-//                    animPlayer.animation.isAppliedOnCompletion = true
-//                    animPlayer.animation.isRemovedOnCompletion = false
-//                    animPlayer.speed = vm.speed.rawValue
-//                    let event = SCNAnimationEvent(keyTime: 0.95) { animation, object, backward in
-//                        print("animation ended")
-//                        //animPlayer.stop()
-//                        animPlayer.paused = true
-//                        if vm.autoPlayOn == true {
-//                            if vm.stepByStepIndex < vm.courseMaterials[vm.materialIndex].stepByStepInstructions.endIndex - 1 {
-//                                DispatchQueue.main.async {
-//                                    vm.stepByStepIndex += 1
-//                                }
-//
-//                            }
-//                            if vm.stepByStepIndex == vm.courseMaterials[vm.materialIndex].stepByStepInstructions.endIndex - 1 {
-//                                DispatchQueue.main.async {
-//                                    vm.autoPlayOn = false
-//                                }
-//                            }
-//                            autoPlayAnimation()
-//                        }
-//                    }
-//                    animPlayer.animation.animationEvents = [event]
-//                    if vm.autoPlayOn == true {
-//                        animPlayer.play()
-//                    }
-//
-//                }
-//            }
-//        }
-//
-//
-//    }
+
     
 }
 
@@ -325,55 +321,3 @@ struct CustomNavigationView: View {
         }
     }
 }
-
-
-
-
-//struct PrevNextButtonView: View {
-//
-//    @ObservedObject var vm: LearningPageViewModel
-//
-//    var body: some View {
-//        HStack {
-//            if vm.stepByStepIndex > 0 {
-//                Button {
-//                    vm.stopAnimations()
-//                    vm.stepByStepIndex -= 1
-//                    vm.playAnimations()
-//                } label: {
-//                    Text("Kembali")
-//                        .foregroundColor(Color.primary)
-//                        .padding()
-//                        .background (
-//                            RoundedRectangle(cornerRadius: 10)
-//                                //.fill(Color(red: 99/255, green: 202/255, blue: 255/255))
-//                                .fill(Color("MainColor"))
-//                                .frame(width: 80, height: 30)
-//                        )
-//                        .padding(.horizontal)
-//                }
-//            }
-//
-//            Spacer()
-//
-//            if vm.stepByStepIndex < vm.courseMaterials[vm.materialIndex].stepByStepInstructions.count - 1 {
-//                Button {
-//                    vm.stopAnimations()
-//                    vm.stepByStepIndex += 1
-//                    vm.playAnimations()
-//                } label: {
-//                    Text("Lanjut")
-//                        .foregroundColor(Color.primary)
-//                        .padding()
-//                        .background (
-//                            RoundedRectangle(cornerRadius: 10)
-//                                //.fill(Color(red: 99/255, green: 202/255, blue: 255/255))
-//                                .fill(Color("MainColor"))
-//                                .frame(width: 80, height: 30)
-//                        )
-//                        .padding(.horizontal)
-//                }
-//            }
-//        }
-//    }
-//}

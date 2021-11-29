@@ -10,12 +10,33 @@ import SwiftUI
 struct ChallengeView: View {
     @ObservedObject var challengePageViewModel = ChallengePageViewModel()
     @State private var showingAlert = false
+    @State private var isPresenting = false
     
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
         ZStack {
             CameraView(vm: challengePageViewModel)
+                .overlay(
+                    handInFrameView
+                        .animation(.default)
+                )
+                .overlay(
+                    startTimerView
+                        .animation(.default)
+                )
+                .overlay(
+                    questionBadge
+                        .animation(.default)
+                )
+                .overlay(
+                    correctBadge
+                        .animation(.default)
+                )
+                .overlay(
+                    timesUpBadge
+                        .animation(.default)
+                )
             VStack {
                 Text("00:0\(challengePageViewModel.guestTimer)")
                     .font(.title2)
@@ -29,40 +50,22 @@ struct ChallengeView: View {
                             .frame(width: 140, height: 40)
                     )
                     .padding(.vertical)
+                    .opacity(challengePageViewModel.shouldShowQuestion || challengePageViewModel.shouldStartClassifying ? 1 : 0)
                 Spacer()
                 progressBarView
+                    .opacity(challengePageViewModel.isGuessedTrue || challengePageViewModel.isTimesUp ? 1 : 0)
             }
         }
-        //        .toolbar(content: {
-        //            Button {
-        //                isGuessedTrue.toggle()
-        //            } label: {
-        //                Text("Petunjuk")
-        //            }
-        //        })]
-        .overlay(
-            handInFrameView
-                .animation(.default)
-        )
-        .overlay(
-            startTimerView
-                .animation(.default)
-        )
-        .overlay(
-            questionBadge
-                .animation(.default)
-        )
-        .overlay(
-            correctBadge
-                .animation(.default)
-        )
-        .overlay(
-            timesUpBadge
-                .animation(.default)
-        )
-        .overlay(
-            ChallengeFinishedView(challengePageViewModel: challengePageViewModel)
-        )
+        .fullScreenCover(isPresented: $isPresenting, onDismiss: {
+            
+        }, content: {
+            ChallengeFinishedView(challengePageViewModel: challengePageViewModel, isPresenting: $isPresenting)
+        })
+        .onChange(of: challengePageViewModel.currentProgress , perform: { newValue in
+            if newValue == 1 {
+                isPresenting = true
+            }
+        })
         .onReceive(challengePageViewModel.timer, perform: { time in
             if challengePageViewModel.startTimer > 0 && challengePageViewModel.isHandInFrame == true {
                 challengePageViewModel.startTimer -= 1
@@ -136,7 +139,7 @@ struct ChallengeView: View {
                 Image(systemName: "checkmark.seal.fill")
                     .resizable()
                     .imageScale(.large)
-                    .foregroundColor(.white)
+                    .foregroundColor(Color("MainColor"))
                     .frame(width: 200, height: 200)
                     .shadow(radius: 5)
             }
@@ -225,7 +228,7 @@ struct ChallengeView: View {
     
     private var progressBarView: some View {
         VStack {
-            Text("\(challengePageViewModel.materialIndex)/\(challengePageViewModel.challengeMaterials.count)")
+            Text("\(challengePageViewModel.materialIndex + 1)/\(challengePageViewModel.challengeMaterials.count)")
                 .foregroundColor(.white)
                 .font(.system(size: 24))
                 .padding(.vertical, 5)
@@ -241,7 +244,7 @@ struct ChallengeView: View {
                     .frame(width: 300, height: 20)
                 RoundedRectangle(cornerRadius: 20)
                     .foregroundColor(Color("MainColor"))
-                    .frame(width: 300 * challengePageViewModel.currentProgress, height: 20)
+                    .frame(width: 300 * (challengePageViewModel.currentProgress + 0.1), height: 20)
             }
         }
         .padding(.vertical)

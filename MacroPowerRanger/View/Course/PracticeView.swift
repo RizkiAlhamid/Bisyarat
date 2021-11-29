@@ -73,7 +73,7 @@ struct PracticeView: View {
                 Image(systemName: "checkmark.seal.fill")
                     .resizable()
                     .imageScale(.large)
-                    .foregroundColor(.white)
+                    .foregroundColor(Color("MainColor"))
                     .frame(width: 200, height: 200)
                     .shadow(radius: 5)
             }

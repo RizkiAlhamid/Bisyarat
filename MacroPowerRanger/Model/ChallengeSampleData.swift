@@ -31,6 +31,11 @@ struct ChallengeSampleData {
                   challengeMaterials: [ChallengeMaterial(id: UUID(), title: "A", outlineImage: "outA"),
                                        ChallengeMaterial(id: UUID(), title: "B", outlineImage: "outA"),
                                        ChallengeMaterial(id: UUID(), title: "C", outlineImage: "outA"),
+                                    ]),
+        Challenge(id: UUID(), title: "Challenge 2", bgImage: "bgImageDasar1",
+                  challengeMaterials: [ChallengeMaterial(id: UUID(), title: "A", outlineImage: "outA"),
+                                       ChallengeMaterial(id: UUID(), title: "B", outlineImage: "outA"),
+                                       ChallengeMaterial(id: UUID(), title: "C", outlineImage: "outA"),
                                     ])
     ]
 }

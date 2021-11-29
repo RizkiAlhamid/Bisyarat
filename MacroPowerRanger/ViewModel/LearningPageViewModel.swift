@@ -14,12 +14,14 @@ class LearningPageViewModel: ObservableObject{
     @Published var materialIndex: Int = 0
     @Published var sliderIndex: Int = -2
     
-    @Published var idleScene = SCNScene(named: "Animasi 10 Bisindo.usdz")!
+    @Published var idleScene = SCNScene(named: "Alfabet dan pengenalan diri.usdz")!
     @Published var nodesWithAnimation = [SCNNode()]
     
     @Published var speed: animationSpeed = .normal
     @Published var autoPlayOn: Bool = false
     @Published var shouldShowChatBox = true
+    
+    @Published var isPaused = false
     
     @Environment(\.colorScheme) var colorScheme
     
@@ -64,12 +66,12 @@ class LearningPageViewModel: ObservableObject{
         return courseMaterials[materialIndex].animFrame.animationKey
     }
     
-    func playAnimations() {
-        //shouldShowChatBox = false
+    func playAnimations(isAnimationEnded: Binding<Bool>) {
+        isAnimationEnded.wrappedValue = false
         for node in nodesWithAnimation {
             DispatchQueue.main.asyncAfter(deadline: .now()) {
                 if let animPlayer: SCNAnimationPlayer = node.animationPlayer(forKey: self.getAnimationKey()) {
-                    animPlayer.animation.repeatCount = .greatestFiniteMagnitude
+                    animPlayer.animation.repeatCount = 1
                     animPlayer.animation.isAppliedOnCompletion = true
                     animPlayer.animation.isRemovedOnCompletion = false
                     animPlayer.speed = self.speed.rawValue
@@ -77,10 +79,49 @@ class LearningPageViewModel: ObservableObject{
                         print("animation ended")
                         //animPlayer.stop()
                         animPlayer.paused = true
+                        isAnimationEnded.wrappedValue = true
 //                        DispatchQueue.main.sync {
 //                            self.shouldShowChatBox = true
 //                        }
                         //
+                        if UserDefaults.standard.bool(forKey: self.courseMaterials[self.materialIndex].title) {
+                            print("Data already saved")
+                        } else {
+                            UserDefaults.standard.set(true, forKey: self.courseMaterials[self.materialIndex].title)
+                        }
+                    }
+                    animPlayer.animation.animationEvents = [event]
+                    animPlayer.play()
+                }
+            }
+        }
+        
+    }
+    
+    func playAnimations(shouldShowChatBox: Binding<Bool>, isAnimationEnded: Binding<Bool>) {
+        shouldShowChatBox.wrappedValue = false
+        for node in nodesWithAnimation {
+            DispatchQueue.main.asyncAfter(deadline: .now()) {
+                if let animPlayer: SCNAnimationPlayer = node.animationPlayer(forKey: self.getAnimationKey()) {
+                    animPlayer.animation.repeatCount = 1
+                    animPlayer.animation.isAppliedOnCompletion = true
+                    animPlayer.animation.isRemovedOnCompletion = false
+                    animPlayer.speed = self.speed.rawValue
+                    let event = SCNAnimationEvent(keyTime: 0.95) { animation, object, backward in
+                        print("animation ended")
+                        shouldShowChatBox.wrappedValue = true
+                        //animPlayer.stop()
+                        animPlayer.paused = true
+                        isAnimationEnded.wrappedValue = true
+//                        DispatchQueue.main.sync {
+//                            self.isAnimationEnded = true
+//                        }
+                        //
+                        if UserDefaults.standard.bool(forKey: self.courseMaterials[self.materialIndex].title) {
+                            print("Data already saved")
+                        } else {
+                            UserDefaults.standard.set(true, forKey: self.courseMaterials[self.materialIndex].title)
+                        }
                     }
                     animPlayer.animation.animationEvents = [event]
                     animPlayer.play()
@@ -99,14 +140,16 @@ class LearningPageViewModel: ObservableObject{
         }
     }
     
-    func playPauseAnimations() {
+    func playPauseAnimations(isPaused: Binding<Bool>) {
         var counter = 0
         for node in nodesWithAnimation {
             if let animPlayer: SCNAnimationPlayer = node.animationPlayer(forKey: self.getAnimationKey()) {
                 animPlayer.paused.toggle()
+                isPaused.wrappedValue.toggle()
                 counter += 1
                 if counter % 2 == 0 {
                     animPlayer.paused.toggle()
+                    isPaused.wrappedValue.toggle()
                 }
             }
         }
@@ -153,6 +196,7 @@ class LearningPageViewModel: ObservableObject{
         }
         
         //idleScene.background.contents = (colorScheme == .dark ? UIColor.black : UIColor.white)
+        //idleScene.background.contents = UIColor.init(red: 0, green: 0, blue: 0, alpha: colorScheme == .light ? 0.5 : 0.5)
 
         idleScene.rootNode.addChildNode(node)
 
@@ -178,7 +222,8 @@ class LearningPageViewModel: ObservableObject{
         }
     }
     
-    func autoPlayAnimation() {
+    func autoPlayAnimation(shouldShowChatBox: Binding<Bool>) {
+        shouldShowChatBox.wrappedValue = false
         for node in nodesWithAnimation {
             DispatchQueue.main.asyncAfter(deadline: .now()) {
                 if let animPlayer: SCNAnimationPlayer = node.animationPlayer(forKey: self.getAnimationKey()) {
@@ -188,8 +233,16 @@ class LearningPageViewModel: ObservableObject{
                     animPlayer.speed = self.speed.rawValue
                     let event = SCNAnimationEvent(keyTime: 0.95) { animation, object, backward in
                         print("animation ended")
+                        shouldShowChatBox.wrappedValue = true
                         //animPlayer.stop()
                         animPlayer.paused = true
+                        
+                        if UserDefaults.standard.bool(forKey: self.courseMaterials[self.materialIndex].title) {
+                            print("Data already saved")
+                        } else {
+                            UserDefaults.standard.set(true, forKey: self.courseMaterials[self.materialIndex].title)
+                        }
+                        
                         if self.autoPlayOn == true {
                             if self.materialIndex < self.courseMaterials.endIndex - 1 {
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
@@ -202,12 +255,13 @@ class LearningPageViewModel: ObservableObject{
                                 DispatchQueue.main.async {
                                     self.autoPlayOn = false
                                 }
+                            } else {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                                    self.autoPlayAnimation(shouldShowChatBox: shouldShowChatBox)
+                                }
                             }
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                                self.autoPlayAnimation()
-                            }
-                            
                         }
+
                     }
                     animPlayer.animation.animationEvents = [event]
                     if self.autoPlayOn == true {

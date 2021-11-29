@@ -20,18 +20,18 @@
 		304FD0272728121400E45C39 /* LearningPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304FD0262728121400E45C39 /* LearningPageView.swift */; };
 		304FD0292728123300E45C39 /* MaterialSnapPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304FD0282728123300E45C39 /* MaterialSnapPickerView.swift */; };
 		307DE0BB27425DEF0086B586 /* VideoCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307DE0BA27425DEF0086B586 /* VideoCapture.swift */; };
-		307DE0BD274260F00086B586 /* BisyaratHandActionModel1 1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 307DE0BC274260F00086B586 /* BisyaratHandActionModel1 1.mlmodel */; };
 		307DE0BF2742614F0086B586 /* Predictor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307DE0BE2742614F0086B586 /* Predictor.swift */; };
 		3093EA1C274B238D003F5DA8 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3093EA1B274B238D003F5DA8 /* CameraView.swift */; };
 		3093EA1E274B23CF003F5DA8 /* ChallengeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3093EA1D274B23CF003F5DA8 /* ChallengeView.swift */; };
 		3093EA22274B9046003F5DA8 /* ChallengePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3093EA21274B9045003F5DA8 /* ChallengePageViewModel.swift */; };
 		3093EA24274E3874003F5DA8 /* ChallengeFinishedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3093EA23274E3874003F5DA8 /* ChallengeFinishedView.swift */; };
-		3093EA2A274EAC03003F5DA8 /* Animasi 10 Bisindo.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 3093EA29274EAC03003F5DA8 /* Animasi 10 Bisindo.usdz */; };
 		3093EA2E274F755E003F5DA8 /* PracticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3093EA2D274F755E003F5DA8 /* PracticeView.swift */; };
 		3093EA30274F76E8003F5DA8 /* PracticePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3093EA2F274F76E8003F5DA8 /* PracticePageViewModel.swift */; };
 		3093EA32274F77B0003F5DA8 /* MaterialPracticeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3093EA31274F77B0003F5DA8 /* MaterialPracticeModel.swift */; };
 		3093EA36274F7F61003F5DA8 /* PracticeCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3093EA35274F7F61003F5DA8 /* PracticeCameraViewController.swift */; };
 		30AF39D2274FFEAC00549641 /* PracticeCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AF39D1274FFEAC00549641 /* PracticeCameraView.swift */; };
+		30AF39D627537C4C00549641 /* BisyaratChallenge1New 1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 30AF39D527537C4B00549641 /* BisyaratChallenge1New 1.mlmodel */; };
+		30AF39D8275520A800549641 /* Alfabet dan pengenalan diri.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 30AF39D7275520A800549641 /* Alfabet dan pengenalan diri.usdz */; };
 		30C33F73272F804800E2CBBB /* LPTutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C33F72272F804800E2CBBB /* LPTutorialView.swift */; };
 		30D4AB9C27293C8600956F30 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D4AB9B27293C8600956F30 /* Animations.swift */; };
 		A01547602726A24C00947521 /* CourseCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A015475F2726A24C00947521 /* CourseCellView.swift */; };
@@ -44,8 +44,6 @@
 		A03C5FFD2722CB250014FD2C /* LearningPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03C5FFC2722CB250014FD2C /* LearningPageViewModel.swift */; };
 		A05A9164273A5A4E00249484 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05A9163273A5A4E00249484 /* CameraViewController.swift */; };
 		A05A9166273A626F00249484 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05A9165273A626F00249484 /* AppError.swift */; };
-		A072B7C2274F7B3F00DA8CBB /* Animasi 10 Bisindo.usdz in Resources */ = {isa = PBXBuildFile; fileRef = A072B7C1274F7B3F00DA8CBB /* Animasi 10 Bisindo.usdz */; };
-		A072B7C4274F7B5B00DA8CBB /* A dan B.usdz in Resources */ = {isa = PBXBuildFile; fileRef = A072B7C3274F7B5B00DA8CBB /* A dan B.usdz */; };
 		A092AC422733DF0200B325F3 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A092AC412733DF0200B325F3 /* OnboardingView.swift */; };
 		A092AC442733DF2500B325F3 /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A092AC432733DF2500B325F3 /* OnboardingModel.swift */; };
 		A0F412832727F171009B8569 /* ColorHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F412822727F171009B8569 /* ColorHex.swift */; };
@@ -67,18 +65,18 @@
 		304FD0262728121400E45C39 /* LearningPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningPageView.swift; sourceTree = "<group>"; };
 		304FD0282728123300E45C39 /* MaterialSnapPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialSnapPickerView.swift; sourceTree = "<group>"; };
 		307DE0BA27425DEF0086B586 /* VideoCapture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCapture.swift; sourceTree = "<group>"; };
-		307DE0BC274260F00086B586 /* BisyaratHandActionModel1 1.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "BisyaratHandActionModel1 1.mlmodel"; sourceTree = "<group>"; };
 		307DE0BE2742614F0086B586 /* Predictor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Predictor.swift; sourceTree = "<group>"; };
 		3093EA1B274B238D003F5DA8 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		3093EA1D274B23CF003F5DA8 /* ChallengeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeView.swift; sourceTree = "<group>"; };
 		3093EA21274B9045003F5DA8 /* ChallengePageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengePageViewModel.swift; sourceTree = "<group>"; };
 		3093EA23274E3874003F5DA8 /* ChallengeFinishedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeFinishedView.swift; sourceTree = "<group>"; };
-		3093EA29274EAC03003F5DA8 /* Animasi 10 Bisindo.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = "Animasi 10 Bisindo.usdz"; sourceTree = "<group>"; };
 		3093EA2D274F755E003F5DA8 /* PracticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeView.swift; sourceTree = "<group>"; };
 		3093EA2F274F76E8003F5DA8 /* PracticePageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticePageViewModel.swift; sourceTree = "<group>"; };
 		3093EA31274F77B0003F5DA8 /* MaterialPracticeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialPracticeModel.swift; sourceTree = "<group>"; };
 		3093EA35274F7F61003F5DA8 /* PracticeCameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeCameraViewController.swift; sourceTree = "<group>"; };
 		30AF39D1274FFEAC00549641 /* PracticeCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeCameraView.swift; sourceTree = "<group>"; };
+		30AF39D527537C4B00549641 /* BisyaratChallenge1New 1.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "BisyaratChallenge1New 1.mlmodel"; sourceTree = "<group>"; };
+		30AF39D7275520A800549641 /* Alfabet dan pengenalan diri.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = "Alfabet dan pengenalan diri.usdz"; sourceTree = "<group>"; };
 		30C33F72272F804800E2CBBB /* LPTutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LPTutorialView.swift; sourceTree = "<group>"; };
 		30D4AB9B27293C8600956F30 /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
 		A015475F2726A24C00947521 /* CourseCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCellView.swift; sourceTree = "<group>"; };
@@ -92,8 +90,6 @@
 		A05A9163273A5A4E00249484 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		A05A9165273A626F00249484 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		A05A9182273A69A800249484 /* Bisyarat-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Bisyarat-Info.plist"; sourceTree = "<group>"; };
-		A072B7C1274F7B3F00DA8CBB /* Animasi 10 Bisindo.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = "Animasi 10 Bisindo.usdz"; sourceTree = "<group>"; };
-		A072B7C3274F7B5B00DA8CBB /* A dan B.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = "A dan B.usdz"; sourceTree = "<group>"; };
 		A092AC412733DF0200B325F3 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		A092AC432733DF2500B325F3 /* OnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
 		A0F412822727F171009B8569 /* ColorHex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHex.swift; sourceTree = "<group>"; };
@@ -140,8 +136,8 @@
 				302A1FC927182B320032F4DE /* ContentView.swift */,
 				30D4AB9B27293C8600956F30 /* Animations.swift */,
 				302A1FCB27182B340032F4DE /* Assets.xcassets */,
-				307DE0BC274260F00086B586 /* BisyaratHandActionModel1 1.mlmodel */,
 				30449AA92749581C0027C9A2 /* BisyaratChallenge_1 1.mlmodel */,
+				30AF39D527537C4B00549641 /* BisyaratChallenge1New 1.mlmodel */,
 				302A1FE7271D79FE0032F4DE /* 3dAsset */,
 				302A1FCD27182B340032F4DE /* Preview Content */,
 			);
@@ -197,7 +193,7 @@
 		302A1FE7271D79FE0032F4DE /* 3dAsset */ = {
 			isa = PBXGroup;
 			children = (
-				3093EA29274EAC03003F5DA8 /* Animasi 10 Bisindo.usdz */,
+				30AF39D7275520A800549641 /* Alfabet dan pengenalan diri.usdz */,
 			);
 			path = 3dAsset;
 			sourceTree = "<group>";
@@ -237,13 +233,6 @@
 				307DE0BE2742614F0086B586 /* Predictor.swift */,
 			);
 			path = Challenge;
-			sourceTree = "<group>";
-		};
-		A072B7BC274F70A100DA8CBB /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		A0F412842727F186009B8569 /* Extension */ = {
@@ -314,8 +303,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				302A1FCF27182B340032F4DE /* Preview Assets.xcassets in Resources */,
-				3093EA2A274EAC03003F5DA8 /* Animasi 10 Bisindo.usdz in Resources */,
 				302A1FCC27182B340032F4DE /* Assets.xcassets in Resources */,
+				30AF39D8275520A800549641 /* Alfabet dan pengenalan diri.usdz in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,7 +328,6 @@
 				307DE0BB27425DEF0086B586 /* VideoCapture.swift in Sources */,
 				A03A5783273BC6F000E45071 /* ChallengeListViewModel.swift in Sources */,
 				A01547602726A24C00947521 /* CourseCellView.swift in Sources */,
-				307DE0BD274260F00086B586 /* BisyaratHandActionModel1 1.mlmodel in Sources */,
 				A03A5785273BC79800E45071 /* ChallengeSampleData.swift in Sources */,
 				A03A5781273BC65D00E45071 /* ChallengeListView.swift in Sources */,
 				304FD0292728123300E45C39 /* MaterialSnapPickerView.swift in Sources */,
@@ -355,6 +343,7 @@
 				30AF39D2274FFEAC00549641 /* PracticeCameraView.swift in Sources */,
 				3093EA24274E3874003F5DA8 /* ChallengeFinishedView.swift in Sources */,
 				A05A9166273A626F00249484 /* AppError.swift in Sources */,
+				30AF39D627537C4C00549641 /* BisyaratChallenge1New 1.mlmodel in Sources */,
 				A03C5FFB2722C9720014FD2C /* CourseListViewModel.swift in Sources */,
 				30D4AB9C27293C8600956F30 /* Animations.swift in Sources */,
 				302A1FF1272174AE0032F4DE /* CourseSampleData.swift in Sources */,
@@ -492,7 +481,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"MacroPowerRanger/Preview Content\"";
 				DEVELOPMENT_TEAM = UG27AN3F2U;
 				ENABLE_PREVIEWS = YES;
@@ -525,7 +514,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"MacroPowerRanger/Preview Content\"";
 				DEVELOPMENT_TEAM = UG27AN3F2U;
 				ENABLE_PREVIEWS = YES;

@@ -10,7 +10,7 @@ import SwiftUI
 struct ChallengeListView: View {
     @ObservedObject var viewModel = ChallengeListViewModel()
     
-    private let gridItems = [GridItem(.flexible(), spacing: 10),GridItem(.flexible(), spacing: 110)]
+    private let gridItems = [GridItem(.flexible(), spacing: 0), GridItem(.flexible(), spacing: 0)]
     
     var body: some View {
         
@@ -27,8 +27,8 @@ struct ChallengeListView: View {
                 })
             }
         
-        .navigationTitle("Tantangan")
-        .navigationBarTitleDisplayMode(.inline)
+        //.navigationTitle("Tantangan")
+        .navigationBarTitleDisplayMode(.large)
     }
 }
 

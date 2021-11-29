@@ -11,98 +11,130 @@ struct ChallengeFinishedView: View {
     
     @ObservedObject var challengePageViewModel: ChallengePageViewModel
     @State private var showAlert = false
+    @Binding var isPresenting: Bool
     
     var body: some View {
-        if challengePageViewModel.currentProgress == 1 {
-            ZStack {
-                Rectangle()
-                    .foregroundColor(.black)
-                    .opacity(0.5)
-                    .frame(width: .infinity, height: .infinity)
-                    .ignoresSafeArea(.all)
-                Rectangle()
-                    .cornerRadius(20)
-                    .foregroundColor(.white)
-                    .frame(width: UIScreen.main.bounds.width * 0.75, height: UIScreen.main.bounds.height * 0.6)
-                VStack {
-                    HStack {
-                        Button {
-                            challengePageViewModel.dismissChallenge = true
-                        } label: {
-                            Image(systemName: "xmark.circle.fill")
-                                .font(.largeTitle)
-                                .foregroundColor(.black)
-                                .opacity(0.25)
-                                .frame(width: 40, height: 40)
-                        }
-                        .padding()
+        ZStack {
+            Rectangle()
+                .foregroundColor(Color("MainColor"))
+                .opacity(1)
+                .frame(width: .infinity, height: .infinity)
+                .ignoresSafeArea(.all)
+            VStack {
+                Image("Confetti")
+                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.75)
+                    .ignoresSafeArea()
+                Spacer()
+            }
+            Image("Hore")
+            
+            VStack {
+                Spacer(minLength: UIScreen.main.bounds.height * 0.57)
+                
+                ZStack {
+                    Rectangle()
+                        .cornerRadius(50)
+                        .foregroundColor(Color("ChallengeFinishBackground"))
+                        .frame(width: UIScreen.main.bounds.width)
+                    
+                    VStack() {
+                        Spacer()
+                        
+                        VStack(alignment: .center) {
+                            Text("Selamat!")
+                                .font(.system(size: 34))
+                                .fontWeight(.bold)
+                                .foregroundColor(Color("MainColor"))
+                            Text("Kamu berhasil menyelesaikan tantangan")
+                                .font(.system(size: 14))
+                                .foregroundColor(Color("MainColor"))
+                            
+                            Text("Skor: \(challengePageViewModel.correctAnswerCounter) Benar, \(challengePageViewModel.wrongAnserCounter) Salah")
+                                .font(.system(size: 24))
+                                .padding(.vertical, 20)
+                            
+                            Text("Apakah ingin mengulang tema ini atau lanjut ke tema berikutnya?")
+                                .multilineTextAlignment(.center)
+                                .lineLimit(2)
+                                .font(.system(size: 16))
+                        }.padding(.horizontal, 60)
+                        
+                        Spacer()
+                        Spacer()
+                        
+                        HStack(spacing: 50) {
+                            Button {
+                                isPresenting = false
+                                challengePageViewModel.refreshState()
+                            } label: {
+                                Text("Ulangi")
+                                    .font(.system(size: 16))
+                                    .foregroundColor(Color("MainColor"))
+                                    .padding()
+                                    .frame(width: 140, height: 40)
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 20)
+                                            .strokeBorder(lineWidth: 2)
+                                            .foregroundColor(Color("MainColor"))
+                                    )
+                            }
+                            Button {
+                                showAlert = true
+                            } label: {
+                                Text("Lanjut Materi")
+                                    .font(.system(size: 16))
+                                    .foregroundColor(.white)
+                                    .padding()
+                                    .frame(width: 140, height: 40)
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 20)
+                                            .foregroundColor(Color("MainColor"))
+                                    )
+                            }
+                            .alert("Tantangan 2 belum tersedia :(", isPresented: $showAlert) {
+                                Button("OK", role: .cancel) { }
+                            }
+                        }.frame(width: UIScreen.main.bounds.width)
+                        .padding(.vertical)
                         Spacer()
                     }
                     
-                    Spacer()
-                    
-                    VStack {
-                        Text("🎉")
-                            .font(.system(size: 150))
-                            .frame(width: 200, height: 200)
-                        Text("Selamat!")
-                            .font(.system(size: 30))
-                    }
-                    
-                    Spacer()
-                    
-                    VStack(alignment: .leading) {
-                        Text("Jumlah benar: \(challengePageViewModel.correctAnswerCounter)")
-                        Text("Jumlah salah: \(challengePageViewModel.wrongAnserCounter)")
-                    }
-                    .font(.title2)
-                    .foregroundColor(.black)
-                    
-                    Spacer()
-                    
-                    HStack(spacing: 50) {
-                        Button {
-                            challengePageViewModel.refreshState()
-                        } label: {
-                            Text("Ulangi")
-                                .font(.title2)
-                                .foregroundColor(.white)
-                                .padding()
-                                .background(
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .foregroundColor(.gray)
-                                )
-                        }
-                        Button {
-                             showAlert = true
-                        } label: {
-                            Text("Lanjut")
-                                .font(.title2)
-                                .foregroundColor(.white)
-                                .padding()
-                                .background(
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .foregroundColor(Color("MainColor"))
-                                )
-                        }
-                        .alert("Tantangan 2 belum tersedia :(", isPresented: $showAlert) {
-                            Button("OK", role: .cancel) { }
-                        }
-                    }.padding(.vertical)
-                }.frame(width: UIScreen.main.bounds.width * 0.75, height: UIScreen.main.bounds.height * 0.6)
-            }.onAppear {
-                UIApplication.shared.isIdleTimerDisabled = false
+                }.frame(width: UIScreen.main.bounds.width)
             }
             
-        } else {
-            EmptyView()
+            VStack {
+                HStack {
+                    Button {
+                        isPresenting = false
+                        challengePageViewModel.dismissChallenge = true
+                    } label: {
+                        Image(systemName: "xmark")
+                            .font(.title2)
+                            .foregroundColor(.white)
+                            .background(
+                                Circle()
+                                    .foregroundColor(.black)
+                                    .opacity(0.25)
+                                    .frame(width: 40, height: 40)
+                            )
+                    }
+                    .padding(25)
+                    .padding(.vertical)
+                    Spacer()
+                }
+                
+                Spacer()
+                
+            }.frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        }.onAppear {
+            UIApplication.shared.isIdleTimerDisabled = false
         }
         
     }
 }
 
-struct ChallengeFinishedView_Previews: PreviewProvider {
-    static var previews: some View {
-        ChallengeFinishedView(challengePageViewModel: ChallengePageViewModel())
-    }
-}
+//struct ChallengeFinishedView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ChallengeFinishedView(challengePageViewModel: ChallengePageViewModel(), isPresenting: true)
+//    }
+//}

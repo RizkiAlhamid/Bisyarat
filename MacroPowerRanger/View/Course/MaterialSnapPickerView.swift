@@ -35,21 +35,21 @@ struct MaterialSnapPicker<Content: View>: View {
         
         ZStack {
             Rectangle()
-                .fill(Color(red: 244/255, green: 244/255, blue: 244/255))
+                .fill(Color("SliderBackground"))
                 .frame(maxWidth: .infinity)
                 .cornerRadius(40)
                 .ignoresSafeArea()
             
             GeometryReader { proxy in
                 
-                let width = proxy.size.width / 5 - (trailingSpace - spacing)
+                let width = (proxy.size.width / 5) - (trailingSpace - spacing)
                 let adjustmentWidth = 17.5
                 
                 HStack(spacing: spacing) {
                     ForEach(list) { item in
                         content(item)
                             .frame(width: proxy.size.width / 5)
-                            .offset(x: (CGFloat(vm.sliderIndex) * -width) + adjustmentWidth + offset)
+                            .offset(x: (CGFloat(vm.sliderIndex) * -width) + adjustmentWidth + offset + 5)
                             .onTapGesture(perform: {
                                 if vm.autoPlayOn == false {
                                     vm.stopAnimations()
@@ -59,7 +59,7 @@ struct MaterialSnapPicker<Content: View>: View {
                                             vm.materialIndex = index
                                         }
                                     }
-                                    vm.playAnimations()
+                                    //vm.playAnimations()
                                 }
                             })
                             .gesture(
@@ -90,7 +90,7 @@ struct MaterialSnapPicker<Content: View>: View {
                                         
                                         vm.materialIndex = index + 2
                                         
-                                        vm.playAnimations()
+                                        //vm.playAnimations()
                                     })
                                     .onChanged({ value in
                                         // updating only index
@@ -121,7 +121,7 @@ struct MaterialSnapPicker<Content: View>: View {
             .animation(.easeInOut, value: offset == 0)
             
             Circle()
-                .strokeBorder(Color(red: 99/255, green: 202/255, blue: 255/255), lineWidth: 5)
+                .strokeBorder(Color("SliderRingColor"), lineWidth: 5)
                 .frame(width: 80, height: 80)
                 
         }
