@@ -12,6 +12,7 @@ struct MainView: View {
     @AppStorage("shouldShowOnboarding") var shouldShowOnboarding: Bool = true
     @State private var tag: Int = 1
     
+    
     var body: some View {
         NavigationView {
             TabView(selection: $tag) {

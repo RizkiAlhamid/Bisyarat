@@ -10,22 +10,24 @@ import SwiftUI
 struct ChallengeListView: View {
     @ObservedObject var viewModel = ChallengeListViewModel()
     
-    private let gridItems = [GridItem(.flexible(), spacing: 0), GridItem(.flexible(), spacing: 0)]
+    private let gridItems = [GridItem(.flexible(), spacing: -20), GridItem(.flexible(), spacing: 0)]
     
     var body: some View {
         
             ScrollView{
-                LazyVGrid(columns: gridItems, content: {
-                    ForEach(viewModel.challenges, id: \.id){practice in
+                LazyVGrid(columns: gridItems, spacing: 20, content: {
+                    ForEach(viewModel.challenges, id: \.id){challenge in
                         NavigationLink(destination: ChallengeView()){
                             ChallengeListCellView(
-                                title: practice.title,
-                                bgImage: practice.bgImage
+                                title: challenge.title,
+                                bgImage: challenge.bgImage, challenge: challenge
+                                
                             )
                         }
                     }
                 })
             }
+            .padding(.top)
         
         //.navigationTitle("Tantangan")
         .navigationBarTitleDisplayMode(.large)
