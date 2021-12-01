@@ -11,8 +11,6 @@ struct CourseListView: View {
     
     @ObservedObject var viewModel = CourseListViewModel()
     
-    
-    
     var body: some View {
         ZStack{
             VStack(){

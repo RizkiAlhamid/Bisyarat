@@ -28,6 +28,8 @@ class ChallengePageViewModel: ObservableObject {
     @Published var dismissChallenge = false
     @Published var showTutorial = true
     
+    @Published var continueChallenge = false
+    
     var challengeTitle: String = "Alfabet 1"
     
     var correctAnswerCounter = 0
@@ -87,9 +89,11 @@ class ChallengePageViewModel: ObservableObject {
             currentProgress = 1
             
             let key = "Tantangan \(challengeTitle)"
-            let score: Double = Double(correctAnswerCounter) / Double(wrongAnserCounter)
+            let score: Double = Double(correctAnswerCounter) / Double(challengeMaterials.count)
             
-            UserDefaults.standard.set(score, forKey: key)
+            if score > UserDefaults.standard.double(forKey: key) {
+                UserDefaults.standard.set(score, forKey: key)
+            }
         }
     }
     
@@ -104,6 +108,7 @@ class ChallengePageViewModel: ObservableObject {
         fetchChallengeMaterials(challenge: ChallengeSampleData.challenges[1])
         refreshState()
         // ganti title
-        
+        challengeTitle = ChallengeSampleData.challenges[1].title
+        continueChallenge = true
     }
 }

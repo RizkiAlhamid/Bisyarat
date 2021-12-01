@@ -83,9 +83,12 @@ struct ChallengeFinishedView: View {
                             }
                             Button {
                                 //if title nya yang kedua
-                                //showAlert = true
-                                isPresenting = false
-                                challengePageViewModel.nextChallenge()
+                                if challengePageViewModel.challengeTitle == "Alfabet 2" {
+                                    showAlert = true
+                                } else {
+                                    isPresenting = false
+                                    challengePageViewModel.nextChallenge()
+                                }
                             } label: {
                                 Text("Lanjut Materi")
                                     .font(.system(size: 16))
@@ -135,7 +138,6 @@ struct ChallengeFinishedView: View {
         }.onAppear {
             UIApplication.shared.isIdleTimerDisabled = false
         }
-        
     }
 }
 

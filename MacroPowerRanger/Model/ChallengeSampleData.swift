@@ -16,23 +16,13 @@ struct ChallengeSampleData {
                                        ChallengeMaterial(id: UUID(), title: "C", outlineImage: "outA"),
                                        ChallengeMaterial(id: UUID(), title: "D", outlineImage: "outA"),
                                        ChallengeMaterial(id: UUID(), title: "E", outlineImage: "outA"),
-                                    ]),
-        Challenge(id: UUID(), title: "Challenge 2", bgImage: "bgImageDasar1",
+                                      ]),
+        Challenge(id: UUID(), title: "Alfabet 2", bgImage: "alfabet2Bg",
                   challengeMaterials: [ChallengeMaterial(id: UUID(), title: "F", outlineImage: "outA"),
                                        ChallengeMaterial(id: UUID(), title: "I", outlineImage: "outA"),
                                        ChallengeMaterial(id: UUID(), title: "J", outlineImage: "outA"),
                                        ChallengeMaterial(id: UUID(), title: "R", outlineImage: "outA"),
                                        ChallengeMaterial(id: UUID(), title: "S", outlineImage: "outA")
-                                    ]),
-        Challenge(id: UUID(), title: "Alfabet 2", bgImage: "alfabet2Bg",
-                  challengeMaterials: [ChallengeMaterial(id: UUID(), title: "A", outlineImage: "outA"),
-                                       ChallengeMaterial(id: UUID(), title: "B", outlineImage: "outA"),
-                                       ChallengeMaterial(id: UUID(), title: "C", outlineImage: "outA"),
-                                    ]),
-        Challenge(id: UUID(), title: "Challenge 2", bgImage: "bgImageDasar1",
-                  challengeMaterials: [ChallengeMaterial(id: UUID(), title: "A", outlineImage: "outA"),
-                                       ChallengeMaterial(id: UUID(), title: "B", outlineImage: "outA"),
-                                       ChallengeMaterial(id: UUID(), title: "C", outlineImage: "outA"),
-                                    ])
+                                      ]),
     ]
 }

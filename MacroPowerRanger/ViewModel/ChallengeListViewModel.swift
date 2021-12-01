@@ -11,6 +11,7 @@ import SwiftUI
 class ChallengeListViewModel: ObservableObject
 {
     @Published var challenges = [Challenge]()
+    @Published private var refresh = false
     
     init(){
         fetchPractices()
@@ -18,5 +19,9 @@ class ChallengeListViewModel: ObservableObject
     
     func fetchPractices(){
         challenges = ChallengeSampleData.challenges
+    }
+    
+    func updateView() {
+        refresh.toggle()
     }
 }

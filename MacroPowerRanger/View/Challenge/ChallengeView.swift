@@ -134,6 +134,10 @@ struct ChallengeView: View {
         })
         .onDisappear(perform: {
             UIApplication.shared.isIdleTimerDisabled = false
+            if challengePageViewModel.challengeTitle == "Alfabet 2" && challengePageViewModel.continueChallenge {
+                challengePageViewModel.fetchChallengeMaterials(challenge: ChallengeSampleData.challenges[0])
+                challengePageViewModel.continueChallenge = false
+            }
         })
         .navigationTitle("Huruf \(challengePageViewModel.challengeMaterials[challengePageViewModel.materialIndex].title)")
         .navigationBarTitleDisplayMode(.inline)

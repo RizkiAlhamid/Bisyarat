@@ -21,13 +21,18 @@ struct ChallengeListView: View {
                             ChallengeListCellView(
                                 title: challenge.title,
                                 bgImage: challenge.bgImage,
-                                challenge: challenge
+                                challenge: challenge,
+                                viewModel: viewModel
                             )
                         }
                     }
                 }).padding(.top)
             }
             .padding(.top)
+            .onAppear(perform: {
+                viewModel.updateView()
+                print("Update view")
+            })
         
         //.navigationTitle("Tantangan")
         .navigationBarTitleDisplayMode(.large)
