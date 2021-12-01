@@ -292,6 +292,7 @@ struct AnimatingImage: View {
                         .resizable()
                         .frame(height: 400)
                     Text("Buat gerakan isyarat sesuai huruf atau kata yang muncul di layar")
+                        .foregroundColor(.white)
                         .font(.system(size: 24))
                         .multilineTextAlignment(.center)
                         .lineLimit(3)

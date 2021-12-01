@@ -197,7 +197,8 @@ class LearningPageViewModel: ObservableObject{
         
         //idleScene.background.contents = (colorScheme == .dark ? UIColor.black : UIColor.white)
         //idleScene.background.contents = UIColor.init(red: 0, green: 0, blue: 0, alpha: colorScheme == .light ? 0.5 : 0.5)
-
+        idleScene.background.contents = UIColor.systemBackground
+        
         idleScene.rootNode.addChildNode(node)
 
         return idleScene
