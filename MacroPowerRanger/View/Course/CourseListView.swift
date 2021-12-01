@@ -17,7 +17,6 @@ struct CourseListView: View {
         ZStack{
             VStack(){
                 ScrollView() {
-                    
                     ForEach(viewModel.courses, id: \.id){ course in
                         NavigationLink(destination: LearningPageView(learningPageViewModel: LearningPageViewModel.init(course: course))) {
                             CourseCellView(

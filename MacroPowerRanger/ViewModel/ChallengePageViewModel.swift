@@ -27,6 +27,8 @@ class ChallengePageViewModel: ObservableObject {
     
     @Published var dismissChallenge = false
     
+    var challengeTitle: String = "Alfabet 1"
+    
     var correctAnswerCounter = 0
     var wrongAnserCounter = 0
     
@@ -41,6 +43,7 @@ class ChallengePageViewModel: ObservableObject {
     
     init(challenge: Challenge) {
         fetchChallengeMaterials(challenge: challenge)
+        challengeTitle = challenge.title
         //currentProgress = 1 / Double(challengeMaterials.count)
     }
     
@@ -81,6 +84,11 @@ class ChallengePageViewModel: ObservableObject {
             currentProgress = Double(materialIndex) / Double(challengeMaterials.count)
         } else {
             currentProgress = 1
+            
+            let key = "Tantangan \(challengeTitle)"
+            let score: Double = Double(correctAnswerCounter) / Double(wrongAnserCounter)
+            
+            UserDefaults.standard.set(score, forKey: key)
         }
     }
     

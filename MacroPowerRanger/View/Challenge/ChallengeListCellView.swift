@@ -11,10 +11,10 @@ struct ChallengeListCellView: View {
     let title: String
     let bgImage: String
     var challenge: Challenge
-    
+    var scoresementara = 1.0
     var body: some View {
         
-        //Belum nemu cara
+        
         
         VStack(alignment: .leading, spacing: 0){
             //title
@@ -40,15 +40,72 @@ struct ChallengeListCellView: View {
                         Image(systemName: "flag.and.flag.filled.crossed")
                         Text("\(challenge.challengeMaterials.count) Alfabet")
                     }.foregroundColor(.black)
-                        .padding(.bottom, 10)
+                        .padding(.top, 10)
                     HStack{
-                        Image(systemName: "crown.fill")
-                            .foregroundColor(.yellow)
-                        Image(systemName: "crown")
-                            .foregroundColor(.primary)
-                        Image(systemName: "crown")
-                            .foregroundColor(.primary)
-                    }
+                        //if 0.3...0.59 ~= scoresementara{
+                        if 0.3...0.59 ~= getUserProgress(){
+                            Image("piala.fill")
+                                //.foregroundColor(.yellow)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 20.98, height: 20.57)
+                            Image("piala")
+                                //.foregroundColor(.primary)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 20.98, height: 20.57)
+                            Image("piala")
+                                //.foregroundColor(.primary)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 20.98, height: 20.57)
+                        }
+                        //else if 0.6...0.99 ~= scoresementara{
+                        else if 0.6...0.99 ~= getUserProgress(){
+                            Image("piala.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 20.98, height: 20.57)
+                            Image("piala.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 20.98, height: 20.57)
+                            Image("piala")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 20.98, height: 20.57)
+                        }
+                        //else if scoresementara == 1{
+                        else if getUserProgress() == 1{
+                            Image("piala.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 20.98, height: 20.57)
+                            Image("piala.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 20.98, height: 20.57)
+                            Image("piala.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 20.98, height: 20.57)
+                        }
+                        //else if 0...0.29 ~= scoresementara{
+                        else if 0...0.29 ~= getUserProgress(){
+                            Image("piala")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 20.98, height: 20.57)
+                            Image("piala")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 20.98, height: 20.57)
+                            Image("piala")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 20.98, height: 20.57)
+                        }
+                    }.padding(.bottom,10)
                 }
                 
             }.frame(width: 160, height: 69)
@@ -85,6 +142,9 @@ struct ChallengeListCellView: View {
 
         )
 
+    }
+    func getUserProgress() -> Double {
+        return UserDefaults.standard.double(forKey: "Tantangan \(challenge.title)")
     }
 }
 

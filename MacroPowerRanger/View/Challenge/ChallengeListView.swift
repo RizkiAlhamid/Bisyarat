@@ -17,7 +17,7 @@ struct ChallengeListView: View {
             ScrollView{
                 LazyVGrid(columns: gridItems, spacing: 20, content: {
                     ForEach(viewModel.challenges, id: \.id){challenge in
-                        NavigationLink(destination: ChallengeView()){
+                        NavigationLink(destination: ChallengeView(challengePageViewModel: .init(challenge: challenge))){
                             ChallengeListCellView(
                                 title: challenge.title,
                                 bgImage: challenge.bgImage, challenge: challenge

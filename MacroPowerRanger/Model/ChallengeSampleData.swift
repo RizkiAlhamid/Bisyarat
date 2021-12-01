@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ChallengeSampleData {
     static var challenges: [Challenge] = [
-        Challenge(id: UUID(), title: "Challenge 1", bgImage: "alfabet1Bg",
+        Challenge(id: UUID(), title: "Alfabet 1", bgImage: "alfabet1Bg",
                   challengeMaterials: [ChallengeMaterial(id: UUID(), title: "A", outlineImage: "outA"),
                                        ChallengeMaterial(id: UUID(), title: "B", outlineImage: "outA"),
                                        ChallengeMaterial(id: UUID(), title: "C", outlineImage: "outA"),
@@ -22,7 +22,7 @@ struct ChallengeSampleData {
                                        ChallengeMaterial(id: UUID(), title: "R", outlineImage: "outA"),
                                        ChallengeMaterial(id: UUID(), title: "S", outlineImage: "outA")
                                     ]),
-        Challenge(id: UUID(), title: "Challenge 2", bgImage: "bgImageDasar1",
+        Challenge(id: UUID(), title: "Alfabet 2", bgImage: "alfabet2Bg",
                   challengeMaterials: [ChallengeMaterial(id: UUID(), title: "A", outlineImage: "outA"),
                                        ChallengeMaterial(id: UUID(), title: "B", outlineImage: "outA"),
                                        ChallengeMaterial(id: UUID(), title: "C", outlineImage: "outA"),
