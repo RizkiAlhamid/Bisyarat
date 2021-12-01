@@ -11,23 +11,55 @@ struct MainView: View {
     
     @AppStorage("shouldShowOnboarding") var shouldShowOnboarding: Bool = true
     @State private var tag: Int = 1
+    @State var animate = false
+    @State var endSplash = false
     
     var body: some View {
-        NavigationView {
-            TabView(selection: $tag) {
-                CourseListView()
-                    .tabItem {
-                        Label("Belajar", systemImage: "book.fill")
-                    }.tag(1)
-                ChallengeListView()
-                    .tabItem {
-                        Label("Tantangan", systemImage: "flag.2.crossed.fill")
-                    }.tag(2)
+        ZStack {
+            NavigationView {
+                TabView(selection: $tag) {
+                    CourseListView()
+                        .tabItem {
+                            Label("Belajar", systemImage: "book.fill")
+                        }.tag(1)
+                    ChallengeListView()
+                        .tabItem {
+                            Label("Tantangan", systemImage: "flag.2.crossed.fill")
+                        }.tag(2)
+                }
+                .navigationTitle(tag == 1 ? "Belajar" : "Tantangan")
+                .fullScreenCover(isPresented: $shouldShowOnboarding, content: { OnboardingView(shouldShowOnboarding: $shouldShowOnboarding)
+                    
+                })
             }
-            .navigationTitle(tag == 1 ? "Belajar" : "Tantangan")
-            .fullScreenCover(isPresented: $shouldShowOnboarding, content: { OnboardingView(shouldShowOnboarding: $shouldShowOnboarding)
+            
+            ZStack {
+                Color("LaunchScreenBg")
                 
-            })
+                Image("bisyaratLarge")
+                    .resizable()
+                    .renderingMode(.original)
+                    .aspectRatio(contentMode: animate ? .fill : .fit)
+                    .frame(width: animate ? nil : 104, height: animate ? nil : 121)
+                    .scaleEffect(animate ? 3 : 1)
+                    .frame(width: UIScreen.main.bounds.width)
+            }
+            .ignoresSafeArea(.all, edges: .all)
+            .onAppear(perform: animateSplash)
+            .opacity(endSplash ? 0 : 1)
+        }
+    }
+    
+    func animateSplash() {
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+            withAnimation(Animation.easeOut(duration: 0.45)) {
+                animate.toggle()
+            }
+            
+            withAnimation(Animation.easeOut(duration: 0.35)) {
+                endSplash.toggle()
+            }
         }
     }
 }

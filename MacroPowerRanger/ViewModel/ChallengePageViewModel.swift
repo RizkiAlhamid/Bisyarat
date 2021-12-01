@@ -47,7 +47,7 @@ class ChallengePageViewModel: ObservableObject {
     func refreshState() {
         materialIndex = 0
         startTimer = 3
-        guestTimer = 5
+        guestTimer = 7
         isHandInFrame = false
         isGuessedTrue = false
         shouldStartClassifying = false
@@ -72,7 +72,7 @@ class ChallengePageViewModel: ObservableObject {
         
         if materialIndex < challengeMaterials.count - 1 {
             materialIndex += 1
-            guestTimer = 5
+            guestTimer = 7
             isTimesUp = false
             isGuessedTrue = false
             shouldStartClassifying = false
@@ -84,4 +84,10 @@ class ChallengePageViewModel: ObservableObject {
         }
     }
     
+    func getUserProgress() -> Double {
+        let progress: Double = Double(materialIndex + 1)
+        let total: Double = Double(challengeMaterials.count)
+        
+        return progress / total
+    }
 }

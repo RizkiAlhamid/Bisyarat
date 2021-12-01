@@ -33,7 +33,7 @@ struct LearningPageView: View {
                         Spacer()
                         SettingButtonsView(vm: learningPageViewModel, isPaused: $isPaused, shouldShowChatBox: $shouldShowChatBox, isAnimationEnded: $isAnimationEnded)
                     }
-                }
+                }//.frame(height: UIScreen.main.bounds.height * 0.5)
                 
                 MaterialSnapPicker(vm: learningPageViewModel, index: $currentIndex, items: learningPageViewModel.courseMaterials) { material in
                     
@@ -43,7 +43,7 @@ struct LearningPageView: View {
                         ZStack {
                             Circle()
                                 .fill(Color("SecondarySliderColor"))
-                                .frame(width: 35)
+                                .frame(width: proxy.size.width * 0.45)
                                 .clipped()
                             Text(material.title)
                                 .font(.system(size: 12))
@@ -53,9 +53,10 @@ struct LearningPageView: View {
                                 
                         }
                         .scaleEffect(.init(width: scale, height: scale))
-                    }
+                    }.frame(width: 77.5)
                     
                 }.frame(height: 125)
+                .disabled(tutorialCounter == 6)
                 
                 
                 
@@ -101,8 +102,8 @@ struct LearningPageView: View {
         if diff < UIScreen.main.bounds.width - 175 {
             scale = 1 + (UIScreen.main.bounds.width - 200 - diff) / 170
         }
-        
-        return scale
+        print("scale", scale)
+        return min(scale, 2.09)
     }
     
     static func makeScene() -> SCNScene? {

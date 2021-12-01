@@ -13,7 +13,15 @@ struct ChallengeView: View {
     @State private var isPresenting = false
     
     @Environment(\.presentationMode) var presentationMode
-
+    
+    let images: [Image] = {
+        var images: [Image] = [Image("Tantangan-\(0)")]
+        for number in 1...59 {
+            images.append(Image("Tantangan-\(number)"))
+        }
+        return images
+    }()
+    
     var body: some View {
         ZStack {
             CameraView(vm: challengePageViewModel)
@@ -37,6 +45,10 @@ struct ChallengeView: View {
                     timesUpBadge
                         .animation(.default)
                 )
+//                .overlay(
+//                    AnimatingImage(images: images)
+//                        .animation(.default)
+//                )
             VStack {
                 Text("00:0\(challengePageViewModel.guestTimer)")
                     .font(.title2)
@@ -136,12 +148,17 @@ struct ChallengeView: View {
                     .opacity(0.5)
                     .frame(width: .infinity, height: .infinity)
                     .ignoresSafeArea(.all)
+                Circle()
+//                    .resizable()
+//                    .imageScale(.large)
+                    .foregroundColor(.white)
+                    .frame(width: 160, height: 160)
                 Image(systemName: "checkmark.seal.fill")
                     .resizable()
                     .imageScale(.large)
                     .foregroundColor(Color("MainColor"))
                     .frame(width: 200, height: 200)
-                    .shadow(radius: 5)
+                    //.shadow(radius: 5)
             }
         } else {
             EmptyView()
@@ -180,7 +197,7 @@ struct ChallengeView: View {
     private var questionBadge: some View {
         if challengePageViewModel.shouldShowQuestion == true {
             Text("Huruf \(challengePageViewModel.materialBeingAsked)")
-                .foregroundColor(.black)
+                .foregroundColor(.primary)
                 .multilineTextAlignment(.center)
                 .lineLimit(2)
                 .font(.title)
@@ -188,7 +205,7 @@ struct ChallengeView: View {
                     Rectangle()
                         .cornerRadius(16)
                         .frame(width: 200, height: 200)
-                        .foregroundColor(.white)
+                        .foregroundColor(Color("BadgeBgColor"))
                 )
         } else {
             EmptyView()
@@ -200,10 +217,10 @@ struct ChallengeView: View {
         if challengePageViewModel.startTimer > 0 && challengePageViewModel.isHandInFrame == true {
             Text("\(challengePageViewModel.startTimer)")
                 .font(.largeTitle)
-                .foregroundColor(.black)
+                .foregroundColor(.primary)
                 .background(
                     Circle()
-                        .foregroundColor(.white)
+                        .foregroundColor(Color("BadgeBgColor"))
                         .frame(width: 200, height: 200)
                         .shadow(radius: 5)
                 )
@@ -244,12 +261,43 @@ struct ChallengeView: View {
                     .frame(width: 300, height: 20)
                 RoundedRectangle(cornerRadius: 20)
                     .foregroundColor(Color("MainColor"))
-                    .frame(width: 300 * (challengePageViewModel.currentProgress + 0.1), height: 20)
+                    .frame(width: 300 * challengePageViewModel.getUserProgress(), height: 20)
             }
         }
         .padding(.vertical)
     }
 }
+
+struct AnimatingImage: View {
+    let images: [Image]
+
+    @ObservedObject private var counter = Counter(interval: 0.05)
+        
+    var body: some View {
+        VStack {
+            images[counter.value % images.count]
+                .resizable()
+                .frame(height: 400)
+            Text("Buat gerakan isyarat sesuai huruf atau kata yang muncul di layar")
+                .font(.system(size: 24))
+                .multilineTextAlignment(.center)
+                .lineLimit(3)
+        }.frame(width: 300, height: 550)
+            .offset(y: 50)
+        
+    }
+}
+
+private class Counter: ObservableObject {
+    private var timer: Timer?
+
+    @Published var value: Int = 0
+    
+    init(interval: Double) {
+        timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true) { _ in self.value += 1 }
+    }
+}
+
 
 struct ChallengeView_Previews: PreviewProvider {
     static var previews: some View {

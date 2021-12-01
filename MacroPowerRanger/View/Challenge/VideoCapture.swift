@@ -12,10 +12,33 @@ class VideoCapture: NSObject {
     let captureSession = AVCaptureSession()
     let videoOutput = AVCaptureVideoDataOutput()
     
-    let predictor = Predictor()
+    var vm: ChallengePageViewModel
     
-    override init() {
-        super.init()
+    var predictor : Predictor
+    
+//    override init() {
+//        super.init()
+//
+//        guard let captureDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .front),
+//              let input = try? AVCaptureDeviceInput(device: captureDevice) else {
+//                  return
+//              }
+//
+//        captureSession.sessionPreset = AVCaptureSession.Preset.high
+//        captureSession.addInput(input)
+//
+//        captureSession.addOutput(videoOutput)
+//        videoOutput.alwaysDiscardsLateVideoFrames = true
+//        let connection = videoOutput.connection(with: AVMediaType.video)
+//        connection?.videoOrientation = .portrait
+//    }
+    
+    init(vm: ChallengePageViewModel) {
+        self.vm = vm
+        //super.init(nibName: nil, bundle: nil)
+        
+        //super.init()
+        predictor = Predictor(vm: vm)
         
         guard let captureDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .front),
               let input = try? AVCaptureDeviceInput(device: captureDevice) else {
@@ -29,6 +52,10 @@ class VideoCapture: NSObject {
         videoOutput.alwaysDiscardsLateVideoFrames = true
         let connection = videoOutput.connection(with: AVMediaType.video)
         connection?.videoOrientation = .portrait
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     func startCaptureSession() {

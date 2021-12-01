@@ -15,16 +15,16 @@ struct ChallengeListView: View {
     var body: some View {
         
             ScrollView{
-                LazyVGrid(columns: gridItems, content: {
-                    ForEach(viewModel.challenges, id: \.id){practice in
-                        NavigationLink(destination: ChallengeView()){
+                LazyVGrid(columns: gridItems, spacing: 20, content: {
+                    ForEach(viewModel.challenges, id: \.id){ challenge in
+                        NavigationLink(destination: ChallengeView(challengePageViewModel: ChallengePageViewModel.init(challenge: challenge))){
                             ChallengeListCellView(
-                                title: practice.title,
-                                bgImage: practice.bgImage
+                                title: challenge.title,
+                                bgImage: challenge.bgImage
                             )
                         }
                     }
-                })
+                }).padding(.top)
             }
         
         //.navigationTitle("Tantangan")

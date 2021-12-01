@@ -48,19 +48,22 @@ struct ChallengeFinishedView: View {
                             Text("Kamu berhasil menyelesaikan tantangan")
                                 .font(.system(size: 14))
                                 .foregroundColor(Color("MainColor"))
+                                .padding(.bottom)
                             
                             Text("Skor: \(challengePageViewModel.correctAnswerCounter) Benar, \(challengePageViewModel.wrongAnserCounter) Salah")
                                 .font(.system(size: 24))
+                                .fontWeight(.bold)
                                 .padding(.vertical, 20)
+                                
                             
-                            Text("Apakah ingin mengulang tema ini atau lanjut ke tema berikutnya?")
-                                .multilineTextAlignment(.center)
-                                .lineLimit(2)
-                                .font(.system(size: 16))
+//                            Text("Apakah ingin mengulang tema ini atau lanjut ke tema berikutnya?")
+//                                .multilineTextAlignment(.center)
+//                                .lineLimit(2)
+//                                .font(.system(size: 16))
                         }.padding(.horizontal, 60)
                         
                         Spacer()
-                        Spacer()
+//                        Spacer()
                         
                         HStack(spacing: 50) {
                             Button {
@@ -95,7 +98,7 @@ struct ChallengeFinishedView: View {
                                 Button("OK", role: .cancel) { }
                             }
                         }.frame(width: UIScreen.main.bounds.width)
-                        .padding(.vertical)
+                        .padding(.bottom)
                         Spacer()
                     }
                     

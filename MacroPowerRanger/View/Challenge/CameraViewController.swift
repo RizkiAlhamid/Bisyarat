@@ -14,7 +14,7 @@ final class CameraViewController: UIViewController {
     
     var vm: ChallengePageViewModel
     
-    let videoCapture = VideoCapture()
+    var videoCapture: VideoCapture
     var previewLayer: AVCaptureVideoPreviewLayer?
     
     var pointsLayer = CAShapeLayer()
@@ -26,6 +26,7 @@ final class CameraViewController: UIViewController {
     
     init(vm: ChallengePageViewModel) {
         self.vm = vm
+        videoCapture = VideoCapture(vm: vm)
         super.init(nibName: nil, bundle: nil)
     }
     

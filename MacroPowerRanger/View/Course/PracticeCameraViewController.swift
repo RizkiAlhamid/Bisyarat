@@ -14,7 +14,7 @@ final class PracticeCameraViewController: UIViewController {
     
     var vm: PracticePageViewModel
     
-    let videoCapture = VideoCapture()
+    let videoCapture = PracticeVideoCapture()
     var previewLayer: AVCaptureVideoPreviewLayer?
     
     var pointsLayer = CAShapeLayer()
@@ -66,8 +66,8 @@ final class PracticeCameraViewController: UIViewController {
 }
 
 
-extension PracticeCameraViewController: PredictorDelegate {
-    func rightHandPredictor(_ predictor: Predictor, didLabelAction action: String, with confidence: Double) {
+extension PracticeCameraViewController: PracticePredictorDelegate {
+    func rightHandPredictor(_ predictor: PracticePredictor, didLabelAction action: String, with confidence: Double) {
         if action == "A" && confidence > 0.95 && isRightHandActionDetected == false {
             print("Kanan: ", action)
             isRightHandActionDetected = true
@@ -175,7 +175,7 @@ extension PracticeCameraViewController: PredictorDelegate {
         
     }
     
-    func leftHandPredictor(_ predictor: Predictor, didLabelAction action: String, with confidence: Double) {
+    func leftHandPredictor(_ predictor: PracticePredictor, didLabelAction action: String, with confidence: Double) {
         if action == "A" && confidence > 0.95 && isLeftHandActionDetected == false {
             print("Kiri: ", action)
             isLeftHandActionDetected = true
@@ -218,7 +218,7 @@ extension PracticeCameraViewController: PredictorDelegate {
         
     }
     
-    func predictor(_ predictor: Predictor, didFindNewRecognizedPoints points: [CGPoint], hand: String) {
+    func predictor(_ predictor: PracticePredictor, didFindNewRecognizedPoints points: [CGPoint], hand: String) {
         guard let previewLayer = previewLayer else { return }
         
         let convertedPoints = points.map {

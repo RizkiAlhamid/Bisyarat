@@ -16,15 +16,28 @@ protocol PredictorDelegate: AnyObject {
 
 class Predictor {
     
+    var vm: ChallengePageViewModel
+    
     weak var delegate: PredictorDelegate?
     
     let predictionWindowSize = 30
     var rightHandPosesWindow: [VNHumanHandPoseObservation] = []
     var leftHandPosesWindow: [VNHumanHandPoseObservation] = []
     
-    init() {
+//    init() {
+//        rightHandPosesWindow.reserveCapacity(predictionWindowSize)
+//        leftHandPosesWindow.reserveCapacity(predictionWindowSize)
+//    }
+    
+    init(vm: ChallengePageViewModel) {
+        self.vm = vm
+        //super.init(nibName: nil, bundle: nil)
         rightHandPosesWindow.reserveCapacity(predictionWindowSize)
         leftHandPosesWindow.reserveCapacity(predictionWindowSize)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     func estimation(sampleBuffer: CMSampleBuffer) {
@@ -137,6 +150,10 @@ class Predictor {
     }
     
     func storeRightHandObservation(_ observation: VNHumanHandPoseObservation) {
+        if vm.isGuessedTrue || vm.isTimesUp {
+            rightHandPosesWindow.removeAll()
+        }
+        
         if rightHandPosesWindow.count >= predictionWindowSize {
             rightHandPosesWindow.removeFirst()
         }
@@ -145,6 +162,10 @@ class Predictor {
     }
     
     func storeLeftHandObservation(_ observation: VNHumanHandPoseObservation) {
+        if vm.isGuessedTrue || vm.isTimesUp {
+            leftHandPosesWindow.removeAll()
+        }
+        
         if leftHandPosesWindow.count >= predictionWindowSize {
             leftHandPosesWindow.removeFirst()
         }

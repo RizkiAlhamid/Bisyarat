@@ -26,9 +26,10 @@ struct CourseListView: View {
                     }
                 }
                 //.navigationTitle("Belajar")
-                .navigationBarTitleDisplayMode(.large)
+                
                 //.background(Color.black).ignoresSafeArea()
             }
+            .navigationBarTitleDisplayMode(.large)
         //.navigationBarHidden(true)
         
         
