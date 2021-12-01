@@ -45,10 +45,10 @@ struct ChallengeView: View {
                     timesUpBadge
                         .animation(.default)
                 )
-//                .overlay(
-//                    AnimatingImage(images: images)
-//                        .animation(.default)
-//                )
+                .overlay(
+                    AnimatingImage(images: images, vm: challengePageViewModel)
+                        .animation(.default)
+                )
             VStack {
                 Text("00:0\(challengePageViewModel.guestTimer)")
                     .font(.title2)
@@ -79,7 +79,7 @@ struct ChallengeView: View {
             }
         })
         .onReceive(challengePageViewModel.timer, perform: { time in
-            if challengePageViewModel.startTimer > 0 && challengePageViewModel.isHandInFrame == true {
+            if challengePageViewModel.startTimer > 0 && challengePageViewModel.isHandInFrame == true && challengePageViewModel.showTutorial == false {
                 challengePageViewModel.startTimer -= 1
             }
             if challengePageViewModel.guestTimer > 0 && challengePageViewModel.shouldStartClassifying == true {
@@ -231,7 +231,7 @@ struct ChallengeView: View {
     
     @ViewBuilder
     private var handInFrameView: some View {
-        if challengePageViewModel.isHandInFrame == false {
+        if challengePageViewModel.isHandInFrame == false && challengePageViewModel.showTutorial == false{
             Image("GuideHandInFrame")
                 .resizable()
                 .imageScale(.large)
@@ -272,19 +272,44 @@ struct AnimatingImage: View {
     let images: [Image]
 
     @ObservedObject private var counter = Counter(interval: 0.05)
-        
+    @ObservedObject var vm: ChallengePageViewModel
+    
     var body: some View {
-        VStack {
-            images[counter.value % images.count]
-                .resizable()
-                .frame(height: 400)
-            Text("Buat gerakan isyarat sesuai huruf atau kata yang muncul di layar")
-                .font(.system(size: 24))
-                .multilineTextAlignment(.center)
-                .lineLimit(3)
-        }.frame(width: 300, height: 550)
-            .offset(y: 50)
-        
+        if vm.showTutorial {
+            ZStack {
+                Rectangle()
+                    .foregroundColor(Color(red: 0, green: 0, blue: 0, opacity: 1))
+                    .opacity(1)
+                    .frame(width: .infinity, height: .infinity)
+                    .ignoresSafeArea(.all)
+                
+                VStack {
+                    images[counter.value % images.count]
+                        .resizable()
+                        .frame(height: 400)
+                    Text("Buat gerakan isyarat sesuai huruf atau kata yang muncul di layar")
+                        .font(.system(size: 24))
+                        .multilineTextAlignment(.center)
+                        .lineLimit(3)
+                    Button {
+                        vm.showTutorial.toggle()
+                    } label: {
+                        Text("Mulai")
+                            .foregroundColor(.black)
+                            .font(.system(size: 24))
+                            .fontWeight(.bold)
+                            .background(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .frame(width: 120, height: 60)
+                                    .foregroundColor(.init(red: 196/255, green: 196/255, blue: 196/255))
+                            )
+                    }.padding()
+                }.frame(width: 300, height: 625)
+                .offset(y: 50)
+            }
+        } else {
+            EmptyView()
+        }
     }
 }
 

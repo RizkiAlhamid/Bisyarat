@@ -24,6 +24,8 @@ final class CameraViewController: UIViewController {
     
     var leftHandActionName = ""
     
+    var ActionA = 0
+    
     init(vm: ChallengePageViewModel) {
         self.vm = vm
         videoCapture = VideoCapture(vm: vm)
@@ -178,6 +180,31 @@ extension CameraViewController: PredictorDelegate {
             }
         }
         
+        if action == "A" {
+            ActionA += 1
+            isRightHandActionDetected = true
+            if ActionA > 30 {
+                DispatchQueue.main.asyncAfter(deadline: .now()) {
+                    if self.vm.materialBeingAsked == "C" {
+                        self.vm.isGuessedTrue = true
+                    } else if self.vm.materialBeingAsked == "D" {
+                        if self.leftHandActionName == "Telunjuk" {
+                            self.vm.isGuessedTrue = true
+                        }
+                    } else if self.vm.materialBeingAsked == "S" {
+                        if self.leftHandActionName == "C : D kanan" {
+                            self.vm.isGuessedTrue = true
+                        }
+                    }
+                }
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.isRightHandActionDetected = false
+            }
+        } else {
+            ActionA = 0
+        }
+        
         
 
     }
@@ -246,7 +273,9 @@ extension CameraViewController: PredictorDelegate {
         
         DispatchQueue.main.async {
             if points.count >= 5 {
-                self.vm.isHandInFrame = true 
+                if self.vm.showTutorial == false {
+                    self.vm.isHandInFrame = true
+                }
             } else {
                 self.vm.isHandInFrame = false
             }

@@ -26,6 +26,7 @@ class ChallengePageViewModel: ObservableObject {
     @Published var currentProgress: Double = 0
     
     @Published var dismissChallenge = false
+    @Published var showTutorial = true
     
     var correctAnswerCounter = 0
     var wrongAnserCounter = 0
@@ -89,5 +90,12 @@ class ChallengePageViewModel: ObservableObject {
         let total: Double = Double(challengeMaterials.count)
         
         return progress / total
+    }
+    
+    func nextChallenge() {
+        fetchChallengeMaterials(challenge: ChallengeSampleData.challenges[1])
+        refreshState()
+        // ganti title
+        
     }
 }

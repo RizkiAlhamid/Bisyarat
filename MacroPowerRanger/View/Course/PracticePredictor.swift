@@ -89,7 +89,7 @@ class PracticePredictor {
     }
     
     func labelLeftHandActionType() {
-        guard let bisindoClassifier = try? BisyaratChallenge_1_1(configuration: MLModelConfiguration()),
+        guard let bisindoClassifier = try? BisyaratChallenge1New_1(configuration: MLModelConfiguration()),
               let poseMultiArray = prepareInputWithObservations(leftHandPosesWindow),
               let predictions = try? bisindoClassifier.prediction(poses: poseMultiArray) else {
                   return

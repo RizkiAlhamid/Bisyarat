@@ -82,7 +82,10 @@ struct ChallengeFinishedView: View {
                                     )
                             }
                             Button {
-                                showAlert = true
+                                //if title nya yang kedua
+                                //showAlert = true
+                                isPresenting = false
+                                challengePageViewModel.nextChallenge()
                             } label: {
                                 Text("Lanjut Materi")
                                     .font(.system(size: 16))
@@ -94,7 +97,7 @@ struct ChallengeFinishedView: View {
                                             .foregroundColor(Color("MainColor"))
                                     )
                             }
-                            .alert("Tantangan 2 belum tersedia :(", isPresented: $showAlert) {
+                            .alert("Tantangan 3 belum tersedia :(", isPresented: $showAlert) {
                                 Button("OK", role: .cancel) { }
                             }
                         }.frame(width: UIScreen.main.bounds.width)
