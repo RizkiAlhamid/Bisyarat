@@ -14,6 +14,7 @@ struct MainView: View {
     @State var animate = false
     @State var endSplash = false
     
+    
     var body: some View {
         ZStack {
             NavigationView {

@@ -8,55 +8,123 @@
 import SwiftUI
 
 struct CourseCellView: View {
+    @ObservedObject var viewModel = CourseListViewModel()
+    var course: Course
     
     let title: String
     let description: String
     let bgImage: String
     
+    @Environment(\.colorScheme) var colorScheme
+    
     
     var body: some View {
-        HStack{
+        HStack {
+            //gambar
             Image(bgImage)
                 .resizable()
-                .frame(width: 60, height: 90)
+                .frame(width: 82, height: 118)
                 .scaledToFit()
-            VStack(alignment: .leading){
-                Text(title)
-                    .font(.headline)
-                Text(description)
-                    .font(.system(size: 14))
-                    .foregroundColor(.secondary)
-                    .scaledToFit()
+                .padding()
+            VStack(alignment: .leading) {
+                HStack {
+                    VStack(alignment: .leading) {
+                        HStack {
+                            //title
+                            // badge ceklis
+                            Text(title)
+                                .font(.system(size: 18))
+                                .lineLimit(1)
+                                .foregroundColor(.primary)
+                            if viewModel.getMaterialFinished(course: course) == course.courseMaterials.count{
+                                Image(systemName: "checkmark.seal.fill")
+                                    .foregroundColor(Color("cellBg"))
+                            }
+                        }
+                        //deskripsi
+                        Text(description)
+                            .font(.system(size: 14))
+                            .foregroundColor(.secondary)
+                    }
+                    
+                    Spacer()
+                    //tombol next
+                    ZStack {
+                        Circle()
+                            .frame(width: 30, height: 30)
+                            .foregroundColor(Color("cellBg"))
+                        Image(systemName: "chevron.right")
+                            .foregroundColor(.primary)
+                    }.padding(.trailing)
+                    
+                }.padding(.top)
                 Spacer()
-                ProgressBarView()
-            }.frame(width: 150)
-            Spacer()
-            ZStack{
-                Circle()
-                    .frame(width: 30, height: 30)
-                    .foregroundColor(.blue)
-                Image(systemName: "chevron.right")
-                    .foregroundColor(.black)
+                
+                ProgressBarView(viewModel: viewModel, course: course)
+                    .padding(.bottom)
             }
-            
         }
+        .background(
+            RoundedRectangle(cornerRadius: 20)
+                .fill(Color("rowBg"))
+//                .shadow(color: .primary, radius: 5, x: 0, y: 0)
+                .shadow(color: .init(red: 0, green: 0, blue: 0, opacity: colorScheme == . light ? 0.25 : 0), radius: 5, x: 0, y: 0)
+                //.opacity(colorScheme == . light ? 0.25 : 0)
+            //.frame(width: 320)
+            //.opacity(0.5)
+        )
+        .padding(.top, 15)
+        .padding(.horizontal)
+//        HStack(){
+//
+//            HStack{
+//                VStack(alignment: .leading, spacing: 23){
+//                    VStack(alignment: .leading){
+//                        HStack{
+//
+//                        }
+//
+//                    }//.frame(width: 130, alignment: .leading)
+//                }
+//
+//            }
+//
+////            Spacer(minLength: 5)
+////
+////            ZStack{
+////
+////            }.padding(.trailing)
+//
+//        }
+//        .frame(height: 130)
+//        //.ignoresSafeArea()
+//        .background(
+//            RoundedRectangle(cornerRadius: 20)
+//                .fill(.white)
+//                .shadow(color: .gray, radius: 5, x: 0, y: 0).opacity(0.5)
+//                //.frame(width: 320)
+//            //.opacity(0.5)
+//        )
         
     }
+    
 }
 
 struct ProgressBarView: View {
+    @ObservedObject var viewModel = CourseListViewModel()
+    var course: Course
     
     var body: some View{
         VStack(alignment: .leading, spacing: 10){
-            Text("13 dari 13 materi")
+            Text("\(viewModel.getMaterialFinished(course: course)) dari \(course.courseMaterials.count) materi")
                 .font(.system(size: 14))
-                .foregroundColor(.black)
-            ZStack{
-                Capsule().frame(width: 120)
+                .foregroundColor(.primary)
+            ZStack(alignment: .leading){
+                Capsule().frame(width: 200, height: 5)
                     .foregroundColor(Color.gray)
                 
-                Capsule().frame(width: 120)
-                    .foregroundColor(Color.blue)
+                Capsule().frame(width: 200 * viewModel.getUserProgress(course: course) ,height: 5)
+                    .foregroundColor(Color("cellBg"))
             }.frame(height: 10)
         }
     }

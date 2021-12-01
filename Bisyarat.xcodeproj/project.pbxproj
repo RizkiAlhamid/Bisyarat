@@ -48,6 +48,7 @@
 		A05A9166273A626F00249484 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05A9165273A626F00249484 /* AppError.swift */; };
 		A092AC422733DF0200B325F3 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A092AC412733DF0200B325F3 /* OnboardingView.swift */; };
 		A092AC442733DF2500B325F3 /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A092AC432733DF2500B325F3 /* OnboardingModel.swift */; };
+		A0D551C227554A6200EA16E7 /* Alfabet dan pengenalan diri.usdz in Resources */ = {isa = PBXBuildFile; fileRef = A0D551C127554A6200EA16E7 /* Alfabet dan pengenalan diri.usdz */; };
 		A0F412832727F171009B8569 /* ColorHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F412822727F171009B8569 /* ColorHex.swift */; };
 		A0F412882727F61A009B8569 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F412872727F61A009B8569 /* MainView.swift */; };
 /* End PBXBuildFile section */
@@ -96,6 +97,7 @@
 		A05A9182273A69A800249484 /* Bisyarat-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Bisyarat-Info.plist"; sourceTree = "<group>"; };
 		A092AC412733DF0200B325F3 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		A092AC432733DF2500B325F3 /* OnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
+		A0D551C127554A6200EA16E7 /* Alfabet dan pengenalan diri.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = "Alfabet dan pengenalan diri.usdz"; sourceTree = "<group>"; };
 		A0F412822727F171009B8569 /* ColorHex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHex.swift; sourceTree = "<group>"; };
 		A0F412872727F61A009B8569 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -197,6 +199,7 @@
 		302A1FE7271D79FE0032F4DE /* 3dAsset */ = {
 			isa = PBXGroup;
 			children = (
+				A0D551C127554A6200EA16E7 /* Alfabet dan pengenalan diri.usdz */,
 				30AF39D7275520A800549641 /* Alfabet dan pengenalan diri.usdz */,
 			);
 			path = 3dAsset;
@@ -310,6 +313,7 @@
 			files = (
 				302A1FCF27182B340032F4DE /* Preview Assets.xcassets in Resources */,
 				302A1FCC27182B340032F4DE /* Assets.xcassets in Resources */,
+				A0D551C227554A6200EA16E7 /* Alfabet dan pengenalan diri.usdz in Resources */,
 				30AF39D8275520A800549641 /* Alfabet dan pengenalan diri.usdz in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -491,7 +495,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"MacroPowerRanger/Preview Content\"";
-				DEVELOPMENT_TEAM = UG27AN3F2U;
+				DEVELOPMENT_TEAM = Z74KUA44R7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Bisyarat-Info.plist";
@@ -523,7 +527,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"MacroPowerRanger/Preview Content\"";
-				DEVELOPMENT_TEAM = UG27AN3F2U;
+				DEVELOPMENT_TEAM = Z74KUA44R7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Bisyarat-Info.plist";

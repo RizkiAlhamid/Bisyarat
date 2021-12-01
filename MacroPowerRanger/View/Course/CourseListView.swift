@@ -8,32 +8,44 @@
 import SwiftUI
 
 struct CourseListView: View {
+    
     @ObservedObject var viewModel = CourseListViewModel()
     
+    
+    
     var body: some View {
-            ZStack{
-                VStack{
-                    List {
-                        ForEach(viewModel.courses, id: \.id){ course in
-                            NavigationLink(destination: LearningPageView(learningPageViewModel: LearningPageViewModel.init(course: course))) {
-                                CourseCellView(
-                                    title: course.title,
-                                    description: course.description,
-                                    bgImage: course.bgImage
-                                )
-                            }
+        ZStack{
+            VStack(){
+                ScrollView() {
+                    
+                    ForEach(viewModel.courses, id: \.id){ course in
+                        NavigationLink(destination: LearningPageView(learningPageViewModel: LearningPageViewModel.init(course: course))) {
+                            CourseCellView(
+                                viewModel: viewModel, course: course,
+                                title: course.title,
+                                description: course.description,
+                                bgImage: course.bgImage
+                            )
                         }
                     }
+                    .listRowBackground(Color.clear)
+                        .listRowSeparator(.hidden)
+                        
                 }
                 //.navigationTitle("Belajar")
                 
                 //.background(Color.black).ignoresSafeArea()
             }
+            //.navigationTitle("Belajar")
             .navigationBarTitleDisplayMode(.large)
+            //.background(Color.black).ignoresSafeArea()
+        }
+    
+        
+        .onAppear {
+            viewModel.updateView()
+        }
         //.navigationBarHidden(true)
-        
-        
-        
     }
 }
 

@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ChallengeSampleData {
     static var challenges: [Challenge] = [
-        Challenge(id: UUID(), title: "Challenge 1", bgImage: "bgImageDasar1",
+        Challenge(id: UUID(), title: "Challenge 1", bgImage: "alfabet1Bg",
                   challengeMaterials: [ChallengeMaterial(id: UUID(), title: "A", outlineImage: "outA"),
                                        ChallengeMaterial(id: UUID(), title: "B", outlineImage: "outA"),
                                        ChallengeMaterial(id: UUID(), title: "C", outlineImage: "outA"),

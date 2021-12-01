@@ -9,7 +9,7 @@ import Foundation
 
 struct CourseSampleData {
     static var courses: [Course] = [
-        Course(id: UUID(), title: "Alfabet 1", description: "5 Materi", bgImage: "bgImageDasar1", isFinished: false,
+        Course(id: UUID(), title: "Alfabet 1", description: "5 Materi", bgImage: "bgAlfabet1", isFinished: false,
                courseMaterials:
                 [CourseMaterial(id: UUID(), title: "A", detailedInstruction: "Kedua telapak tangan menghadap depan, tutup jari selain ibu dan telunjuk ya",
                                                             animFrame: animationFrame(animationKey: "A", startFrame: 0, endFrame: 100)),
@@ -27,7 +27,7 @@ struct CourseSampleData {
                                 animFrame: animationFrame(animationKey: "E", startFrame: 700, endFrame: 810)),
                 ]),
         
-        Course(id: UUID(), title: "Alfabet 2", description: "5 Materi", bgImage: "bgImageDasar1", isFinished: false,
+        Course(id: UUID(), title: "Alfabet 2", description: "5 Materi", bgImage: "bgAlfabet2", isFinished: false,
                courseMaterials:
                 [CourseMaterial(id: UUID(), title: "F", detailedInstruction: "Jari telunjuk dan ibu jari cukup dibuka sedikit saja ya",
                                 animFrame: animationFrame(animationKey: "F", startFrame: 850, endFrame: 950)),
@@ -45,7 +45,7 @@ struct CourseSampleData {
                                 animFrame: animationFrame(animationKey: "S", startFrame: 1430, endFrame: 1580)),
                 ]),
         
-        Course(id: UUID(), title: "Perkenalan Diri", description: "3 Materi", bgImage: "bgImageDasar1", isFinished: false,
+        Course(id: UUID(), title: "Perkenalan Diri", description: "3 Materi", bgImage: "bgPerkenalanDiri", isFinished: false,
                courseMaterials:
                 [CourseMaterial(id: UUID(), title: "Halo", detailedInstruction: "Gerakan tanganmu ke kanan dan kiri ya",
                                 animFrame: animationFrame(animationKey: "Halo", startFrame: 1600, endFrame: 1740)),

@@ -14,5 +14,4 @@ struct Course {
     var bgImage: String
     var isFinished: Bool
     var courseMaterials: [CourseMaterial]
-
 }
