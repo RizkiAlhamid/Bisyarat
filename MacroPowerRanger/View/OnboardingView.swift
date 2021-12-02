@@ -77,7 +77,7 @@ struct OnboardingView: View {
                             
                         }
                     }
-                }.padding(.bottom,UIApplication.shared.windows.first?.safeAreaInsets.bottom)
+                }.padding(.bottom)
                 ,alignment: .bottom
             )
             .toolbar {
