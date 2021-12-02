@@ -14,24 +14,43 @@ struct MainView: View {
     @State var animate = false
     @State var endSplash = false
     
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     
     var body: some View {
         ZStack {
             NavigationView {
-                TabView(selection: $tag) {
-                    CourseListView()
-                        .tabItem {
-                            Label("Belajar", systemImage: "book.fill")
-                        }.tag(1)
-                    ChallengeListView()
-                        .tabItem {
-                            Label("Tantangan", systemImage: "flag.2.crossed.fill")
-                        }.tag(2)
+                if horizontalSizeClass == .compact {
+                    TabView(selection: $tag) {
+                        CourseListView()
+                            .tabItem {
+                                Label("Belajar", systemImage: "book.fill")
+                            }.tag(1)
+                        ChallengeListView()
+                            .tabItem {
+                                Label("Tantangan", systemImage: "flag.2.crossed.fill")
+                            }.tag(2)
+                    }
+                    .navigationTitle(tag == 1 ? "Belajar" : "Tantangan")
+                    .fullScreenCover(isPresented: $shouldShowOnboarding, content: { OnboardingView(shouldShowOnboarding: $shouldShowOnboarding)
+                        
+                    })
+                } else {
+                    EmptyView()
+                    TabView(selection: $tag) {
+                        CourseListView()
+                            .tabItem {
+                                Label("Belajar", systemImage: "book.fill")
+                            }.tag(1)
+                        ChallengeListView()
+                            .tabItem {
+                                Label("Tantangan", systemImage: "flag.2.crossed.fill")
+                            }.tag(2)
+                    }
+                    .navigationTitle(tag == 1 ? "Belajar" : "Tantangan")
+                    .fullScreenCover(isPresented: $shouldShowOnboarding, content: { OnboardingView(shouldShowOnboarding: $shouldShowOnboarding)
+                        
+                    })
                 }
-                .navigationTitle(tag == 1 ? "Belajar" : "Tantangan")
-                .fullScreenCover(isPresented: $shouldShowOnboarding, content: { OnboardingView(shouldShowOnboarding: $shouldShowOnboarding)
-                    
-                })
             }
             
             ZStack {

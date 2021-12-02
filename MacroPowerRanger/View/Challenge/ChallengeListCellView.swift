@@ -134,7 +134,7 @@ struct ChallengeListCellView: View {
         //
         //        }
         
-        .frame(width: 157, height: 181)
+        .frame(height: 181)
         .background(
             RoundedRectangle(cornerRadius: 20)
                 .fill(.white)

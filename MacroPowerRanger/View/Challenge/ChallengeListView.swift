@@ -10,7 +10,7 @@ import SwiftUI
 struct ChallengeListView: View {
     @ObservedObject var viewModel = ChallengeListViewModel()
     
-    private let gridItems = [GridItem(.flexible(), spacing: -20), GridItem(.flexible(), spacing: 0)]
+    private let gridItems = [GridItem(.flexible(), spacing: 10), GridItem(.flexible(), spacing: 10)]
     
     var body: some View {
         
