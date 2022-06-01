@@ -56,11 +56,7 @@ struct CourseSampleData {
                  CourseMaterial(id: UUID(), title: "Saya", detailedInstruction: "Letakkan telapak tangan di daerah dada ya",
                                 animFrame: animationFrame(animationKey: "Saya", startFrame: 1720, endFrame: 1840)),
                 ]),
-        
-//        Course(id: UUID(), title: "Kata Sapaan", description: "3 Materi", bgImage: "bgImageDasar1", isFinished: false,
-//               courseMaterials:
-//                []),
-        
+                
     
     ]
     

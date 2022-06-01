@@ -33,7 +33,7 @@ struct LearningPageView: View {
                         Spacer()
                         SettingButtonsView(vm: learningPageViewModel, isPaused: $isPaused, shouldShowChatBox: $shouldShowChatBox, isAnimationEnded: $isAnimationEnded)
                     }
-                }//.frame(height: UIScreen.main.bounds.height * 0.5)
+                }
                 
                 MaterialSnapPicker(vm: learningPageViewModel, index: $currentIndex, items: learningPageViewModel.courseMaterials) { material in
                     

@@ -141,8 +141,3 @@ struct ChallengeFinishedView: View {
     }
 }
 
-//struct ChallengeFinishedView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ChallengeFinishedView(challengePageViewModel: ChallengePageViewModel(), isPresenting: true)
-//    }
-//}

@@ -195,8 +195,6 @@ class LearningPageViewModel: ObservableObject{
             
         }
         
-        //idleScene.background.contents = (colorScheme == .dark ? UIColor.black : UIColor.white)
-        //idleScene.background.contents = UIColor.init(red: 0, green: 0, blue: 0, alpha: colorScheme == .light ? 0.5 : 0.5)
         idleScene.background.contents = UIColor.systemBackground
         
         idleScene.rootNode.addChildNode(node)
@@ -276,79 +274,4 @@ class LearningPageViewModel: ObservableObject{
         
     }
     
-//    func loadAnimations() -> SCNScene? {
-//        // Load the character in the idle animation
-//        //let idleScene = SCNScene(named: "helicopter.scn")!
-//
-//        // This node will be parent of all the animation models
-//        let node = SCNNode()
-//
-//        // Add all the child nodes to the parent node
-//        for child in idleScene.rootNode.childNodes {
-//
-//            if (child.childNodes.count > 0) {
-//                for item in child.childNodes {
-//                    if item.animationKeys.count > 0 {
-//                        let animations = item.animationKeys
-//
-//                        if let oldPlayer = item.animationPlayer(forKey: animations.first!) {
-//                            // initially stop it
-//                            oldPlayer.stop()
-//
-//                            // make an animation for each animation group
-//                            let anims = Animations()
-//                            let idleAnim = anims.animation(from: oldPlayer.animation, startingAtFrame: self.getStartFrame(), endingAtFrame: self.getEndFrame())
-//
-//                            item.addAnimationPlayer(SCNAnimationPlayer(animation: SCNAnimation(caAnimation: idleAnim)), forKey: "\(self.getAnimationKey())")
-//                            DispatchQueue.main.asyncAfter(deadline: .now()+2.0) {
-//                                if let idlePlayer: SCNAnimationPlayer = item.animationPlayer(forKey: "\(self.getAnimationKey())") {
-//                                    idlePlayer.animation.repeatCount = CGFloat(Float.greatestFiniteMagnitude)
-//                                    idlePlayer.animation.blendInDuration = TimeInterval(CGFloat(1))
-//                                    idlePlayer.animation.blendOutDuration = TimeInterval(CGFloat(0.5))
-//
-//                                    let event = SCNAnimationEvent(keyTime: 1) { animation, object, backward in
-//                                        print("animation ended")
-//                                        print(NSDate())
-//                                        //idlePlayer.stop()
-//                                    }
-//                                    idlePlayer.animation.animationEvents = [event]
-//                                    idlePlayer.play()
-//                                }
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//            node.addChildNode(child)
-//
-//        }
-//
-////        // Set up some properties
-////        node.position = SCNVector3(0, -1, -2)
-////        node.eulerAngles.y = 0
-////        node.scale = SCNVector3(0.025, 0.025, 0.025)
-//
-//        // return node
-//        idleScene.rootNode.addChildNode(node)
-//        return idleScene
-//    }
-    
-    
-    
-    
 }
-
-
-//let cameraNode = SCNNode()
-//cameraNode.camera = SCNCamera()
-//cameraNode.position = SCNVector3(0, 0.5, 1.35)
-//cameraNode.eulerAngles = SCNVector3(x: -7.222, y: 0.618, z: 0)
-//
-//idleScene.rootNode.addChildNode(cameraNode)
-
-
-//
-//        let geom = idleScene.rootNode.childNode(withName: "Geom", recursively: true)
-//        print(geom)
-//        let skeleton = geom?.childNode(withName: "Skeleton", recursively: true)!
-//        print(skeleton, skeleton?.animationKeys.count)

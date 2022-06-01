@@ -67,44 +67,10 @@ struct CourseCellView: View {
         .background(
             RoundedRectangle(cornerRadius: 20)
                 .fill(Color("rowBg"))
-//                .shadow(color: .primary, radius: 5, x: 0, y: 0)
                 .shadow(color: .init(red: 0, green: 0, blue: 0, opacity: colorScheme == . light ? 0.25 : 0), radius: 5, x: 0, y: 0)
-                //.opacity(colorScheme == . light ? 0.25 : 0)
-            //.frame(width: 320)
-            //.opacity(0.5)
         )
         .padding(.top, 15)
         .padding(.horizontal)
-//        HStack(){
-//
-//            HStack{
-//                VStack(alignment: .leading, spacing: 23){
-//                    VStack(alignment: .leading){
-//                        HStack{
-//
-//                        }
-//
-//                    }//.frame(width: 130, alignment: .leading)
-//                }
-//
-//            }
-//
-////            Spacer(minLength: 5)
-////
-////            ZStack{
-////
-////            }.padding(.trailing)
-//
-//        }
-//        .frame(height: 130)
-//        //.ignoresSafeArea()
-//        .background(
-//            RoundedRectangle(cornerRadius: 20)
-//                .fill(.white)
-//                .shadow(color: .gray, radius: 5, x: 0, y: 0).opacity(0.5)
-//                //.frame(width: 320)
-//            //.opacity(0.5)
-//        )
         
     }
     

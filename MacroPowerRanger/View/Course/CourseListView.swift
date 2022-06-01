@@ -29,20 +29,14 @@ struct CourseListView: View {
                         .listRowSeparator(.hidden)
                         
                 }
-                //.navigationTitle("Belajar")
-                
-                //.background(Color.black).ignoresSafeArea()
             }
-            //.navigationTitle("Belajar")
             .navigationBarTitleDisplayMode(.large)
-            //.background(Color.black).ignoresSafeArea()
         }
     
         
         .onAppear {
             viewModel.updateView()
         }
-        //.navigationBarHidden(true)
     }
 }
 

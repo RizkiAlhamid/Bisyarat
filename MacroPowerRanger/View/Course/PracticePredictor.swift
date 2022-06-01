@@ -204,26 +204,3 @@ class PracticePredictor {
         
     }
 }
-
-
-//func handPoseHandler(request: VNRequest, error: Error?) {
-//    guard let observations = request.results as? [VNHumanHandPoseObservation] else { return }
-//
-////        observations.forEach {
-////            processObservation($0)
-////        }
-//
-//    for hand in observations where hand.chirality == .right {
-//        processObservation(hand, hand: "right")
-//    }
-//
-//    for hand in observations where hand.chirality == .left {
-//        processObservation(hand, hand: "left")
-//    }
-//
-//    if let result = observations.first {
-//        storeObservation(result)
-//
-//        labelActionType()
-//    }
-//}

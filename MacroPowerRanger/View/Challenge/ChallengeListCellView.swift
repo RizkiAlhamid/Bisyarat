@@ -111,28 +111,6 @@ struct ChallengeListCellView: View {
             }.frame(width: 160, height: 69)
             
         }
-        //        VStack{
-        //            Text(title)
-        //                .font(.headline)
-        //                .foregroundColor(.black)
-        //                .frame(width: 127, height: 20, alignment: .leading)
-        //
-        //            VStack{
-        //                Image(bgImage)
-        //                    .resizable()
-        //                    .frame(width: 60, height: 90)
-        //                    .scaledToFit()
-        //                ZStack(alignment: .bottom){
-        //                    Text("Test")
-        //                        .foregroundColor(.black)
-        //                    Color("challengeBg")
-        //                        .cornerRadius(20, corners: [.bottomLeft, .bottomRight])
-        //
-        //                }.frame(width: 157, height: 69)
-        //            }
-        //
-        //
-        //        }
         
         .frame(height: 181)
         .background(
