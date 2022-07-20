@@ -20,17 +20,18 @@ struct OnboardingView: View {
                         Image(onboardingScreens[it].bgImage)
                             .resizable()
                             .frame(width: 250, height: 250)
+                            .padding(.bottom, 90)
                         Text(onboardingScreens[it].title)
-                            .font(.title)
                             .bold()
+                            .font(.system(size: 20))
                             .multilineTextAlignment(.center)
-                            .padding(.horizontal,32)
-                            .padding(.top,10)
+                            .padding(.bottom, 14)
                             
                         Text(onboardingScreens[it].description)
+                            .font(.system(size: 16, weight: .light))
                             .multilineTextAlignment(.center)
-                            .padding(.horizontal,32)
-                            .padding(.top,16)
+                            .padding(.horizontal,61)
+                            
                         
                         Spacer()
                             .frame(minHeight: 10, idealHeight: 100, maxHeight: 600)
@@ -48,10 +49,10 @@ struct OnboardingView: View {
                                         Text("Mulai")
                                             .bold()
                                             .foregroundColor(Color.white)
-                                            .frame(width: 90, height: 40)
-                                            .background(Color.blue)
+                                            .frame(width: 305, height: 45)
+                                            .background(Color("MainColor"))
                                         
-                                    }).cornerRadius(20)
+                                    }).cornerRadius(12)
                                 }
                             }
                         }
@@ -67,16 +68,17 @@ struct OnboardingView: View {
                         if it == indexPage {
                             Circle()
                                 .frame(width: 10, height: 10)
-                                .foregroundColor(.blue)
+                                .foregroundColor(Color("MainColor"))
                         }
                         else {
-                            Circle().stroke(Color.blue, lineWidth: 2)
+                            Circle().stroke(Color("MainColor"), lineWidth: 2)
                                 .frame(width: 10, height: 10)
                                 .foregroundColor(.white)
                             //.border(Color.blue)
                             
                         }
-                    }
+                    }.disabled(indexPage == onboardingScreens.count-1)
+                        .opacity(indexPage == onboardingScreens.count-1 ? 0 : 1)
                 }.padding(.bottom)
                 ,alignment: .bottom
             )
@@ -84,8 +86,9 @@ struct OnboardingView: View {
                 Button(action: {
                     shouldShowOnboarding.toggle()
                 }, label: {
-                    Text("Skip")
-                        .foregroundColor(Color.orange)
+                    Text("Lewati")
+                        .font(.system(size: 20))
+                        .foregroundColor(Color("MainColor"))
                 }).disabled(indexPage == onboardingScreens.count-1)
                     .opacity(indexPage == onboardingScreens.count-1 ? 0 : 1)
             }
