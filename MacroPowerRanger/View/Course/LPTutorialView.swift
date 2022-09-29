@@ -38,6 +38,28 @@ struct LPTutorialView: View {
                 }
             }
             tutorialView
+            
+            //skip button
+            HStack {
+                Spacer()
+                VStack {
+                    Button {
+                        tutorialCounter = 0
+                    } label: {
+                        Text("Lewati")
+                            .foregroundColor(.primary)
+                            .padding(.horizontal, 10)
+                            .padding(.vertical, 5)
+                            .background(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .fill(Color(red: 244/255, green: 244/255, blue: 244/255))
+                            )
+                            .padding()
+                    }
+
+                    Spacer()
+                }
+            }
         }
         .onAppear() {
             adjustValue(tutorialCounter: tutorialCounter)
@@ -50,6 +72,8 @@ struct LPTutorialView: View {
                 Spacer()
             }
             HStack {
+                Spacer()
+                
                 VStack {
                     if tutorialCounter > 5 {
                         Text("Tekan dimana saja untuk melanjutkan")
@@ -77,9 +101,10 @@ struct LPTutorialView: View {
                     }
                     
                 }
-                .frame(width: tutorialCounter == 6 ? 250 : 285)
+                .frame(maxWidth: tutorialCounter == 6 ? 250 : 285)
                 .padding(.horizontal)
 
+                Spacer()
                 
                 if tutorialCounter == 6 {
                     
@@ -97,7 +122,7 @@ struct LPTutorialView: View {
                                     
                                 )
                         )
-                        .padding(.trailing, 10)
+                        .padding(.trailing, 15)
                         .offset(y: -25)
                 }
                 

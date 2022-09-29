@@ -50,6 +50,7 @@ struct MaterialSnapPicker<Content: View>: View {
                         content(item)
                             .frame(width: proxy.size.width / 5)
                             .offset(x: (CGFloat(vm.sliderIndex) * -width) + adjustmentWidth + offset + 5)
+                            .offset(y: 45)
                             .onTapGesture(perform: {
                                 if vm.autoPlayOn == false {
                                     vm.stopAnimations()

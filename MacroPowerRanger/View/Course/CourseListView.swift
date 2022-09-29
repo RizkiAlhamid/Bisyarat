@@ -17,22 +17,16 @@ struct CourseListView: View {
                 ScrollView() {
                     ForEach(viewModel.courses, id: \.id){ course in
                         NavigationLink(destination: LearningPageView(learningPageViewModel: LearningPageViewModel.init(course: course))) {
-                            CourseCellView(
-                                viewModel: viewModel, course: course,
-                                title: course.title,
-                                description: course.description,
-                                bgImage: course.bgImage
-                            )
-                        }
+                                CourseCellView(viewModel: viewModel, course: course)
+                            }
                     }
                     .listRowBackground(Color.clear)
-                        .listRowSeparator(.hidden)
-                        
+                    .listRowSeparator(.hidden)
                 }
             }
             .navigationBarTitleDisplayMode(.large)
         }
-    
+        
         
         .onAppear {
             viewModel.updateView()

@@ -87,5 +87,8 @@ struct MainView: View {
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         MainView()
+        MainView()
+            .previewDevice(PreviewDevice(rawValue: "iPhone 8 Plus"))
+            .previewDisplayName("iPhone 8 Plus")
     }
 }
